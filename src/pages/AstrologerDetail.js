@@ -9,7 +9,52 @@ function AstrologerDetail() {
 
   const [details, setDetails] = useState(parse);
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    postData();
+  }, []);
+  const [list, setList] = useState([]);
+
+  let [_id, set_id] = useState(() => {
+    let result = localStorage.getItem("_id");
+
+    if (result != null) {
+      return JSON.parse(result);
+    } else {
+      return [];
+    }
+  });
+
+  const postData = () => {
+    const item = {
+      user_id: _id,
+    };
+    axios
+      .post("http://103.104.74.215:3012/api/user/astrologer_list/", item)
+      .then((res) => {
+        setList(res.data.data);
+      });
+  };
+
+  const [walletAmnt, setWalletAmnt] = useState([]);
+  useEffect(() => {
+    postRech();
+  }, []);
+  const postRech = () => {
+    const item = {
+      user_id: _id,
+    };
+    axios
+      .post("http://103.104.74.215:3012/api/user/get_wallet_user", item)
+      .then((res) => setWalletAmnt(res.data.data.ammount));
+  };
+
+
+
+
   return (
+
     <div>
       <Header1/>
 
@@ -41,6 +86,7 @@ function AstrologerDetail() {
                 </nav>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -97,29 +143,7 @@ function AstrologerDetail() {
 
                     <br />
 
-                    {/* <div class="grid-contain" style={{ width: "100%" }}>
-                      <div class="seller-contact-details">
-                        <div class="saller-contact" style={{ marginTop: -20 }}>
-                          <a href="product-4-image.html" >
-                            <img
-                              src="../assets/images/veg-3/category/calling.png"
-                              class="img-fluid"
-                              alt=""
-                              style={{ height: 25 }}
-                            />
-                          </a>
-
-                          <a href="product-4-image.html">
-                            <img
-                              src="../assets/images/veg-3/category/chat.png"
-                              class="img-fluid"
-                              alt=""
-                              style={{ height: 25, marginLeft: 10 }}
-                            />
-                          </a>
-                        </div>
-                      </div>
-                    </div> */}
+                     
                     <div
                       style={{
                         width: "100%",
@@ -129,7 +153,7 @@ function AstrologerDetail() {
                         flexWrap: "wrap",
                         justifyContent: "space-evenly",
                       }}
-                    >
+                    > 
                       <div
                         style={{
                           width: "45%",
@@ -142,14 +166,18 @@ function AstrologerDetail() {
                           padding:5
                         }}
                       >
+                        
                         <h4 style={{color:"white"}}>Calling</h4>
-                        <img
+                    
+                   
+                        <img 
                           src="../assets/images/veg-3/category/calling.png"
                           class="img-fluid"
                           alt=""
                           style={{ height: 35 }}
                         />
                       </div>
+                     
                       <div 
                       style={{
                         width: "45%",
@@ -170,7 +198,12 @@ function AstrologerDetail() {
                           style={{ height: 35, marginLeft: 10 }}
                         />
                       </div>
+                      
                     </div>
+
+
+
+  
                   </div>
                 </div>
               </div>

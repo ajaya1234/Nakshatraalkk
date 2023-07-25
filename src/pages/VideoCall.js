@@ -122,8 +122,8 @@ const VideoCall = () => {
   
   
   
-    const [amount, setAmount] = useState(walletAmnt?.ammount);
-    const [remainingTime, setRemainingTime] = useState(  Math.ceil((data1.ammount / cData?.video_rate)));
+    //const [amount, setAmount] = useState(walletAmnt?.ammount);
+    //const [remainingTime, setRemainingTime] = useState(  Math.ceil((data1.ammount / cData?.video_rate)));
   
     
     const disconnectCall = () => {
@@ -143,23 +143,23 @@ const VideoCall = () => {
   };
 
   
-    const calculateRemainingTime = () => {
-      const chatDuration = Math.ceil((data.ammount / cData?.video_rate)*60 ); 
-      const chatStartTime = new Date(); 
-      const currentTime = new Date();
-      const elapsedTime = Math.floor((currentTime - chatStartTime) / 1000);
-      const remainingTime = chatDuration - elapsedTime;
-      setRemainingTime(remainingTime);
-    };
-    useEffect(() => {
-      calculateRemainingTime();
-      const timer = setInterval(() => {
-        setRemainingTime((prevTime) => prevTime - 1);
-      }, 1000);
-      return () => {
-        clearInterval(timer);
-      };
-    }, []);
+    //const calculateRemainingTime = () => {
+      //const chatDuration = Math.ceil((data.ammount / cData?.video_rate)*60 ); 
+      //const chatStartTime = new Date(); 
+      //const currentTime = new Date();
+      //const elapsedTime = Math.floor((currentTime - chatStartTime) / 1000);
+      //const remainingTime = chatDuration - elapsedTime;
+      //setRemainingTime(remainingTime);
+    //};
+    //useEffect(() => {
+     // calculateRemainingTime();
+      //const timer = setInterval(() => {
+      //  setRemainingTime((prevTime) => prevTime - 1);
+     // }, 1000);
+     // return () => {
+        //clearInterval(timer);
+     // };
+   // }, []);
 
 
 
@@ -264,7 +264,7 @@ console.log("user dfatada",userdata)
 
     return (
         <>
-        {remainingTime<0&& disconnectCall()}
+        {/* {remainingTime<0&& disconnectCall()} */}
         
           <>
           
@@ -277,13 +277,13 @@ console.log("user dfatada",userdata)
             </div>
           </>
     
-          {amount < 0 && disconnectCall()}
-          <ReverseTimer
+          {/* {amount < 0 && disconnectCall()} */}
+          {/* <ReverseTimer
           minutes={remainingTime}
           seconds={60}
           style={{ fontSize: 10 }}
           onTimerEnd={disconnectCall}
-        />
+        /> */}
             <button onClick={tokenGen} class=" btn-md bg-dark  text-white w-80">Call</button> 
             {/*<button onClick={deletelive} class=" btn-md bg-dark  text-white w-80">Disconnect</button>*/}
              <a href='/'><button onClick={deletelive} class=" btn-md bg-dark  text-white w-80">Disconnect</button></a>

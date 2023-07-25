@@ -5,6 +5,8 @@ import Setting from "./Setting";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Header1 from "./Header1";
+import { Link } from "react-router-dom";
+
 const Profile = () => {
   const navigate = useNavigate();
 
@@ -884,10 +886,10 @@ const Profile = () => {
                             navigate("/login");
                           }}
                         >
-                          <a href="#">
+                          <Link to="#">
                             {" "}
                             <h3>Logout</h3>
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     </div>

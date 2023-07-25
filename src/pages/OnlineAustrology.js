@@ -33,8 +33,10 @@ const OnlineAustrology = () => {
     const item = {
       user_id: _id,
     };
-    axios
-      .post("http://103.104.74.215:3012/api/user/astrologer_list/", item)
+    axios.
+      get("http://103.104.74.215:3012/api/user/get_astrologer_list/")
+      // .post("http://103.104.74.215:3012/api/user/astrologer_list/", item)
+      // http://103.104.74.215:3012/api/user/get_astrologer_list method - get
       .then((res) => {
         setList(res.data.data);
       });
@@ -80,7 +82,7 @@ const OnlineAustrology = () => {
                 </div>
                 <div class="timing-box">
                   <Link to="/AstrologersList">
-                    <img
+                    <img 
                       src="../assets/images/veg-3/category/live_right_arrow.png"
                       class="img-fluid"
                       alt=""
@@ -104,7 +106,10 @@ const OnlineAustrology = () => {
                       <div class="seller-grid-box seller-grid-box-1">
                         <div class="grid-image">
                           <div class="image">
-                            <img
+                            <img onClick={() => {
+                              localStorage.setItem("AstroData", JSON.stringify(i));
+                              navigate("/AstrologerDetail");
+                            }}
                               src={
                                 "http://103.104.74.215:3012/uploads/" +
                                 i?.profile_pic
@@ -119,7 +124,10 @@ const OnlineAustrology = () => {
                             />
 
                             <button
-                              // onclick="location.href = 'product-4-image.html';"
+                              onClick={() => {
+                                localStorage.setItem("AstroData", JSON.stringify(i));
+                                navigate("/AstrologerDetail");
+                              }}
                               class="nav-item"
                               style={{
                                 borderRadius: "15px",
@@ -140,7 +148,10 @@ const OnlineAustrology = () => {
                             </button>
                           </div>
 
-                          <div class="contain-name">
+                          <div class="contain-name" onClick={() => {
+                              localStorage.setItem("AstroData", JSON.stringify(i));
+                              navigate("/AstrologerDetail");
+                            }}>
                             <div>
                               <h4>{i.name}</h4>
 

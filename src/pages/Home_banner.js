@@ -11,7 +11,7 @@ const Home_banner = () => {
               <div className="home-contain h-100">
                 <div className="h-100">
                   <img 
-                    style={{ width: "100%", height: "40vh" }}
+                    style={{ width: "100%", height: "45vh" }}
                     src="../assets/images/vegetable/banner/1.jpg"
                     className="bg-img blur-up lazyload img-fluid"
                     alt="home image"

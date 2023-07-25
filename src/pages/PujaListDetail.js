@@ -33,7 +33,7 @@ function PujaListDetail() {
               <div class="breadscrumb-contain">
                 <div></div>
                 <h2>Puja Details Page</h2>
-                <nav>
+                {/* <nav>
                   <ol class="breadcrumb mb-0">
                     <li class="breadcrumb-item">
                       <a href="index-2.html">
@@ -47,7 +47,7 @@ function PujaListDetail() {
                       Blog Details
                     </li>
                   </ol>
-                </nav>
+                </nav> */}
               </div>
             </div>
           </div>
