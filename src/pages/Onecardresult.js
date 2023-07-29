@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 import React from "react";
 import Header1 from "./Header1";
 import Live from "./Live";
@@ -17,7 +17,7 @@ function Onecardresult() {
 
   useEffect(() => {
     const api = "yes_no_tarot";
-    const userId = "623869";
+    const userId = "623869"; 
     const apiKey = "46046d17a932151518470e3a08a1665a";
 const tarotiid=localStorage.getItem("tarotid")
 
@@ -100,6 +100,92 @@ height:'100px'
                     </div>
                 </div>
             </section>
+            <section class="product-list-section section-b-space">
+        <div class="container-fluid-lg">
+          <div class="title">
+            <h2>Also Check</h2>
+            <span class="title-leaf">
+              <svg class="icon-width">
+                <Link to="https://themes.pixelstrap.com/fastkart/assets/svg/leaf.svg#leaf"></Link>
+              </svg>
+            </span>
+          </div>
+          <div class="row g-4">
+            <div class="col-xxl-4 col-md-4">
+              <div class="product-box-4 wow fadeInUp">
+                <div class="product-header">
+                  <div class="product-image">
+                    <Link to='/Horoscope_page'>
+                      <img
+                        src="../assets/images/inner-page/dh.png"
+                        class="img-fluid blur-up lazyload"
+                        alt=""
+                      />
+                    </Link>
+                  </div>
+                </div>
+
+                <div class="product-footer">
+                  <div class="product-detail">
+                  <Link to='/Horoscope_page'>
+                      <h5 class="name">Daily Horoscope</h5>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xxl-4 col-md-4">
+              <div class="product-box-4 wow fadeInUp">
+                <div class="product-header">
+                  <div class="product-image">
+                    <Link to="/Horoscope_monthly">
+                      <img
+                        src="../assets/images/inner-page/dh.png"
+                        class="img-fluid blur-up lazyload"
+                        alt=""
+                      />
+                    </Link>
+                  </div>
+                </div>
+
+                <div class="product-footer">
+                  <div class="product-detail">
+                  <Link to="/Horoscope_monthly">
+                      <h5 class="name">Montlhy Horoscope</h5>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xxl-4 col-md-4">
+              <div class="product-box-4 wow fadeInUp">
+                <div class="product-header">
+                  <div class="product-image">
+                    <Link to='/Horoscope_yearly'>
+                      <img
+                        src="../assets/images/inner-page/dh.png"
+                        class="img-fluid blur-up lazyload"
+                        alt=""
+                      />
+                    </Link>
+                  </div>
+                </div>
+
+                <div class="product-footer">
+                  <div class="product-detail">
+                  <Link to='/Horoscope_yearly'>
+                      <h5 class="name"> Horoscope 2023</h5>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
             <br />
             <Live />
             <br />

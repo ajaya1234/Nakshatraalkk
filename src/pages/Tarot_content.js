@@ -365,7 +365,7 @@ const Tarot_content = () => {
                           </Link>
                         </div>
                         <div style={{ position: "absolute" }}>
-                          <Link to="/BlogDetail">
+                          <Link to="#">
                             <ul>
                               <table class="home_table">
                                 <tbody>
