@@ -101,7 +101,7 @@ const Panchang_page = () => {
                   <div>
                     <Link to="/panchangg">
                       <h3>Panchang</h3>
-                      <h4>{responseData?.tithi.details.day}Delhi- Wednesday, 05 April 2023</h4>
+                      <h4>Delhi- {responseData?.day}, 05 April 2023</h4>
                     </Link>
                   </div>
                   <div style={{ position: "absolute" }}>
@@ -111,7 +111,7 @@ const Panchang_page = () => {
                           <tbody>
                             <tr>
                               <td scope="row">Date</td>
-                              <td>Wednesday, 05 April 2023</td>
+                              <td>{responseData?.day}, 05 April 2023</td>
                               <hr />
                             </tr>
                             <tr>

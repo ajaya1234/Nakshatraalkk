@@ -1,8 +1,99 @@
+import { Link } from "react-router-dom";
 import React from "react";
 import Live from "./Live";
 import OnlineAustology from "./OnlineAustrology";
+import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Tarot_content = () => {
+  const [responseData, setResponseData] = useState("");
+  console.log("state sadasd", responseData);
+
+  useEffect(() => {
+    const api = "tarot_predictions";
+    const userId = "623869";
+    const apiKey = "46046d17a932151518470e3a08a1665a";
+
+    const auth = "Basic " + btoa(userId + ":" + apiKey);
+    const data = {
+      love: 13,
+      career: 2,
+      finance: 54,
+    };
+    axios
+      .post(`https://json.astrologyapi.com/v1/${api}`, data, {
+        headers: {
+          authorization: auth,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setResponseData(response.data);
+        console.log("Api responseasdresponseeessad", response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+
+  
+  useEffect(() => {
+    getData(0);
+    postData();
+  }, []);
+
+  const navigate = useNavigate();
+
+  const [list, setList] = useState([]);
+  let [_id, set_id] = useState(() => {
+    let result = localStorage.getItem("_id");
+    if (result != null) {
+      return JSON.parse(result);
+    } else {
+      return [];
+    }
+  });
+
+  const [liveAstrologer, setLiveAstrologer] = useState([]);
+  const getData = () => {
+    axios
+      .get("http://103.104.74.215:3012/api/user/astrologer_live_list")
+      .then((res) => setLiveAstrologer(res.data.data));
+  };
+
+  const postData = () => {
+    const item = {
+      user_id: _id,
+    };
+    axios.
+      get("http://103.104.74.215:3012/api/user/get_astrologer_list/")
+      // .post("http://103.104.74.215:3012/api/user/astrologer_list/", item)
+      // http://103.104.74.215:3012/api/user/get_astrologer_list method - get
+      .then((res) => {
+        setList(res.data.data);
+      });
+  };
+  const [loader, setLoader] = useState(false);
+
+  const [walletAmnt, setWalletAmnt] = useState([]);
+  useEffect(() => {
+    postRech();
+  }, []);
+  const postRech = () => {
+    const item = {
+      user_id: _id,
+    };
+    axios
+      .post("http://103.104.74.215:3012/api/user/get_wallet_user", item)
+      .then((res) => setWalletAmnt(res.data.data.ammount));
+  };
+
+
   return (
     <>
       {/* <!-- Banner Section Start --> */}
@@ -67,37 +158,45 @@ const Tarot_content = () => {
             </p>
           </div>
 
-          <div class="slider-3 arrow-slider" style={{display:"flex",flexDirection:"row"}}>
+          <div
+            class="slider-3 arrow-slider"
+            style={{ display: "flex", flexDirection: "row" }}
+          >
             <div>
-              <div class="blog-box ratio_50" style={{margin:'5px'}}>
+              <div class="blog-box ratio_50" style={{ margin: "5px" }}>
                 <div class="blog-box-image text-center">
-                  <a href="#">
-                    <img style={{width:'100%'}}
+                  <Link to="/Onecard">
+                    {/* <img style={{width:'100%'}}
                       src="../assets/images/blog/card.jpg"
                       class="img-fluid bg-img"
                       alt=""
+                    /> */}
+
+                    <img
+                      style={{ width: "100%" , height:'360px' }}
+                      src="../assets/images/inner-page/tarot6.jpeg"
+                      class="img-fluid bg-img"
+                      alt=""
                     />
-                  </a>
+                  </Link>
                 </div>
 
                 <div class="blog-contain">
                   <div>
-                    <a href="#">
+                    <Link to="/Onecard">
                       <h3>One Card Tarot Reading</h3>
-                    </a>
+                    </Link>
                   </div>
 
-                  <a href="#">
+                  <Link to="/Onecard">
                     <p>
                       Need answers or solutions to your problems in life as soon
                       as possible?....
                     </p>
-                  </a>
-                  <button
-                    onclick="location.href = 'blog-detail.html';"
-                    class="blog-button"
-                  >
-                    Read More
+                  </Link>
+                  <button class="blog-button">
+                    {" "}
+                    <Link to="/Onecard">Read More</Link>
                     <i class="fa-solid fa-right-long"></i>
                   </button>
                 </div>
@@ -105,35 +204,33 @@ const Tarot_content = () => {
             </div>
 
             <div>
-            <div class="blog-box ratio_50" style={{margin:'5px'}}>
+              <div class="blog-box ratio_50" style={{ margin: "5px" }}>
                 <div class="blog-box-image text-center">
-                  <a href="#">
-                    <img style={{width:'100%'}}
+                  <Link to="/AstrologersList">
+                    <img
+                      style={{ width: "100%" , height:'360px'}}
                       src="../assets/images/blog/card.jpg"
                       class="img-fluid bg-img"
                       alt=""
                     />
-                  </a>
+                  </Link>
                 </div>
 
                 <div class="blog-contain">
                   <div>
-                    <a href="#">
-                      <h3>Two Card Tarot Reading</h3>
-                    </a>
+                    <Link to="/AstrologersList">
+                      <h3>Talk To Best Astrologer</h3>
+                    </Link>
                   </div>
 
-                  <a href="#">
+                  <Link to="/AstrologersList">
                     <p>
                       Need answers or solutions to your problems in life as soon
                       as possible?....
                     </p>
-                  </a>
-                  <button
-                    onclick="location.href = 'blog-detail.html';"
-                    class="blog-button"
-                  >
-                    Read More
+                  </Link>
+                  <button class="blog-button">
+                    <Link to="/AstrologersList">Read More</Link>
                     <i class="fa-solid fa-right-long"></i>
                   </button>
                 </div>
@@ -141,7 +238,7 @@ const Tarot_content = () => {
             </div>
 
             <div>
-            <div class="blog-box ratio_50" style={{margin:'5px'}}>
+              {/* <div class="blog-box ratio_50" style={{margin:'5px'}}>
                 <div class="blog-box-image text-center ">
                   <a href="#">
                     <img style={{width:'100%'}}
@@ -173,314 +270,159 @@ const Tarot_content = () => {
                     <i class="fa-solid fa-right-long"></i>
                   </button>
                 </div>
-              </div>
+              </div> */}
             </div>
-
-  
           </div>
         </div>
       </section>
 
       {/* <!-- Blog Section End --> */}
       {/* <!-- Blog Section Start --> */}
+
       <section class="blog-section section-b-space">
         <div class="container-fluid-lg">
           <div class="row g-4">
-            <h2>Free Tarot Reading</h2>
             <div class="col-xxl-12 col-xl-12 col-lg-12 order-lg-2">
               <div class="row g-4 ratio_65">
-                <div class="col-xxl-4 col-sm-3">
-                  <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
-                    <div class="blog-image">
-                      <a href="#">
-                        <img
-                          src="../assets/images/inner-page/tarot1.jpg"
-                          class="bg-img"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div class="blog-contain">
-                      <div>
-                        <a href="#">
-                          <h3>2023 Tarot Readings</h3>
-                        </a>
+                <div
+                  class="slider-3 arrow-slider"
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "space-evenly",
+                  }}
+                >
+                  <div style={{ width: "30%" }}>
+                    <div class="blog-box ratio_50">
+                      <div class="blog-box-image" style={{ height: "150px" }}>
+                        <Link to="#">
+                          <img
+                            width={"100%"}
+                            src="../assets/images/inner-page/lovehs.jpg"
+                            class="bg-img"
+                            alt=""
+                          />
+                        </Link>
                       </div>
 
-                      <a href="#">
-                        <p>
-                          The year 2023 adds up to Number 7, which is for Ketu,
-                          and as per our Vedas and Upanishad, Ketu is also known
-                          as the Dragon Tail or Neptune......
-                        </p>
-                      </a>
-                      <button
-                        onclick="location.href = 'blog-detail.html';"
-                        class="blog-button"
+                      <div
+                        class="blog-contain"
+                        style={{
+                          overflowY: "scroll",
+                          position: "relative",
+                          height: "350px",
+                        }}
                       >
-                        Read More
-                        <i class="fa-solid fa-right-long"></i>
-                      </button>
+                        <div>
+                          <Link to="#">
+                            <h3>LOVE</h3>
+                          </Link>
+                        </div>
+
+                        <div style={{ position: "absolute" }}>
+                          <Link to="#">
+                            <ul>
+                              <table class="home_table">
+                                <tbody>
+                                  <tr>
+                                    <td style={{ textAlign: "justify" }}>
+                                      {responseData?.love}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </ul>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="col-xxl-4 col-sm-3">
-                  <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
-                    <div class="blog-image">
-                      <a href="#">
-                        <img
-                          src="../assets/images/inner-page/tarot1.jpg"
-                          class="bg-img"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div class="blog-contain">
-                      <div>
-                        <a href="#">
-                          <h3>One Card Tarot Reading</h3>
-                        </a>
+                  <div style={{ width: "30%" }}>
+                    <div class="blog-box ratio_50">
+                      <div class="blog-box-image" style={{ height: "150px" }}>
+                        <Link to="#">
+                          <img
+                            width={"100%"}
+                            src="../assets/images/blog/lunar.jpg"
+                            class="bg-img"
+                            alt=""
+                          />
+                        </Link>
                       </div>
 
-                      <a href="#">
-                        <p>
-                          Need answers or solutions to your problems in life as
-                          soon as possible? One card reading will provide you
-                          with......
-                        </p>
-                      </a>
-                      <button
-                        onclick="location.href = 'blog-detail.html';"
-                        class="blog-button"
+                      <div
+                        class="blog-contain"
+                        style={{
+                          overflowY: "scroll",
+                          position: "relative",
+                          height: "350px",
+                        }}
                       >
-                        Read More
-                        <i class="fa-solid fa-right-long"></i>
-                      </button>
+                        <div>
+                          <Link to="#">
+                            <h3>CAREER</h3>
+                          </Link>
+                        </div>
+                        <div style={{ position: "absolute" }}>
+                          <Link to="/BlogDetail">
+                            <ul>
+                              <table class="home_table">
+                                <tbody>
+                                  <tr>
+                                    <td style={{ textAlign: "justify" }}>
+                                      {responseData?.career}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </ul>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div class="col-xxl-4 col-sm-3">
-                  <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
-                    <div class="blog-image">
-                      <a href="#">
-                        <img
-                          src="../assets/images/inner-page/tarot1.jpg"
-                          class="bg-img"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div class="blog-contain">
-                      <div>
-                        <a href="#">
-                          <h3>My Tarot Style</h3>
-                        </a>
+                  <div style={{ width: "30%" }}>
+                    <div class="blog-box ratio_50">
+                      <div class="blog-box-image" style={{ height: "150px" }}>
+                        <Link to="#">
+                          <img
+                            src="../assets/images/blog/askay.jpg"
+                            class="bg-img"
+                            alt=""
+                          />
+                        </Link>
                       </div>
-
-                      <a href="#">
-                        <p>
-                          Want to know about your individual style? Which trend
-                          is likely to draw your attention and what will make
-                          you......
-                        </p>
-                      </a>
-                      <button
-                        onclick="location.href = 'blog-detail.html';"
-                        class="blog-button"
+                      <div
+                        class="blog-contain"
+                        style={{
+                          overflowY: "scroll",
+                          position: "relative",
+                          height: "350px",
+                        }}
                       >
-                        Read More
-                        <i class="fa-solid fa-right-long"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-xxl-4 col-sm-3">
-                  <div class="blog-box wow fadeInUp" data-wow-delay="0.15s">
-                    <div class="blog-image">
-                      <a href="#">
-                        <img
-                          src="../assets/images/inner-page/tarot1.jpg"
-                          class="bg-img blur-up lazyload"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div class="blog-contain">
-                      <div>
-                        <a href="#">
-                          <h3>Love Tarot Reading</h3>
-                        </a>
+                        <div>
+                          <Link to="#">
+                            <h3>FINANCE</h3>
+                          </Link>
+                        </div>
+                        <div style={{ position: "absolute" }}>
+                          <Link to="#">
+                            <ul>
+                              <table class="home_table">
+                                <tbody>
+                                  <tr>
+                                    <td style={{ textAlign: "justify" }}>
+                                      {responseData?.finance}
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </ul>
+                          </Link>
+                        </div>
                       </div>
-
-                      <a href="#">
-                        <p>
-                          Love can turn your world around, make you believe in
-                          the richness of life and take you to a journey that
-                          can c......
-                        </p>
-                      </a>
-                      <button
-                        onclick="location.href = 'blog-detail.html';"
-                        class="blog-button"
-                      >
-                        Read More
-                        <i class="fa-solid fa-right-long"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-xxl-4 col-sm-3">
-                  <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
-                    <div class="blog-image">
-                      <a href="#">
-                        <img
-                          src="../assets/images/inner-page/tarot1.jpg"
-                          class="bg-img"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div class="blog-contain">
-                      <div>
-                        <a href="#">
-                          <h3>Wellness Tarot Reading</h3>
-                        </a>
-                      </div>
-
-                      <a href="#">
-                        <p>
-                          The quickest way to bring happiness to your life is by
-                          getting fit as a fiddle. When you are not healthy, how
-                          ...
-                        </p>
-                      </a>
-                      <button
-                        onclick="location.href = 'blog-detail.html';"
-                        class="blog-button"
-                      >
-                        Read More
-                        <i class="fa-solid fa-right-long"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-xxl-4 col-sm-3">
-                  <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
-                    <div class="blog-image">
-                      <a href="#">
-                        <img
-                          src="../assets/images/inner-page/tarot1.jpg"
-                          class="bg-img"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div class="blog-contain">
-                      <div>
-                        <a href="#">
-                          <h3>Major Arcana</h3>
-                        </a>
-                      </div>
-
-                      <a href="#">
-                        <p>
-                          The Major arcana consists of 22 pages. The major
-                          arcana is more concerned with the reasons behind
-                          events.....
-                        </p>
-                      </a>
-                      <button
-                        onclick="location.href = 'blog-detail.html';"
-                        class="blog-button"
-                      >
-                        Read More
-                        <i class="fa-solid fa-right-long"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-xxl-4 col-sm-3">
-                  <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
-                    <div class="blog-image">
-                      <a href="#">
-                        <img
-                          src="../assets/images/inner-page/tarot1.jpg"
-                          class="bg-img"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div class="blog-contain">
-                      <div>
-                        <a href="#">
-                          <h3>Minor Arcana</h3>
-                        </a>
-                      </div>
-
-                      <a href="#">
-                        <p>
-                          The Minor Arcana is divided into four suits --- Wands,
-                          Pentacles, Swords and Cups, with each suit
-                          possessing....
-                        </p>
-                      </a>
-                      <button
-                        onclick="location.href = 'blog-detail.html';"
-                        class="blog-button"
-                      >
-                        Read More
-                        <i class="fa-solid fa-right-long"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-xxl-4 col-sm-3">
-                  <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
-                    <div class="blog-image">
-                      <a href="#">
-                        <img
-                          src="../assets/images/inner-page/tarot1.jpg"
-                          class="bg-img"
-                          alt=""
-                        />
-                      </a>
-                    </div>
-
-                    <div class="blog-contain">
-                      <div>
-                        <a href="#">
-                          <h3>State Of Mind Tarot Reading</h3>
-                        </a>
-                      </div>
-
-                      <a href="#">
-                        <p>
-                          Home wasn't a set house, or a single town on a map. It
-                          was wherever the people who loved you were, whenever
-                          .....
-                        </p>
-                      </a>
-                      <button
-                        onclick="location.href = 'blog-detail.html';"
-                        class="blog-button"
-                      >
-                        Read More
-                        <i class="fa-solid fa-right-long"></i>
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -489,9 +431,250 @@ const Tarot_content = () => {
           </div>
         </div>
       </section>
-      {/* <!-- Blog Section End --> */}
-      {/* <Live /> */}
-      <OnlineAustology />
+
+     
+
+
+
+
+
+
+
+
+
+
+      <section class="order-detail">
+        <div class="container-fluid-lg">
+          <div class="row g-sm-4 g-3">
+            {/* <!-- Live session start --> */}
+
+            <div class="col-xxl-4 col-xl-12 col-lg-6">
+              <div class="title title-flex">
+                <div>
+                  <h2>Online Astrologers </h2>
+                  <h4> Astrologers are Online</h4>
+                </div>
+                <div class="timing-box">
+                  <Link to="/AstrologersList">
+                    <img 
+                      src="../assets/images/veg-3/category/live_right_arrow.png"
+                      class="img-fluid"
+                      alt=""
+                      style={{
+                        height: "40px",
+                        width: "40px",
+                        marginRight: "20px",
+                      }}
+                    />
+                  </Link>
+                </div>
+              </div>
+              <div class="row g-sm-4 g-3">
+                {" "}
+                {list?.slice(0, 4).map((i) => {
+                  return (
+                    <div
+                      class="col-xl-4 col-sm-4"
+                      style={{ display: "flex", flexDirection: "row" }}
+                    >
+                      <div class="seller-grid-box seller-grid-box-1">
+                        <div class="grid-image">
+                          <div class="image">
+                            <img onClick={() => {
+                              localStorage.setItem("AstroData", JSON.stringify(i));
+                              navigate("/AstrologerDetail");
+                            }}
+                              src={
+                                "http://103.104.74.215:3012/uploads/" +
+                                i?.profile_pic
+                              }
+                              class="img-fluid"
+                              alt=""
+                              style={{
+                                height: "60px ",
+                                width: "60px",
+                                borderRadius: "100%",
+                              }}
+                            />
+
+                            <button
+                              onClick={() => {
+                                localStorage.setItem("AstroData", JSON.stringify(i));
+                                navigate("/AstrologerDetail");
+                              }}
+                              class="nav-item"
+                              style={{
+                                borderRadius: "15px",
+                                width: "60px",
+                                height: "30px",
+                                borderColor: "#f5b60a",
+                                boxShadow: "5px",
+                              }}
+                            >
+                              {i.rating ? i.rating : "0"}
+                              <li>
+                                <i
+                                  style={{ width: "13px" }}
+                                  class="fa fa-star-o"
+                                  aria-hidden="true"
+                                ></i>
+                              </li>
+                            </button>
+                          </div>
+
+                          <div class="contain-name" onClick={() => {
+                              localStorage.setItem("AstroData", JSON.stringify(i));
+                              navigate("/AstrologerDetail");
+                            }}>
+                            <div>
+                              <h4>{i.name}</h4>
+
+                              <div class="since-number">
+                                <h6>{i.language}</h6>
+                              </div>
+
+                              <div class="since-number">
+                                <h6>{i.role}</h6>
+                              </div>
+                            </div>
+                            {/* <!--   <label class="product-label">380 Products</label> --> */}
+                          </div>
+                        </div>
+
+                        <br />
+
+                        <div
+                          class="grid-contain"
+                          style={{ width: "100%", paddingBottom: "20px" }}
+                        >
+                          <div
+                            class="seller-contact-details"
+                            style={{ width: "60%", float: "left" }}
+                          >
+                            {i.experiance_year > "0" ? (
+                              <div class="saller-contact">
+                                <div class="seller-icon">
+                                  <i class="fa-solid fa-map-pin"></i>
+                                </div>
+
+                                <div class="contact-detail">
+                                  <h5>{i.experiance_year} Years</h5>
+                                </div>
+                              </div>
+                            ) : null}
+
+                            <div class="saller-contact">
+                              <div class="seller-icon">
+                                <i class="fa-solid fa-phone"></i>
+                              </div>
+
+                              <div class="contact-detail">
+                                <h5>
+                                  {" "}
+                                  ₹ {i.video_rate ? i.video_rate : "0"}
+                                  /Min
+                                </h5>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div
+                            class="seller-contact-details"
+                            style={{ width: "40%", float: "right" }}
+                          >
+                            <div class="saller-contact">
+                              {/*<Link to="/videoCall">*/}
+                                {i.call_status === "1" ? (
+                                  <img
+                                  onClick={() => {
+                                    {
+                                      walletAmnt > i.video_rate
+                                        ? navigate("/videoCall")
+                                        : alert(
+                                            "You have Insufficient balance"
+                                          );
+                                    }
+
+                                      localStorage.setItem(
+                                        "vcdata",
+                                        JSON.stringify(i)
+                                      );
+                                       {/*navigate("/videoCall");*/}
+                                    }}
+                                    src="../assets/images/veg-3/category/phone.png"
+                                    class="img-fluid"
+                                    alt=""
+                                    style={{ height: "25px" }}
+                                  />
+                                ) : (
+                                  <img
+                                    src="../assets/images/veg-3/category/calling.png"
+                                    class="img-fluid"
+                                    alt=""
+                                    style={{ height: "25px", background:'#d99f46', borderRadius:'50px' }}
+                                  />
+                                )}
+                              {/*</Link>*/}
+
+                              {/*<Link to="/chatform">*/}
+                                <img
+                                  onClick={() => {
+                                    {
+                                      walletAmnt > i.chat_rate
+                                        ? navigate("/ChatForm")
+                                        : alert(
+                                            "You have Insufficient balance"
+                                          );
+                                    }
+
+                                    localStorage.setItem(
+                                      "chatdata",
+                                      JSON.stringify(i)
+                                    );
+                                    
+                                  }}
+                                  src="../assets/images/veg-3/category/chat.png"
+                                  class="img-fluid"
+                                  alt=""
+                                  style={{ height: "25px", marginLeft: "10px" }}
+                                />
+                              {/*</Link>*/}
+                            </div>
+ 
+                            <div class="saller-contact">
+                              <div class="contact-detail">
+                                {i.call_status === "1" ? (
+                                  <h6> Call</h6>
+                                ) : (
+                                  <h6> Off</h6>
+                                )}
+                              </div>
+
+                              <div
+                                class="contact-detail"
+                                style={{ marginLeft: "10px" }}
+                              >
+                                <h6> Chat</h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <br />
+                        <br />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+      </div>
+        </div>
+      </section>
+
+
+
+      {/* <OnlineAustology /> */}
       {/* <!-- Category Section Start --> */}
 
       <section>

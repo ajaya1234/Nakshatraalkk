@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom'
 import React from 'react'
 
 const Kundali_milan_content = () => {
@@ -102,22 +102,22 @@ const Kundali_milan_content = () => {
                          <div class="col-xxl-4 col-sm-3">
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
                                 <div class="blog-image">
-                                    <a href="blog-detail.html">
+                                <Link to="/horoscope_page">
                                         <img src="../assets/images/inner-page/km.jpg"
                                             class="bg-img blur-up lazyload" alt=""/>
-                                    </a>
+                                    </Link>
                                 </div>
 
                                 <div class="blog-contain">
                                     <div >
-                                        <a href="todays-horoscope.html">
+                                    <Link to="/horoscope_page">
                                         <h3>Today's Horoscope</h3>
-                                    </a>
+                                    </Link>
                                 </div>
                                    
-                                    <a href="todays-horoscope.html">
+                                    <Link to="/horoscope_page">
                                         <p> Get free Aries daily horoscope prediction today online from the best astrologer. Read your Aries Zodiac Sign horoscope today! </p>
-                                    </a>
+                                    </Link>
                                     
                                 </div>
                             </div>
@@ -127,22 +127,22 @@ const Kundali_milan_content = () => {
                         <div class="col-xxl-4 col-sm-3">
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
                                 <div class="blog-image">
-                                    <a href="blog-detail.html">
+                                <Link to="/kundali">
                                         <img src="../assets/images/inner-page/km.jpg"
                                             class="bg-img blur-up lazyload" alt=""/>
-                                    </a>
+                                    </Link>
                                 </div>
 
                                 <div class="blog-contain">
                                     <div >
-                                        <a href="kundli.html">
+                                        <Link to="/kundali">
                                         <h3>Free Kundli</h3>
-                                    </a>
+                                    </Link>
                                 </div>
                                    
-                                    <a href="kundli.html">
+                                <Link to="/kundali">
                                         <p> Generate your free online kundli report from Astrotalk. Our Kundli software can help you predict the future for yourself by reading the birth chart. </p>
-                                    </a>
+                                    </Link>
                                     
                                 </div>
                             </div>
@@ -151,22 +151,22 @@ const Kundali_milan_content = () => {
                         <div class="col-xxl-4 col-sm-3">
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
                                 <div class="blog-image">
-                                    <a href="blog-detail.html">
+                                    <Link to='/kundali_milan'>
                                         <img src="../assets/images/inner-page/km.jpg"
                                             class="bg-img blur-up lazyload" alt=""/>
-                                    </a>
+                                    </Link>
                                 </div>
 
                                 <div class="blog-contain">
                                     <div >
-                                        <a href="kundli_milan.html">
+                                    <Link to='/kundali_milan'>
                                         <h3>Compatibility</h3>
-                                    </a>
+                                    </Link>
                                 </div>
                                    
-                                    <a href="blog-detail.html">
+                                <Link to='/kundali_milan'>
                                         <p> Love could be confusing, but only until you haven’t found how compatible you two are for each other... </p>
-                                    </a>
+                                    </Link>
                                     
                                 </div>
                             </div>
@@ -176,22 +176,22 @@ const Kundali_milan_content = () => {
                         <div class="col-xxl-4 col-sm-3">
                             <div class="blog-box wow fadeInUp" data-wow-delay="0.15s">
                                 <div class="blog-image">
-                                    <a href="blog-detail.html">
+                                <Link to='/kundali_milan'>
                                        <img src="../assets/images/inner-page/km.jpg"
                                             class="bg-img blur-up lazyload" alt=""/>
-                                    </a>
+                                    </Link>
                                 </div>
 
                                 <div class="blog-contain">
                                     <div >
-                                        <a href="kundli_milan.html">
+                                    <Link to='/kundali_milan'>
                                         <h3>Kundli Matching</h3>
-                                    </a>
+                                    </Link>
                                 </div>
                                    
-                                    <a href="kundli_milan.html">
+                                <Link to='/kundali_milan'>
                                         <p> Check Love Compatibility and Marriage Prediction online at Astrotalk. Get the best Horoscope and kundli matching predictions today! .</p>
-                                    </a>
+                                    </Link>
                                     
                                 </div>
                             </div>

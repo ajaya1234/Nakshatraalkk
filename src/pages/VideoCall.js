@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 
 const VideoCall = () => {
     const parse = localStorage.getItem("vcdata");
+    console.log("sadasddasdasd",parse)
       const parsed = JSON.parse(parse);
       const [data, setData] = useState(parsed);
       let [_id] = useState(() => {

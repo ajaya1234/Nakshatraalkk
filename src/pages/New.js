@@ -51,7 +51,7 @@ const New = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
       {
@@ -81,12 +81,12 @@ const New = () => {
               <Slider {...settings}>
               {gettop?.map((i) => {
                   return (
-                <div >
+                <div onClick={()=>{localStorage.setItem("newlistid",i._id)}}>
                   <div  class="blog-box wow fadeInUp">
                   <div  class="blog-image">
                       <Link                      
                      
-                       to="#">
+                       to="/NewDetails">
                         {/* style={{ width: "321px", height:'206px', objectFit: "contain" }} */}
                          <img
                            style={{ width: "100%", height:'116px', objectFit: "" }}
@@ -99,30 +99,7 @@ const New = () => {
                       </Link>
                     </div>
 
-                    {/* <div  class="blog-contain ">
-                      <div class="blog-label">
-                        <span class="time">
-                          <i data-feather="clock"></i> <span>28 Feg, 2023</span>
-                        </span>
-                        <span class="super">
-                          <i data-feather="user"></i>{" "}
-                           <span>JyotiRaj Singh</span>
-                         </span>
-                       </div>
-                       <a href="BlogDetail">
-                         <h3>{list.title}</h3>
-                       </a>
-                       <a  href="BlogDetail">
-                       <button
-                      onClick={()=>{
-                       setLoader(true);                     
-                     }} 
-                         class="blog-button"
-                       >                         Read More
-                        <i class="fa-solid fa-right-long"></i>
-                      </button>
-                      </a>
-                    </div> */}
+                  
                   </div>
                 </div>
                
@@ -142,52 +119,7 @@ const New = () => {
 
 
 
-      {/* <!-- Product Section Start --> */}
-
-      {/* <section className="product-section">
-        <div className="container-fluid-lg">
-          <div className="row g-sm-4 g-3">
-            <div className="col-xxl-12 col-xl-12">
-              <div className="title">
-                <h2>Nakshatra Talk IN NEWS</h2>
-                <span className="title-leaf">
-                  <svg className="icon-width">
-                    <Link to="https://themes.pixelstrap.com/fastkart/assets/svg/leaf.svg#leaf"></Link>
-                  </svg>
-                </span>
-                
-              </div>
-
-              <div
-                className="category-slider-2 product-wrapper no-arrow"
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  paddingBottom: 10,
-                }}
-              >
-                {gettop?.map((i) => {
-                  return (
-                    <div style={{ width: "10%" }}>
-                      <a href="#" className="category-box category-dark">
-                        <div>
-                          <img
-                            src={
-                              "http://103.104.74.215:3012/uploads/" + i.image
-                            }
-                          />
-                         
-                        </div>
-                      </a>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
+     
       
     </>
   );

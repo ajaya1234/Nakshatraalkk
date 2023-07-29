@@ -352,9 +352,9 @@ navigate("/selfkundali");
                             onChange={handleInputChange}
                           />
                         </div>
+                        
                       </div>
-                    </div>
-                    <div className="col-xxl-6 col-lg-6 col-sm-6">
+                      <div className="col-xxl-6 col-lg-3 col-sm-6">
                       <div className="mb-md-4 mb-3 custom-form">
                         <div className="custom-input">
                         <button
@@ -366,6 +366,8 @@ navigate("/selfkundali");
                         </div>
                       </div>
                     </div>
+                    </div>
+                    
                   </div>
                 </form>
               </div>

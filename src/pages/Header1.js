@@ -36,11 +36,17 @@ const Header1 = () => {
                   <div class="navbar-top">
                     
                     <Link to="/" class="web-logo nav-logo">
-                      <img
+                      {/* <img
                         src="../assets/images/logo/222.png"
                         class="img-fluid blur-up lazyload"
                         alt=""
+                      /> */}
+<img
+                        src="../assets/LOGONEW1.png"
+                        class="img-fluid blur-up lazyload"
+                        alt=""
                       />
+                      
                     </Link>
 
                     <div
@@ -228,9 +234,9 @@ const Header1 = () => {
                   <li>
                     <Link style={{color:'black'}} class="dropdown-item" to="/blog">Blog</Link>
                   </li>
-                  {/* <li>
-                    <Link style={{color:'black'}} class="dropdown-item" to="/love">Love</Link>
-                  </li> */}
+                   <li>
+                    <Link style={{color:'black'}} class="dropdown-item" to="/Numerology">Numerology</Link>
+                  </li> 
                   <li>
                     <Link style={{color:'black'}} class="dropdown-item" to="/nmart">Vastu</Link>
                   </li>
@@ -262,8 +268,14 @@ const Header1 = () => {
                   <div class="navbar-top">
                     
                     <Link to="/" class="web-logo nav-logo">
-                      <img
-                        src="../assets/images/logo/222.png"
+                      {/* <img
+                        src="assets/images/logo/222.png"
+                        class="img-fluid blur-up lazyload"
+                        alt=""
+                      /> */}
+
+<img
+                        src="../assets/LOGONEW1.png"
                         class="img-fluid blur-up lazyload"
                         alt=""
                       />
@@ -373,13 +385,13 @@ const Header1 = () => {
                               >
                                 Login
                               </button>
-                              {/* <button
+                               <button
                                 onClick={()=>navigate("/SignUp")}
                                 class="btn btn-md bg-dark cart-button text-white w-80"
                                 style={{marginLeft: "10px"}}
                               >
                                 Sign up
-                              </button> */}
+                              </button> 
                             </div>
                           </li>
                         </ul>
@@ -436,9 +448,9 @@ const Header1 = () => {
                   <li>
                     <Link style={{color:'black'}} class="dropdown-item" to="/blog">Blog</Link>
                   </li>
-                  {/* <li>
-                    <Link style={{color:'black'}} class="dropdown-item" to="/love">Love</Link>
-                  </li> */}
+                   <li>
+                    <Link style={{color:'black'}} class="dropdown-item" to="/Numerology">Numerology</Link>
+                  </li> 
                   <li>
                     <Link style={{color:'black'}} class="dropdown-item" to="/nmart">Vastu</Link>
                   </li>

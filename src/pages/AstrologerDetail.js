@@ -15,7 +15,7 @@ function AstrologerDetail() {
     postData();
   }, []);
   const [list, setList] = useState([]);
-
+  //console.log("sadasd",list)
   let [_id, set_id] = useState(() => {
     let result = localStorage.getItem("_id");
 
@@ -28,10 +28,10 @@ function AstrologerDetail() {
 
   const postData = () => {
     const item = {
-      user_id: _id,
+      _id: details?._id,
     };
     axios
-      .post("http://103.104.74.215:3012/api/user/astrologer_list/", item)
+      .post("http://103.104.74.215:3012/api/user/astrologer_list_details/", item)
       .then((res) => {
         setList(res.data.data);
       });
@@ -143,7 +143,7 @@ function AstrologerDetail() {
 
                     <br />
 
-                     
+                   
                     <div
                       style={{
                         width: "100%",
@@ -154,7 +154,21 @@ function AstrologerDetail() {
                         justifyContent: "space-evenly",
                       }}
                     > 
-                      <div
+                      <div onClick={() => {
+                                {
+                                  walletAmnt > list?.video_rate
+                                    ? navigate("/videoCall")
+                                    : alert(
+                                        "You have Insufficient balance"
+                                      );
+                                }
+
+                                  localStorage.setItem(
+                                    "vcdata",
+                                    JSON.stringify(list)
+                                  );
+                                   
+                                }} 
                         style={{
                           width: "45%",
                           border: "1px solid #ffcc00",
@@ -170,7 +184,7 @@ function AstrologerDetail() {
                         <h4 style={{color:"white"}}>Calling</h4>
                     
                    
-                        <img 
+                        <img  
                           src="../assets/images/veg-3/category/calling.png"
                           class="img-fluid"
                           alt=""
@@ -178,7 +192,21 @@ function AstrologerDetail() {
                         />
                       </div>
                      
-                      <div 
+                      <div  onClick={() => {
+                                {
+                                  walletAmnt > list?.chat_rate
+                                    ? navigate("/ChatForm")
+                                    : alert(
+                                        "You have Insufficient balance"
+                                      );
+                                }
+
+                                localStorage.setItem(
+                                  "chatdata",
+                                  JSON.stringify(list)
+                                );
+                                
+                              }}
                       style={{
                         width: "45%",
                         border: "1px solid #ffcc00",
@@ -191,7 +219,7 @@ function AstrologerDetail() {
                       }}
                       >
                         <h4 style={{color:"white"}}>Chat</h4>
-                        <img
+                        <img 
                           src="../assets/images/veg-3/category/chat.png"
                           class="img-fluid"
                           alt=""

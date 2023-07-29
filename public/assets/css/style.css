@@ -23413,7 +23413,7 @@ header .offcanvas-backdrop {
 .blog-section .blog-box .blog-image {
 	position: relative;
 	overflow: hidden;
-	margin-bottom: 15px;
+	margin-bottom: 0px;
 	border-radius: 0;
 }
 

@@ -162,6 +162,8 @@ function ChatForm() {
         >
           submit
         </button>
+        <br/>
+        <br/>
       </div>
       <Footer />
     </>

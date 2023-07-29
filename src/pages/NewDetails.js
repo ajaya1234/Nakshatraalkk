@@ -10,24 +10,24 @@ import { LocalVideoMute } from "agora-react-uikit";
 import Live from './Live';
 
 
-function BlogDetail() {
+function NewDetails() {
  const [ Details , setDetails ] = useState([])
- console.log("asdaiddddd",Details)
+ 
   useEffect(() => {
-    postRech();
+    news_list_details();
   }, []);
-  const postRech = () => {
-    const blogid=localStorage.getItem("blogid")
-    console.log("idddddd",blogid)
+  const news_list_details = () => {
+    const newlistiddd=localStorage.getItem("newlistid")
+    
     const  item =  {
-      _id: blogid,
+      _id: newlistiddd,
     };
      axios
-      .post("http://103.104.74.215:3012/api/user/blog_list_details", item).then((res)=>setDetails(res.data.data))
+      .post("http://103.104.74.215:3012/api/user/news_list_details", item).then((res)=>setDetails(res.data.data))
       .then((res) => {
       
 
-       console.log('dasasfg',res.data.data)
+       
         
        
       });
@@ -44,7 +44,7 @@ function BlogDetail() {
           <div class="row">
             <div class="col-12">
               <div class="breadscrumb-contain">
-                <h2>Blog Details Page</h2>
+                <h2>News Details Page</h2>
                
               </div>
             </div>
@@ -96,4 +96,4 @@ function BlogDetail() {
   );
 }
 
-export default BlogDetail;
+export default NewDetails;

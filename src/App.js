@@ -38,6 +38,13 @@ import Chatastrologer from "./pages/Chatastrologer";
 import Panchangg from "./pages/Panchangg";
 import Kundalireport from "./pages/Kundalireport";
 import Selfkundali from "./pages/Selfkundali";
+import NewDetails from "./pages/NewDetails";
+import Celebritylist from "./pages/Celebritylist";
+import Onecarreading from "./pages/Onecarreading";
+import Onecard from "./pages/Onecard";
+import Onecardresult from "./pages/Onecardresult";
+import Numerology from "./pages/Numerology";
+import Ruling from "./pages/Ruling";
 
 function App() {
 
@@ -84,6 +91,13 @@ function App() {
         <Route path='/panchangg' element={<Panchangg/>}></Route> 
         <Route path="/kundalireport" element={<Kundalireport/>}></Route> 
         <Route path="/selfkundali" element={<Selfkundali/>}></Route>
+        <Route path="/NewDetails" element={<NewDetails/>}></Route>
+        <Route path="/Celebritylist" element={<Celebritylist/>}></Route>
+        <Route path='/Onecarreading' element={<Onecarreading/>}></Route>
+        <Route path="/Onecard" element={<Onecard/>}></Route>
+        <Route path="/Onecardresult" element={<Onecardresult/>}></Route>
+        <Route path='/Numerology' element={<Numerology/>}></Route>
+        <Route path='/Ruling' element={<Ruling/>}></Route>
       </Routes>
     </div>
   );

@@ -55,13 +55,20 @@ const Panchang = () => {
                 <div class="slider-3 arrow-slider"  style={{display:"flex",flexWrap:"wrap",justifyContent:"space-evenly"}}>
                   <div   style={{width:"30%",}}>
                     <div class="blog-box ratio_50">
-                      <div class="blog-box-image" style={{ height: "150px" }}>
+                      <div class="blog-box-image" style={{ height: "300px" }}>
                         <Link to="/panchangg">
-                          <img
+                          {/* <img
                             src="../assets/images/blog/pp.jpg"
                             class="img-fluid bg-img"
                             alt=""
+                          /> */}
+
+<img
+                            src="../assets/images/blog/todaypan4.jpg"
+                            class="img-fluid bg-img"
+                            alt=""
                           />
+
                         </Link>
                       </div>
 
@@ -75,8 +82,8 @@ const Panchang = () => {
                 >
                   <div>
                     <Link to="/panchangg">
-                      <h3>Panchang</h3>
-                      <h4>{responseData?.tithi.details.day}Delhi- Wednesday, 05 April 2023</h4>
+                      <h3 style={{ fontSize : "30px" }}>Panchang</h3>
+                      <h4>Delhi- {responseData?.day}, 05 April 2023</h4>
                     </Link>
                   </div>
                   <div style={{ position: "absolute" }}>
@@ -86,7 +93,7 @@ const Panchang = () => {
                           <tbody>
                             <tr>
                               <td scope="row">Date</td>
-                              <td>Wednesday, 05 April 2023</td>
+                              <td>{responseData?.day}, 05 April 2023</td>
                               <hr />
                             </tr>
                             <tr>
@@ -161,10 +168,10 @@ const Panchang = () => {
 
                   <div style={{width:"30%"}}>
                     <div class="blog-box ratio_50">
-                      <div class="blog-box-image" style={{ height: "150px" }}>
-                        <Link to="/BlogDetail">
+                      <div class="blog-box-image" style={{ height: "300px" }}>
+                        <Link to="/Numerology">
                           <img
-                            src="../assets/images/blog/SPcopy2.png"
+                            src="../assets/images/blog/Numerology.png"
                             class="img-fluid bg-img"
                             alt=""
                           />
@@ -181,11 +188,11 @@ const Panchang = () => {
                       >
                         <div>
                           <Link to="/BlogDetail">
-                            <h3>SPIRITUALITY</h3>
+                            <h3 style={{ fontSize : "30px" }}>NUMEROLOGY</h3>
                           </Link>
                         </div>
                         <div style={{ position: "absolute" }}>
-                          <Link to="/BlogDetail">
+                          <Link to="/Numerology">
                             <ul>
                               <li>
                                 <Link to="#">Yoga</Link>{" "}
@@ -230,10 +237,10 @@ const Panchang = () => {
 
                   <div style={{width:"30%"}}>
                     <div class="blog-box ratio_50">
-                      <div class="blog-box-image" style={{ height: "150px" }}>
+                      <div class="blog-box-image" style={{ height: "300px" }}>
                         <Link to="/BlogDetail">
                           <img
-                            src="../assets/images/blog/fe.jpg"
+                            src="../assets/images/blog/Festivals.png"
                             class="img-fluid bg-img"
                             alt=""
                           />
@@ -249,7 +256,7 @@ const Panchang = () => {
                       >
                         <div>
                           <Link to="/BlogDetail">
-                            <h3>FESTIVAL</h3>
+                            <h3 style={{ fontSize : "30px" }}>FESTIVAL</h3>
                           </Link>
                         </div>
                         <div style={{ position: "absolute" }}>

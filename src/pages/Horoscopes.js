@@ -68,11 +68,11 @@ const Horoscopes = () => {
               <div className="category-slider arrow-slider">
                 <Slider {...settings}>
                   <div className="shop-category-box border-0 wow fadeIn">
-                    <Link to="#" className="circle-1">
+                    <Link to="/Horoscope_page" className="circle-1">
                       <img
                         src="../assets/images/veg-3/category/1.png"
                         className="img-fluid blur-up lazyload"
-                        alt=""
+                        alt="" 
                       />
                     </Link>
                     <div className="category-name">
@@ -85,7 +85,7 @@ const Horoscopes = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.05s"
                     >
-                      <Link to="#" className="circle-2">
+                      <Link to="/Horoscope_page" className="circle-2">
                         <img
                           src="../assets/images/veg-3/category/2.png"
                           className="img-fluid blur-up lazyload"
@@ -104,7 +104,7 @@ const Horoscopes = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.1s"
                     >
-                      <Link to="#" className="circle-3">
+                      <Link to="/Horoscope_page" className="circle-3">
                         <img
                           src="../assets/images/veg-3/category/3.png"
                           className="img-fluid blur-up lazyload"
@@ -122,7 +122,7 @@ const Horoscopes = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.15s"
                     >
-                      <Link to="#" className="circle-4">
+                      <Link to="/Horoscope_page" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/4.png"
                           className="img-fluid blur-up lazyload"
@@ -141,7 +141,7 @@ const Horoscopes = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.2s"
                     >
-                      <Link to="#" className="circle-4">
+                      <Link to="/Horoscope_page" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/5.png"
                           className="img-fluid blur-up lazyload"
@@ -159,7 +159,7 @@ const Horoscopes = () => {
                     className="shop-category-box border-0 wow fadeIn"
                     data-wow-delay="0.25s"
                   >
-                    <Link to="#" className="circle-1">
+                    <Link to="/Horoscope_page" className="circle-1">
                       <img
                         src="../assets/images/veg-3/category/6.png"
                         className="img-fluid blur-up lazyload"
@@ -176,7 +176,7 @@ const Horoscopes = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.3s"
                     >
-                      <Link to="#" className="circle-2">
+                      <Link to="/Horoscope_page" className="circle-2">
                         <img
                           src="../assets/images/veg-3/category/7.png"
                           className="img-fluid blur-up lazyload"
@@ -195,13 +195,13 @@ const Horoscopes = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.35s"
                     >
-                      <a href="daily_horoscope.html" className="circle-3">
+                      <Link to="/Horoscope_page" className="circle-3">
                         <img
                           src="../assets/images/veg-3/category/8.png"
                           className="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                       <div className="category-name">
                         <h6>Scorpio</h6>
                         <h6 style={{ fontSize: "10px" }}>23/10-21/11</h6>
@@ -214,13 +214,13 @@ const Horoscopes = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.4s"
                     >
-                      <a href="daily_horoscope.html" className="circle-4">
+                      <Link to="/Horoscope_page" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/9.png"
                           className="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                       <div className="category-name">
                         <h6>Sagittarius</h6>
                         <h6 style={{ fontSize: "10px" }}>22/11-21/12</h6>
@@ -233,13 +233,13 @@ const Horoscopes = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.45s"
                     >
-                      <a href="daily_horoscope.html" className="circle-4">
+                      <Link to="/Horoscope_page" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/10.png"
                           className="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                       <div className="category-name">
                         <h6>Capricorn</h6>
                         <h6 style={{ fontSize: "10px" }}>22/12-19/1</h6>
@@ -252,13 +252,13 @@ const Horoscopes = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.5s"
                     >
-                      <a href="daily_horoscope.html" className="circle-4">
+                      <Link to="/Horoscope_page" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/11.png"
                           className="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                       <div className="category-name">
                         <h6>Aquarius</h6>
                         <h6 style={{ fontSize: "10px" }}>20/1-18/2</h6>
@@ -270,13 +270,13 @@ const Horoscopes = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.55s"
                     >
-                      <a href="daily_horoscope.html" className="circle-4">
+                      <Link to="/Horoscope_page" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/12.png"
                           className="img-fluid blur-up lazyload"
                           alt=""
-                        />
-                      </a>
+                         />
+                      </Link>
                       <div className="category-name">
                         <h6>Pisces </h6>
                         <h6 style={{ fontSize: "10px" }}>19/2-20/3</h6>

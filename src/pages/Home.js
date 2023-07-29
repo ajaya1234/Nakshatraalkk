@@ -15,6 +15,7 @@ import Reviews from "./Reviews";
 import Setting from "./Setting";
 import Astrology from "./Astrology";
 import New from "./New";
+import Celebrity from "./Celebrity";
 
 function Home() {
   return (
@@ -31,6 +32,7 @@ function Home() {
       <LatestBlog />
       <Reviews />
       <Astrology />
+      <Celebrity/>
       <New />
       <Footer />
       <Setting />

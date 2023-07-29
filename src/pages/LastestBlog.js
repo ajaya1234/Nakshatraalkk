@@ -214,6 +214,8 @@
 
 // export default LatestBlog;
 
+
+import { Link } from "react-router-dom";
 import { useNavigate  } from "react-router-dom";
 import { useState } from "react";
 import Slider from "react-slick";
@@ -227,7 +229,7 @@ const LatestBlog = () => {
   const uid = Math.random().toString(36).slice(-4);
   const [loader, setLoader] = useState(false);
   const [gettop, setgettop] = useState([]);
-
+  
   useEffect(() => {
     gettopvideo();
   }, [0]);
@@ -252,7 +254,7 @@ const LatestBlog = () => {
 
   const settings = {
     autoplay:true,
-    //dots: true,
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
@@ -297,13 +299,14 @@ const LatestBlog = () => {
               <Slider {...settings}>
               {gettop.map((list) => {
         return (
-                <div >
+                <div onClick={()=>{localStorage.setItem("blogid",list._id)}}>
+
+
+
                   <div  class="blog-box wow fadeInUp">
                   <div  class="blog-image">
-                      <a onClick={()=>{
-                     setLoader(true);                     
-                    }} 
-                       href="BlogDetail">
+                      <Link to
+                       ="/BlogDetail">
                         
                          <img
                            style={{ width: "100%", height:'206px', objectFit: "" }}
@@ -314,7 +317,7 @@ const LatestBlog = () => {
                           class="bg-img blur-up lazyload img-fluid"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div  class="blog-contain ">
@@ -327,10 +330,11 @@ const LatestBlog = () => {
                            <span>JyotiRaj Singh</span>
                          </span>
                        </div>
-                       <a href="BlogDetail">
+                       <Link to="/BlogDetail">
                          <h3>{list.title}</h3>
-                       </a>
-                       <a  href="BlogDetail">
+                         {/* {list._id} */}
+                       </Link>
+                       <Link  to="/BlogDetail">
                        <button
                       onClick={()=>{
                        setLoader(true);                     
@@ -339,7 +343,7 @@ const LatestBlog = () => {
                        >                         Read More
                         <i class="fa-solid fa-right-long"></i>
                       </button>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
