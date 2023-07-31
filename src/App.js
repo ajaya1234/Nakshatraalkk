@@ -45,6 +45,7 @@ import Onecard from "./pages/Onecard";
 import Onecardresult from "./pages/Onecardresult";
 import Numerology from "./pages/Numerology";
 import Ruling from "./pages/Ruling";
+import Payment from "./pages/Payment";
 
 function App() {
 
@@ -98,6 +99,7 @@ function App() {
         <Route path="/Onecardresult" element={<Onecardresult/>}></Route>
         <Route path='/Numerology' element={<Numerology/>}></Route>
         <Route path='/Ruling' element={<Ruling/>}></Route>
+        <Route path="/payment" element={<Payment/>}></Route>
       </Routes>
     </div>
   );

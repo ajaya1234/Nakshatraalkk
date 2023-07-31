@@ -52,6 +52,18 @@ function Ruling() {
             <div class="col-xxl-12 col-xl-12 col-lg-12 order-lg-2">
               <div class="row g-4 ratio_65">
                 <div class="col-xxl-4 col-sm-12">
+                <div>
+                  <h1
+                    style={{
+                      color: "#20c997",
+                      fontSize: "32px",
+                      fontWeight: "700",
+                    }}
+                    className="text-center font_yellow text-uppercase"
+                  >
+                     Ruling Number  {responseData?.lucky_number}
+                  </h1>
+                </div>
                   <div
                     class="blog-box wow fadeInUp"
                     data-wow-delay="0.05s"
@@ -71,7 +83,7 @@ function Ruling() {
                 </div>
 
                 <div
-                  class="col-xxl-4 col-sm-6"
+                  class="col-xxl-4 col-sm-12"
                   style={{
                     border: "0px solid var(--theme-color)",
                     height: "100px",
@@ -85,7 +97,7 @@ function Ruling() {
                   </div>
                   <br />
                   <div>
-                    <p style={{ textAlign: "justify", fontSize: "17px" }}>
+                    <p style={{ textAlign: "center", fontSize: "17px" }}>
                       {responseData?.prediction}
                     </p>
                     

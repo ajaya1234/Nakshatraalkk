@@ -112,12 +112,15 @@ const Profile = () => {
   }, []);
 
   const [getPlans, setGetPlans] = useState([]);
+
+  
   const getPlanss = () => {
     axios
       .get("http://103.104.74.215:3012/api/user/recharge_plan_list")
       .then((res) => setGetPlans(res.data.data));
+      
   };
-
+  
   const postPlan = (amount) => {
     const item = {
       user_id: _id,
@@ -382,7 +385,7 @@ const Profile = () => {
                       <div class="total-box">
                         <div class="row g-sm-4 g-3">
                           <div class="col-xxl-4 col-lg-6 col-md-4 col-sm-6">
-                            <div class="totle-contain">
+                            <div style={{background:'transparent'}} class="totle-contain">
                               <img
                                 src="https://themes.pixelstrap.com/fastkart/assets/images/svg/order.svg"
                                 class="img-1 blur-up lazyload"
@@ -466,7 +469,7 @@ const Profile = () => {
 
                               <th scope="col">Price</th>
 
-                              <th scope="col">Duration</th>
+                              {/* <th scope="col">Duration</th> */}
                               <th scope="col">Buy Now</th>
                             </tr>
                           </thead>
@@ -481,17 +484,19 @@ const Profile = () => {
                                   </h6>
                                 </td>
 
-                                <td>
+                                {/* <td>
                                   <h6>{i.plan_duration}</h6>
-                                </td>
+                                </td> */}
                                 <td class="efit-delete">
-                                  <button
-                                    onClick={() => postPlan(i.ammount)}
+                                <Link to='/payment'> <button
+                                    onClick={() => {localStorage.setItem("packdetails",i.ammount);
+                                    localStorage.setItem("idd",i._id)}}
+
                                     style={{ borderRadius: 5, border: "none" }}
                                     class=" theme-bg-color text-white"
                                   >
                                     Buy
-                                  </button>
+                                  </button></Link>
                                 </td>
                               </tr>
                             ))}

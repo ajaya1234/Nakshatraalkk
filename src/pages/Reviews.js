@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -70,8 +71,8 @@ return(
             <div >
               <div  class="blog-box wow fadeInUp">
               <div  class="blog-image" style={{borderRadius:''}}>
-                  <a 
-                   href="BlogDetail">
+                  <Link 
+                   to="#">
                     
                      <img
                        style={{ width: "100%", height:'206px', objectFit: "" }}
@@ -82,36 +83,26 @@ return(
                       class="bg-img blur-up lazyload img-fluid"
                       alt=""
                     />
-                  </a>
+                  </Link>
                 </div>
 
                 <div  class="blog-contain " >
                   <div class="blog-label" >
+                    
                     <span class="time">
-                      <i data-feather="clock"></i> <span>{i.user_name}</span>
+                      <i data-feather="clock"></i> 
+                      <span>{i.user_name}
+                      
+                      
+                      
+                      </span>
                     </span>
                     <span class="super">
                       <i data-feather="user"></i>{" "}
                        <span>{i.city}</span>
                      </span>
                    </div>
-                   {/* <a
-                            href="shop-left-sidebar.html"
-                            className="category-name"
-                          > */}
-                            {/* <b style={{ marginLeft: "30%" }}>{i.user_name}</b> */}
-                            {/* <h6 style={{ marginLeft: "30%" }}>{i.city}</h6> */}
-                          {/* </a> */}
-                   {/* <a  href="BlogDetail">
-                   <button
-                  onClick={()=>{
-                   setLoader(true);                     
-                 }} 
-                     class="blog-button"
-                   >                         Read More
-                    <i class="fa-solid fa-right-long"></i>
-                  </button>
-                  </a> */}
+                  
                 </div>
               </div>
             </div>

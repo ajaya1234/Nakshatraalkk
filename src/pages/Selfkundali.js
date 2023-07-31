@@ -12,6 +12,8 @@ function Selfkundali() {
   const [responseData2, setResponseData2] = useState(null);
   const [responseData3, setResponseData3] = useState({});
   const [responseData4, setResponseData4] = useState({});
+  const [responseData5, setResponseData5] = useState({});
+  const [responseData6, setResponseData6] = useState({});
 
   const storedResponseData = localStorage.getItem("responseData");
 
@@ -19,6 +21,76 @@ function Selfkundali() {
 
   const datagot = localStorage.getItem("responseDatadata");
   const parsedgotData = JSON.parse(datagot);
+
+  useEffect(() => {
+    const api = "ayanamsha";
+    const userId = "623869";
+    const apiKey = "46046d17a932151518470e3a08a1665a";
+
+    const data = {
+      day: parsedResponseData.day,
+      month: parsedResponseData.month,
+      year: parsedResponseData.year,
+      hour: parsedResponseData.hour,
+      min: parsedResponseData.minute,
+      lat: 19.132,
+      lon: 72.342,
+      tzone: 5.5,
+    };
+
+    const auth = "Basic " + btoa(userId + ":" + apiKey);
+
+    axios
+      .post(`https://json.astrologyapi.com/v1/${api}`, data, {
+        headers: {
+          authorization: auth,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setResponseData5(response.data);
+        console.log("asadasdsdresponseeessad", response.data);
+      })
+
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    const api = "ghat_chakra";
+    const userId = "623869";
+    const apiKey = "46046d17a932151518470e3a08a1665a";
+
+    const data = {
+      day: parsedResponseData.day,
+      month: parsedResponseData.month,
+      year: parsedResponseData.year,
+      hour: parsedResponseData.hour,
+      min: parsedResponseData.minute,
+      lat: 19.132,
+      lon: 72.342,
+      tzone: 5.5,
+    };
+
+    const auth = "Basic " + btoa(userId + ":" + apiKey);
+
+    axios
+      .post(`https://json.astrologyapi.com/v1/${api}`, data, {
+        headers: {
+          authorization: auth,
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        setResponseData6(response.data);
+        console.log("asadasdsdresponseeessad", response.data);
+      })
+
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   useEffect(() => {
     const api = "major_vdasha";
@@ -210,7 +282,7 @@ function Selfkundali() {
                 <div class="grid-contain">
                   <div class="col-lg-12">
                     <div class="title d-xxl-none d-block">
-                      <h1>Basic Details</h1>
+                      <h2>Basic Details</h2>
 
                       <table class="table table-bordered">
                         <tr style={{ background: "" }}>
@@ -304,14 +376,14 @@ function Selfkundali() {
                             <b>Ayanamsha</b>
                           </td>
                           <td>
-                            <b>{responseData?.ayanamsha}</b>
+                            <b>{responseData?.ayanamsha.toFixed(2)}</b>
                           </td>
                         </tr>
                       </table>
                     </div>
 
                     <div class="title d-xxl-none d-block">
-                      <h1>Panchang Details</h1>
+                      <h2>Panchang Details</h2>
 
                       <table class="table table-bordered">
                         <tr style={{ background: "" }}>
@@ -350,6 +422,83 @@ function Selfkundali() {
                         </tr>
                       </table>
                     </div>
+
+                    <div class="title d-xxl-none d-block">
+                      <h2>Ayanamsha Details</h2>
+
+                      <table class="table table-bordered">
+                        <tr style={{ background: "" }}>
+                          <td>
+                            <b>Type</b>
+                          </td>
+                          <td>
+                            <b>Degree</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <b>{responseData5[0]?.type}</b>
+                          </td>
+                          <td>
+                            <b>{responseData5[0]?.degree.toFixed(2)}</b>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <b>{responseData5[1]?.type}</b>
+                          </td>
+                          <td>
+                            <b>{responseData5[1]?.degree.toFixed(2)}</b>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <b>{responseData5[2]?.type}</b>
+                          </td>
+                          <td>
+                            <b>{responseData5[2]?.degree.toFixed(2)}</b>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <b>{responseData5[3]?.type}</b>
+                          </td>
+                          <td>
+                            <b>{responseData5[3]?.degree.toFixed(2)}</b>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <b>{responseData5[4]?.type}</b>
+                          </td>
+                          <td>
+                            <b>{responseData5[4]?.degree.toFixed(2)}</b>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <b>{responseData5[5]?.type}</b>
+                          </td>
+                          <td>
+                            <b>{responseData5[5]?.degree.toFixed(2)}</b>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <b>{responseData5[6]?.type}</b>
+                          </td>
+                          <td>
+                            <b>{responseData5[6]?.degree.toFixed(2)}</b>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -360,7 +509,7 @@ function Selfkundali() {
                 <div class="grid-contain">
                   <div class="col-lg-12">
                     <div class="title d-xxl-none d-block">
-                      <h1>Avakhada Details</h1>
+                      <h2>Avakhada Details</h2>
 
                       <table class="table table-bordered">
                         <tr style={{ background: "" }}>
@@ -497,6 +646,83 @@ function Selfkundali() {
                         </tr>
                       </table>
                     </div>
+
+                    <div class="title d-xxl-none d-block">
+                      <h2>Ghat Chakra Details</h2>
+
+                      <table class="table table-bordered">
+                        <tr style={{ background: "" }}>
+                          <td>
+                            <b>Month</b>
+                          </td>
+                          <td>
+                            <b>{responseData6?.month}</b>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <b>Tithi</b>
+                          </td>
+                          <td>
+                            <b>{responseData6?.tithi}</b>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <b>Day</b>
+                          </td>
+                          <td>
+                            <b>{responseData6?.day}</b>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <b>Nakshatra</b>
+                          </td>
+                          <td>
+                            <b>{responseData6?.nakshatra}</b>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <b>Yog</b>
+                          </td>
+                          <td>
+                            <b>{responseData6?.yog}</b>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <b>Karan</b>
+                          </td>
+                          <td>
+                            <b>{responseData6?.karan}</b>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <b>Pahar</b>
+                          </td>
+                          <td>
+                            <b>{responseData6?.pahar}</b>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <b>Moon</b>
+                          </td>
+                          <td>
+                            <b>{responseData6?.moon}</b>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -553,7 +779,7 @@ function Selfkundali() {
                       <b>{responseData3[0]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[0]?.normDegree}</b>
+                      <b>{responseData3[0]?.normDegree.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[0]?.nakshatra}</b>
@@ -580,7 +806,7 @@ function Selfkundali() {
                       <b>{responseData3[1]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[1]?.normDegree}</b>
+                      <b>{responseData3[1]?.normDegree.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[1]?.nakshatra}</b>
@@ -607,7 +833,7 @@ function Selfkundali() {
                       <b>{responseData3[2]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[2]?.normDegree}</b>
+                      <b>{responseData3[2]?.normDegree.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[2]?.nakshatra}</b>
@@ -634,7 +860,7 @@ function Selfkundali() {
                       <b>{responseData3[3]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[3]?.normDegree}</b>
+                      <b>{responseData3[3]?.normDegree.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[3]?.nakshatra}</b>
@@ -661,7 +887,7 @@ function Selfkundali() {
                       <b>{responseData3[4]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[4]?.normDegree}</b>
+                      <b>{responseData3[4]?.normDegree.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[4]?.nakshatra}</b>
@@ -688,7 +914,7 @@ function Selfkundali() {
                       <b>{responseData3[5]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[5]?.normDegree}</b>
+                      <b>{responseData3[5]?.normDegree.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[5]?.nakshatra}</b>
@@ -715,7 +941,7 @@ function Selfkundali() {
                       <b>{responseData3[6]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[6]?.normDegree}</b>
+                      <b>{responseData3[6]?.normDegree.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[6]?.nakshatra}</b>
@@ -742,7 +968,7 @@ function Selfkundali() {
                       <b>{responseData3[7]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[7]?.normDegree}</b>
+                      <b>{responseData3[7]?.normDegree.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[7]?.nakshatra}</b>
@@ -769,7 +995,7 @@ function Selfkundali() {
                       <b>{responseData3[8]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[8]?.normDegree}</b>
+                      <b>{responseData3[8]?.normDegree.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[8]?.nakshatra}</b>
@@ -796,7 +1022,7 @@ function Selfkundali() {
                       <b>{responseData3[9]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[9]?.normDegree}</b>
+                      <b>{responseData3[9]?.normDegree.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[9]?.nakshatra}</b>

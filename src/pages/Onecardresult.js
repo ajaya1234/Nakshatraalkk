@@ -88,8 +88,8 @@ height:'100px'
                                 <div>
                                     
                                     <p style={{textAlign:'justify', fontSize:'18px'}}> {responseData?.name} The card is upright</p>
-                                    <p style={{textAlign:'justify', fontSize:'18px'}}>Hi {details?.name} </p>
-                                    <p style={{textAlign:'justify', fontSize:'17px'}}>
+                                    <p style={{textAlign:'justify', fontSize:'22px' , fontStyle:'bold'}}>Hi {details?.name} </p>
+                                    <p style={{textAlign:'justify', fontSize:'15px' , color:'#4a5568'}}>
                                     {responseData?.description}
                                     </p>
                                 </div> 

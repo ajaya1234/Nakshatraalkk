@@ -46,7 +46,7 @@ const Celebrity = () => {
           >
             {celebrity.map((i) => {
               return (
-                <div style={{ width: "20%", marginLeft: 10 }}>
+                <div style={{ width: "30%", margin: '0px 5px' }}>
                   <div
                     className="blog-box "
                     style={{ width: "100%", height: "100%" }}
@@ -61,29 +61,29 @@ const Celebrity = () => {
                         to="/Celebritylist"
                       >
                        
-                       {/* <img
+                        <img
                           src={
-                            "http://103.104.74.215:3012/uploads/1686290461558.mp4"
+                            "http://103.104.74.215:3012/uploads/"+i.thumbnail_image
                           }
                           className="img-fluid bg-img"
                           alt=""
-                        /> */}
+                        /> 
 
-<ReactPlayer
+{/* <ReactPlayer
                           url={"http://103.104.74.215:3012/uploads/"+ i.video}
                           
                           alt=""
-                        />
+                        /> */}
                       </Link>
                     </div>
 
-                    <div className="blog-detail">
+                    {/* <div className="blog-detail">
                       
                       
                       <div className="blog-list">
                         <span>{i?.current_date}</span>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               );

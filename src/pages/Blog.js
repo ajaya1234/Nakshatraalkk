@@ -7,14 +7,16 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 function Blog() {
-  const navigate = useNavigate();
-  const [gettop, setgettop] = useState([]);
+ 
+  const navigate = useNavigate
+  const uid = Math.random().toString(36).slice(-4);
   const [loader, setLoader] = useState(false);
-
+  const [gettop, setgettop] = useState([]);
+  
   useEffect(() => {
-    gettopvideo();
+    gettopvideo(); 
   }, [0]);
 
   const gettopvideo = async () => {
@@ -57,6 +59,7 @@ function Blog() {
       },
     ],
   };
+
   return (
     <div>
       {loader === true && (
@@ -71,7 +74,7 @@ function Blog() {
       )}
      
 
-<section class="blog-section section-b-space">
+     <section class="blog-section section-b-space">
         <div class="container-fluid-lg">
           <div className="title">
             <h2>LATEST FROM BLOG </h2>
@@ -82,24 +85,25 @@ function Blog() {
               <Slider {...settings}>
               {gettop.map((list) => {
         return (
-                <div >
+                <div onClick={()=>{localStorage.setItem("blogid",list._id)}}>
+
+
+
                   <div  class="blog-box wow fadeInUp">
                   <div  class="blog-image">
-                      <a onClick={()=>{
-                     setLoader(true);                     
-                    }} 
-                       href="BlogDetail">
-                        {/* style={{ width: "321px", height:'206px', objectFit: "contain" }} */}
-                         <img 
+                      <Link to
+                       ="/BlogDetail">
+                        
+                         <img
                            style={{ width: "100%", height:'206px', objectFit: "" }}
                            src={
                             "http://103.104.74.215:3012/uploads/" +
                             list.image
                           }
-                          class="bg-img blur-up lazyload bg-size background-size: cover; background-position: center center; background-repeat: no-repeat; display: block; img-fluid"
+                          class="bg-img blur-up lazyload img-fluid"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div  class="blog-contain ">
@@ -112,10 +116,11 @@ function Blog() {
                            <span>JyotiRaj Singh</span>
                          </span>
                        </div>
-                       <a href="BlogDetail">
+                       <Link to="/BlogDetail">
                          <h3>{list.title}</h3>
-                       </a>
-                       <a  href="BlogDetail">
+                         {/* {list._id} */}
+                       </Link>
+                       <Link  to="/BlogDetail">
                        <button
                       onClick={()=>{
                        setLoader(true);                     
@@ -124,7 +129,7 @@ function Blog() {
                        >                         Read More
                         <i class="fa-solid fa-right-long"></i>
                       </button>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

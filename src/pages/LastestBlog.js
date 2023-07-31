@@ -231,7 +231,7 @@ const LatestBlog = () => {
   const [gettop, setgettop] = useState([]);
   
   useEffect(() => {
-    gettopvideo();
+    gettopvideo(); 
   }, [0]);
 
   const gettopvideo = async () => {
