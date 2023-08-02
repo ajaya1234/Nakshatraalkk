@@ -11,7 +11,7 @@ import { useEffect } from "react";
 const Horoscopes = () => {
 
   const [responseData, setResponseData] = useState(null);
-  console.log("aaaaaaaaaaaaaaaaasadasd", responseData);
+
   useEffect(() => {
     const api = "horo_chart_image/:chartId";
     const userId = "623869";
@@ -39,7 +39,7 @@ const Horoscopes = () => {
       })
       .then((response) => {
         setResponseData(response.data);
-        console.log("aaaaaaaaaaaaaasdresponseeessad", response.data);
+       
       })
 
       .catch((error) => {

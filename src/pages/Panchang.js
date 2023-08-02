@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
@@ -9,18 +9,23 @@ const Panchang = () => {
 
 
   const [responseData, setResponseData] = useState(null);
-  console.log("sadasd",responseData)
+
+  const dataaa=localStorage.getItem("userData")
+ const dataa= JSON.parse(dataaa)
+   const [data2 , setData2]=useState(dataa);
+   
+  
     useEffect(() => {
       const api = 'advanced_panchang';
       const userId = '623869'; 
       const apiKey = '46046d17a932151518470e3a08a1665a';
   
       const data = {
-        day: 6,
-        month: 1,
-        year: 2000,
-        hour: 7,
-        min: 45,
+        day: data2?.day,
+        month: data2?.month,
+        year: data2?.year,
+        hour: data2?.hour,
+        min: data2?.min,
         lat: 19.132,
         lon: 72.342,
         tzone: 5.5,
@@ -36,7 +41,7 @@ const Panchang = () => {
       })
       .then((response) => {
         setResponseData(response.data); 
-        console.log("asdresponseeessad",response.data)
+        console.log("panchannaaaaaaaaasdresponseeessad",response.data)
       })
 
       .catch((error) => {

@@ -220,13 +220,13 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.35s"
                     >
-                      <a href="daily_horoscope.html" className="circle-3">
+                      <Link to="#" className="circle-3">
                         <img
                           src="../assets/images/veg-3/category/8.png"
                           className="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                       <div className="category-name">
                         <h6>Scorpio</h6>
                         <h6 style={{ fontSize: "10px" }}>23/10-21/11</h6>
@@ -239,13 +239,13 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.4s"
                     >
-                      <a href="daily_horoscope.html" className="circle-4">
+                      <Link to="#" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/9.png"
                           className="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                       <div className="category-name">
                         <h6>Sagittarius</h6>
                         <h6 style={{ fontSize: "10px" }}>22/11-21/12</h6>
@@ -258,13 +258,13 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.45s"
                     >
-                      <a href="daily_horoscope.html" className="circle-4">
+                      <Link to="#" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/10.png"
                           className="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                       <div className="category-name">
                         <h6>Capricorn</h6>
                         <h6 style={{ fontSize: "10px" }}>22/12-19/1</h6>
@@ -277,13 +277,13 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.5s"
                     >
-                      <a href="daily_horoscope.html" className="circle-4">
+                      <Link to="#" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/11.png"
                           className="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                       <div className="category-name">
                         <h6>Aquarius</h6>
                         <h6 style={{ fontSize: "10px" }}>20/1-18/2</h6>
@@ -295,13 +295,13 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.55s"
                     >
-                      <a href="daily_horoscope.html" className="circle-4">
+                      <Link to="#" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/12.png"
                           className="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                       <div className="category-name">
                         <h6>Pisces </h6>
                         <h6 style={{ fontSize: "10px" }}>19/2-20/3</h6>
@@ -334,16 +334,16 @@ const Zodiac = () => {
             <div>
                     <div class="blog-box ratio_50">
                         <div class="blog-box-image" style={{height:'206px'}}>
-                            <a href="blog-detail.html">
+                            <Link to="#">
                                 <img  width={'100%'} src="../assets/images/blog/number.jpg" class="img-fluid bg-img" alt=""/>
-                            </a>
+                            </Link>
                         </div>
 
                         <div class="blog-detail">
                             
-                            <a href="blog-detail.html">
+                            <Link to="#">
                                 <h2>Moola Nakshatra: Characteristics, Compatibility</h2>
-                            </a>
+                            </Link>
                             <div class="blog-list">
                                 <span>March 9, 2021</span>
                                 <div class="views_blog_box"><i class="fa fa-eye"></i><span>200</span></div>
@@ -357,16 +357,16 @@ const Zodiac = () => {
                 <div>
                     <div class="blog-box ratio_50">
                         <div class="blog-box-image" style={{height:'206px'}}>
-                            <a href="blog-detail.html">
+                            <Link to='#'>
                                 <img  width={'100%'} src="../assets/images/blog/number.jpg" class="img-fluid bg-img" alt=""/>
-                            </a>
+                            </Link>
                         </div>
 
                         <div class="blog-detail">
                             
-                            <a href="blog-detail.html">
+                            <Link to='#'>
                                 <h2>Monthly Numerology Predictions For April 2023</h2>
-                            </a>
+                            </Link>
                             <div class="blog-list">
                                 <span>March 9, 2021</span>
                                 <div class="views_blog_box"><i class="fa fa-eye"></i><span>200</span></div>
@@ -380,16 +380,16 @@ const Zodiac = () => {
                  <div>
                     <div class="blog-box ratio_50">
                         <div class="blog-box-image" style={{height:'206px'}}>
-                            <a href="blog-detail.html">
+                            <Link to="#">
                                 <img  width={'100%'} src="../assets/images/blog/card.jpg" class="img-fluid bg-img" alt=""/>
-                            </a>
+                            </Link>
                         </div>
 
                         <div class="blog-detail">
                             
-                            <a href="blog-detail.html">
+                            <Link to="#">
                                 <h2>April Tarot Reading Horoscope 2023 for Each Zodiac Sign</h2>
-                            </a>
+                            </Link>
                             <div class="blog-list">
                                 <span>March 23, 2023</span>
                                 <div class="views_blog_box"><i class="fa fa-eye"></i><span>1000</span></div>
@@ -401,16 +401,16 @@ const Zodiac = () => {
                 <div>
                     <div class="blog-box ratio_50">
                         <div class="blog-box-image" style={{height:'206px'}}>
-                            <a href="blog-detail.html">
+                            <Link to="#">
                                 <img width={'100%'} src="../assets/images/blog/vivah.jpg" class="img-fluid bg-img" alt=""/>
-                            </a>
+                            </Link>
                         </div>
 
                         <div class="blog-detail">
                             
-                            <a href="blog-detail.html">
+                            <Link to="#">
                                 <h2>Vivah Muhurat 2024: Auspicious Dates &amp; Time In 2024 To Get Married</h2>
-                            </a>
+                            </Link>
                             <div class="blog-list">
                                 <span>March 23, 2023</span>
                               <div class="views_blog_box"><i class="fa fa-eye"></i><span>1000</span></div>

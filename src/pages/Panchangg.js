@@ -9,21 +9,23 @@ import Live from "./Live";
 
 function Panchangg() {
   const [responseData, setResponseData] = useState(null);
-  console.log("sadasd", responseData);
+  const dataaa=localStorage.getItem("userData")
+  const dataa= JSON.parse(dataaa)
+    const [data2 , setData2]=useState(dataa);
   useEffect(() => {
     const api = "advanced_panchang";
     const userId = "623869";
     const apiKey = "46046d17a932151518470e3a08a1665a";
 
     const data = {
-      day: 6,
-      month: 1,
-      year: 2000,
-      hour: 7,
-      min: 45,
-      lat: 19.132,
-      lon: 72.342,
-      tzone: 5.5,
+      day: data2.day,
+        month: data2.month,
+        year: data2.year,
+        hour: data2.hour,
+        min: data2.min,
+        lat: 19.132,
+        lon: 72.342,
+        tzone: 5.5,
     };
 
     const auth = "Basic " + btoa(userId + ":" + apiKey);
@@ -111,7 +113,7 @@ function Panchangg() {
 
 <tr >
                                     <td><b>Date</b></td>
-                                    <td>Monday 25 July , 2023</td>
+                                    <td>{responseData?.day} 25 July , 2023</td>
                                 </tr>
                                 <tr >
                                     <td><b>Tithi</b></td>

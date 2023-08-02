@@ -16,7 +16,7 @@ function AstrologersList() {
     axios
       .get("http://103.104.74.215:3012/api/user/astrologer_live_list")
       .then((res) => {
-        console.log(res);
+        
         if (res.data.result) setliveAstrologer(res.data.data);
       });
   };

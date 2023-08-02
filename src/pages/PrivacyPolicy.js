@@ -35,18 +35,7 @@ function PrivacyPolicy() {
             <div class="col-12">
               <div class="breadscrumb-contain">
                 <h2>Privacy Policy</h2>
-                <nav>
-                  <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item">
-                      <a href="index.html">
-                        <i class="fa-solid fa-house"></i>
-                      </a>
-                    </li>
-                    <li class="breadcrumb-item" aria-current="page">
-                      Privacy Policy
-                    </li>
-                  </ol>
-                </nav>
+                
               </div>
             </div>
           </div>

@@ -12,13 +12,13 @@ import Live from './Live';
 
 function BlogDetail() {
  const [ Details , setDetails ] = useState([])
- console.log("asdaiddddd",Details)
+ 
   useEffect(() => {
     postRech();
   }, []);
   const postRech = () => {
     const blogid=localStorage.getItem("blogid")
-    console.log("idddddd",blogid)
+    
     const  item =  {
       _id: blogid,
     };
@@ -27,7 +27,7 @@ function BlogDetail() {
       .then((res) => {
       
 
-       console.log('dasasfg',res.data.data)
+       
         
        
       });

@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect, useState } from "react";
 
 import Footer from "./Footer";
@@ -6,16 +8,18 @@ import { Link, useNavigate } from "react-router-dom";
 import Header1 from "./Header1";
 
 function AstrologersList() {
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
-
   useEffect(() => {
     postData();
   }, []);
+
   const [list, setList] = useState([]);
+
+const iddofuser=localStorage.getItem("iddofuser")
 
   let [_id, set_id] = useState(() => {
     let result = localStorage.getItem("_id");
-
     if (result != null) {
       return JSON.parse(result);
     } else {
@@ -23,9 +27,24 @@ function AstrologersList() {
     }
   });
 
+  const parse = localStorage.getItem("vcdata");
+
+  const parsed = JSON.parse(parse);
+  const [data, setData] = useState(parsed);
+
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prevCount) => prevCount + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const postData = () => {
+    const iddofuser=localStorage.getItem("iddofuser")
     const item = {
-      user_id: _id,
+      user_id: iddofuser,
     };
     axios
       .post("http://103.104.74.215:3012/api/user/astrologer_list/", item)
@@ -34,24 +53,66 @@ function AstrologersList() {
       });
   };
 
-  const [walletAmnt, setWalletAmnt] = useState([]);
+  const [walletAmnt, setWalletAmnt] = useState();
+
+  let [finltime, setfinltime] = useState();
+  useEffect(() => {
+    let totalminute = walletAmnt / data?.video_rate;
+    let finl_time = Math.floor(totalminute);
+
+    setfinltime(finl_time);
+  }, [walletAmnt]);
+
   useEffect(() => {
     postRech();
-  }, []);
+  }, [, walletAmnt, data?.video_rate]);
+
   const postRech = () => {
+    const iddofuser=localStorage.getItem("iddofuser")
     const item = {
-      user_id: _id,
+      user_id: iddofuser,
     };
     axios
       .post("http://103.104.74.215:3012/api/user/get_wallet_user", item)
       .then((res) => setWalletAmnt(res.data.data.ammount));
   };
-  
+
+  const tokenGen = () => {
+    const iddofuser=localStorage.getItem("iddofuser")
+    const userdata = {
+      user_id: iddofuser,
+      astrologer_id: data._id,
+      channel_name: "test",
+      //final_time: "2",
+
+      final_time: finltime.toString(),
+    };
+    localStorage.setItem("totalminute", _id);
+
+    axios
+      .post(
+        "http://103.104.74.215:3012/api/user/generate_agrora_token_calling",
+        userdata
+      )
+      .then((res) => {
+        
+        if (res.data.result) {
+          localStorage.setItem("videoatro_token", res.data.token);
+          setTimeout(() => {
+            navigate(`/VideoCall`);
+          }, 1000);
+        } else {
+          setErrorMessage("Astrologer is already live");
+        }
+      })
+      .catch((error) => {
+        console.error("Error generating token:", error);
+      });
+  };
+
   return (
     <div>
       <Header1 />
-
-      
 
       <section class="section-b-space shop-section">
         <div class="container-fluid-lg">
@@ -64,31 +125,31 @@ function AstrologersList() {
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseExample"
                   >
-                    <a href="shop-top-filter1.html">
-                      <i class="fa-solid fa-house"></i> Chat With Astrologer
-                    </a>
+                    <Link to="#">
+                      <i class="fa-solid fa-house"></i> Talk With Astrologer
+                    </Link>
+                    {errorMessage && <p>{errorMessage}</p>}
                   </div>
-
-                 
                 </div>
               </div>
               <br />
+
               <div class="row g-sm-4 g-3">
                 {" "}
                 {list?.map((i) => {
                   return (
-                    <div
-                      
-                      class="col-xl-6 col-sm-6"
-                      style={{ width: "25%" }}
-                    >
+                    <div class="col-xl-6 col-sm-6" style={{ width: "25%" }}>
                       <div class="seller-grid-box seller-grid-box-1">
                         <div class="grid-image">
                           <div class="image">
-                            <img onClick={() => {
-                              localStorage.setItem("AstroData", JSON.stringify(i));
-                              navigate("/AstrologerDetail");
-                            }}
+                            <img
+                              onClick={() => {
+                                localStorage.setItem(
+                                  "AstroData",
+                                  JSON.stringify(i)
+                                );
+                                navigate("/AstrologerDetail");
+                              }}
                               src={
                                 "http://103.104.74.215:3012/uploads/" +
                                 i.profile_pic
@@ -136,7 +197,6 @@ function AstrologersList() {
                                 <h6>{i.role}</h6>
                               </div>
                             </div>
-                            
                           </div>
                         </div>
 
@@ -166,7 +226,10 @@ function AstrologersList() {
                               </div>
 
                               <div class="contact-detail">
-                                <h5> ₹ {i.video_rate ? i.video_rate : "0"}/Min</h5>
+                                <h5>
+                                  {" "}
+                                  ₹ {i.video_rate ? i.video_rate : "0"}/Min
+                                </h5>
                               </div>
                             </div>
                           </div>
@@ -175,81 +238,84 @@ function AstrologersList() {
                             class="seller-contact-details"
                             style={{ width: "40%", float: "right" }}
                           >
-                          <div class="saller-contact">
-                          {/*<Link to="/videoCall">*/}
-                            {i.call_status === "1" ? (
-                              <img
-                              onClick={() => {
-                                {
-                                  walletAmnt > i.video_rate
-                                    ? navigate("/videoCall")
-                                    : alert(
-                                        "You have Insufficient balance"
-                                      );
-                                }
+                            <div class="saller-contact">
+                              {i.call_status === "1" ? (
+                                <img
+                                  onClick={() => {
+                                    {
+                                      walletAmnt > i.video_rate
+                                        ? tokenGen()
+                                        : alert(
+                                            "You have Insufficient balance"
+                                          );
+                                    }
+                                    localStorage.setItem(
+                                      "vcdata",
+                                      JSON.stringify(i)
+                                    );
+                                    {
+                                      /*navigate("/videoCall");*/
+                                    }
+                                  }}
+                                  src="../assets/images/veg-3/category/phone.png"
+                                  class="img-fluid"
+                                  alt=""
+                                  style={{ height: "25px" }}
+                                />
+                              ) : (
+                                <img
+                                  src="../assets/images/veg-3/category/calling.png"
+                                  class="img-fluid"
+                                  alt=""
+                                  style={{
+                                    height: "25px",
+                                    background: "#d99f46",
+                                    borderRadius: "50px",
+                                  }}
+                                />
+                              )}
 
-                                  localStorage.setItem(
-                                    "vcdata",
-                                    JSON.stringify(i)
-                                  );
-                                   {/*navigate("/videoCall");*/}
-                                }}
-                                src="../assets/images/veg-3/category/phone.png"
+                              {/*<Link to="/chatform">*/}
+                              <img
+                                // onClick={() => {
+                                //   {
+                                //     walletAmnt > i.chat_rate
+                                //       ? navigate("/ChatForm")
+                                //       : alert(
+                                //         "You have Insufficient balance"
+                                //       );
+                                //   }
+
+                                //   localStorage.setItem(
+                                //     "chatdata",
+                                //     JSON.stringify(i)
+                                //   );
+
+                                // }}
+                                src="../assets/images/veg-3/category/chat.png"
                                 class="img-fluid"
                                 alt=""
-                                style={{ height: "25px" }}
+                                style={{ height: "25px", marginLeft: "10px" }}
                               />
-                            ) : (
-                              <img
-                                src="../assets/images/veg-3/category/calling.png"
-                                class="img-fluid"
-                                alt=""
-                                style={{ height: "25px", background:'#d99f46', borderRadius:'50px' }}
-                              />
-                            )}
-                          {/*</Link>*/}
+                              {/*</Link>*/}
+                            </div>
 
-                          {/*<Link to="/chatform">*/}
-                            <img
-                              onClick={() => {
-                                {
-                                  walletAmnt > i.chat_rate
-                                    ? navigate("/ChatForm")
-                                    : alert(
-                                        "You have Insufficient balance"
-                                      );
-                                }
+                            <div class="saller-contact">
+                              <div class="contact-detail">
+                                {i.call_status === "1" ? (
+                                  <h6> Call</h6>
+                                ) : (
+                                  <h6> Off</h6>
+                                )}
+                              </div>
 
-                                localStorage.setItem(
-                                  "chatdata",
-                                  JSON.stringify(i)
-                                );
-                                
-                              }}
-                              src="../assets/images/veg-3/category/chat.png"
-                              class="img-fluid"
-                              alt=""
-                              style={{ height: "25px", marginLeft: "10px" }}
-                            />
-                          {/*</Link>*/}
-                        </div>
-
-                        <div class="saller-contact">
-                        <div class="contact-detail">
-                          {i.call_status === "1" ? (
-                            <h6> Call</h6>
-                          ) : (
-                            <h6> Off</h6>
-                          )}
-                        </div>
-
-                        <div
-                          class="contact-detail"
-                          style={{ marginLeft: "10px" }}
-                        >
-                          <h6> Chat</h6>
-                        </div>
-                      </div>
+                              <div
+                                class="contact-detail"
+                                style={{ marginLeft: "10px" }}
+                              >
+                                <h6> Chat</h6>
+                              </div>
+                            </div>
                           </div>
                         </div>
 
@@ -261,7 +327,7 @@ function AstrologersList() {
                 })}
               </div>
 
-             {/* <nav class="custome-pagination">
+              {/* <nav class="custome-pagination">
                 <ul class="pagination justify-content-center">
                   <li class="page-item disabled">
                     <a

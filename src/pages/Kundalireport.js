@@ -103,7 +103,7 @@ function Kundalireport() {
       })
       .then((response) => {
         setResponseData(response.data);
-        console.log("Matchingggg", response.data);
+        
       })
 
       .catch((error) => {

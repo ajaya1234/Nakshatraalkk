@@ -10,14 +10,25 @@ const Header1 = () => {
   const navigate = useNavigate()
 
 
-  const userId = localStorage.getItem("_id");
+  const userId = localStorage.getItem("iddofuser");
   const location = useLocation();
   const isProtectedPage = [
     
   ].includes(location.pathname);
 
   const removeToken = () => {
+    localStorage.removeItem("iddofuser");
     localStorage.removeItem("_id");
+    localStorage.removeItem("totalminute");
+    localStorage.removeItem("vcdata");
+    localStorage.removeItem("AstroData");
+    localStorage.removeItem("data");
+    localStorage.removeItem("videoatro_token");
+    localStorage.removeItem("userData");
+    localStorage.removeItem("chatdata");
+    localStorage.removeItem("videoatro_token");
+    localStorage.removeItem("videoatro_token");
+    
     return <Navigate to="/login" />;
   };
 

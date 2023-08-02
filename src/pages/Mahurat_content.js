@@ -48,7 +48,7 @@ import axios from 'axios';
 
 const Mahurat_Content = () => {
     const [responseData, setResponseData] = useState(null);
-  console.log("sadasd",responseData)
+  
     useEffect(() => {
       const api = 'advanced_panchang';
       const userId = '623869'; 
@@ -75,7 +75,7 @@ const Mahurat_Content = () => {
       })
       .then((response) => {
         setResponseData(response.data); 
-        console.log("asdresponseeessad",response.data)
+        
       })
 
       .catch((error) => {

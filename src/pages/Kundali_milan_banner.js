@@ -124,7 +124,7 @@ const Kundali_milan_banner = () => {
       f_tzone: 5.5, 
     };
   
-    console.log("responseof dataaa",data)
+
     const auth = "Basic " + btoa(userId + ":" + apiKey);
   
     axios
@@ -137,7 +137,7 @@ const Kundali_milan_banner = () => {
       .then((response) => {
         setResponseData(response.data);
         localStorage.setItem("responseDataofbirth", JSON.stringify(response.data));
-        console.log("sadsad", response.data);
+        
         navigate("/kundalireport");
       })
       .catch((error) => {

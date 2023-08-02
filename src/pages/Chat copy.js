@@ -76,7 +76,7 @@ const Chat = () => {
         let receiverMessages = chatMessages.filter((message) => {
           return message.receiver_id === cData._id && message.sender_id == _id;
         });
-        console.log(receiverMessages);
+        //console.log(receiverMessages);
 
         // const receiverMessages = chatMessages.filter(
         //   (message) =>  message.receiver_id === cData._id

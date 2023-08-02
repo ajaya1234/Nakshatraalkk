@@ -34,6 +34,7 @@ const Profile = () => {
   });
 
   let Savedata = () => {
+
     // console.log(_id)
     const item = {
       name: userData?.name,
@@ -51,20 +52,21 @@ const Profile = () => {
         `http://103.104.74.215:3012/api/user/update_user_profile_data/${_id}`,
         item
       )
-      .then(() => postId());
+      .then((res) =>{ postId();
 
-    // .then((res) => {
-    // console.log(res.data.data._id);
-    // console.log(res.data);
-    // let data = res.data.data;
-    // console.log(data);
-    //  localStorage.setItem("userdata",JSON.stringify(data))
-    // });
+    //  .then((res) => {
+     console.log(res.data.data._id);
+    console.log(res.data);
+     let data = res.data.data;
+    console.log(data);
+      localStorage.setItem("userdata",JSON.stringify(data))
+     });
   };
 
   const postId = () => {
+    const iddofuser=localStorage.getItem("iddofuser")
     const item = {
-      _id: _id,
+      _id: iddofuser,
     };
     axios
       .post(`http://103.104.74.215:3012/api/user/get_user_profile/`, item)
@@ -122,8 +124,9 @@ const Profile = () => {
   };
   
   const postPlan = (amount) => {
+    const iddofuser=localStorage.getItem("iddofuser")
     const item = {
-      user_id: _id,
+      user_id:iddofuser,
       ammount: amount,
     };
 
@@ -141,8 +144,9 @@ const Profile = () => {
   }, []);
 
   const postRech = () => {
+    const iddofuser=localStorage.getItem("iddofuser")
     const item = {
-      user_id: _id,
+      user_id:iddofuser,
     };
     axios
       .post("http://103.104.74.215:3012/api/user/get_wallet_user", item)
@@ -288,20 +292,7 @@ const Profile = () => {
                     </button>
                   </li>
 
-                  <li class="nav-item" role="presentation">
-                    <button
-                      class="nav-link"
-                      id="pills-wallet-tab"
-                      data-bs-toggle="pill"
-                      data-bs-target="#pills-wallet"
-                      type="button"
-                      role="tab"
-                      aria-controls="pills-wallet"
-                      aria-selected="false"
-                    >
-                      <i data-feather="shopping-bag"></i>Order History
-                    </button>
-                  </li>
+                 
 
                   <li class="nav-item" role="presentation">
                     <button
@@ -318,20 +309,7 @@ const Profile = () => {
                     </button>
                   </li>
 
-                  <li class="nav-item" role="presentation">
-                    <button
-                      class="nav-link"
-                      id="pills-wallet-tab"
-                      data-bs-toggle="pill"
-                      data-bs-target="#pills-wallet"
-                      type="button"
-                      role="tab"
-                      aria-controls="pills-wallet"
-                      aria-selected="false"
-                    >
-                      <i data-feather="user"></i>Sign As Astrologer
-                    </button>
-                  </li>
+                 
 
                   <li class="nav-item" role="presentation">
                     <button
@@ -558,174 +536,12 @@ const Profile = () => {
                             </tbody>
                           </table>
                         </div>
-                        {/*<nav class="custome-pagination">
-                          <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                              <a
-                                class="page-link"
-                                href="javascript:void(0)"
-                                tabindex="-1"
-                              >
-                                <i class="fa-solid fa-angles-left"></i>
-                              </a>
-                            </li>
-                            <li class="page-item active">
-                              <a class="page-link" href="javascript:void(0)">
-                                1
-                              </a>
-                            </li>
-                            <li class="page-item" aria-current="page">
-                              <a class="page-link" href="javascript:void(0)">
-                                2
-                              </a>
-                            </li>
-                            <li class="page-item">
-                              <a class="page-link" href="javascript:void(0)">
-                                3
-                              </a>
-                            </li>
-                            <li class="page-item">
-                              <a class="page-link" href="javascript:void(0)">
-                                <i class="fa-solid fa-angles-right"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </nav>*/}
+                     
                       </div>
                     </div>
                   </div>
 
-                  <div
-                    class="tab-pane fade"
-                    id="pills-wallet"
-                    role="tabpanel"
-                    aria-labelledby="pills-wallet-tab"
-                  >
-                    <div class="dashboard-order">
-                      <div class="title">
-                        <h2>Order History</h2>
-                        {/* <span class="title-leaf title-leaf-gray">
-                            <svg class="icon-width bg-gray">
-                              <use xlink:href="https://themes.pixelstrap.com/fastkart/assets/svg/leaf.svg#leaf"></use>
-                            </svg>
-                          </span> */}
-                        <h3>Call History</h3>
-                      </div>
-
-                      <div class="order-tab dashboard-bg-box">
-                        <div class="table-responsive">
-                          <table class="table order-table">
-                            <thead>
-                              <tr>
-                                <th scope="col">Order Id</th>
-                                <th scope="col">Astrologer Name</th>
-
-                                <th scope="col">Date Time</th>
-                                <th scope="col">ChatType</th>
-                                <th scope="col">Duration</th>
-                                <th scope="col">Deduction</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td class="product-image">#212525</td>
-                                <td>Astrologer name</td>
-
-                                <td>
-                                  <label class="success">
-                                    Apr 05,2023,10:30 AM
-                                  </label>
-                                </td>
-                                <td>
-                                  <h6>Call</h6>
-                                </td>
-                                <td>
-                                  <label class="success">5 min</label>
-                                </td>
-                                <td>
-                                  <label class="success">0</label>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                      <div class="title" style={{ padding: 20 }}>
-                        <h3>Chat History</h3>
-                      </div>
-                      <div class="order-tab dashboard-bg-box">
-                        <div class="table-responsive">
-                          <table class="table order-table">
-                            <thead>
-                              <tr>
-                                <th scope="col">Order Id</th>
-                                <th scope="col">Astrologer Name</th>
-
-                                <th scope="col">Date Time</th>
-                                <th scope="col">ChatType</th>
-                                <th scope="col">Duration</th>
-                                <th scope="col">Deduction</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td class="product-image">#212525</td>
-                                <td>Astrologer name</td>
-
-                                <td>
-                                  <label class="success">
-                                    Apr 05,2023,10:30 AM
-                                  </label>
-                                </td>
-                                <td>
-                                  <h6>Chat</h6>
-                                </td>
-                                <td>
-                                  <label class="success">5 min</label>
-                                </td>
-                                <td>
-                                  <label class="success">0</label>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <nav class="custome-pagination">
-                          <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                              <a
-                                class="page-link"
-                                href="javascript:void(0)"
-                                tabindex="-1"
-                              >
-                                <i class="fa-solid fa-angles-left"></i>
-                              </a>
-                            </li>
-                            <li class="page-item active">
-                              <a class="page-link" href="javascript:void(0)">
-                                1
-                              </a>
-                            </li>
-                            <li class="page-item" aria-current="page">
-                              <a class="page-link" href="javascript:void(0)">
-                                2
-                              </a>
-                            </li>
-                            <li class="page-item">
-                              <a class="page-link" href="javascript:void(0)">
-                                3
-                              </a>
-                            </li>
-                            <li class="page-item">
-                              <a class="page-link" href="javascript:void(0)">
-                                <i class="fa-solid fa-angles-right"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </nav>
-                      </div>
-                    </div>
-                  </div>
+                 
 
                   <div
                     class="tab-pane fade"
@@ -873,15 +689,15 @@ const Profile = () => {
 
                       <div class="dashboard-bg-box">
                         <div class="dashboard-title mb-4">
-                          <a href="term_condition.html">
+                          <Link to="/PrivacyPolicy">
                             <h3>Term & Condition</h3>
-                          </a>
+                          </Link>
                         </div>
                         <div class="dashboard-title mb-4">
-                          <a href="PrivacyPolicy">
+                          <Link to="/PrivacyPolicy">
                             {" "}
                             <h3>Privacy Policy</h3>
-                          </a>
+                          </Link>
                         </div>
                         <div
                           class="dashboard-title mb-4"

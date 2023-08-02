@@ -7,12 +7,13 @@ import { useNavigate } from "react-router-dom";
 const OnlineAustrology = () => {
   useEffect(() => {
     getData(0);
-    postData();
+ 
   }, []);
 
   const navigate = useNavigate();
-
+  const [errorMessage, setErrorMessage] = useState('');
   const [list, setList] = useState([]);
+  const iddofuser=localStorage.getItem("iddofuser")
   let [_id, set_id] = useState(() => {
     let result = localStorage.getItem("_id");
     if (result != null) {
@@ -29,45 +30,108 @@ const OnlineAustrology = () => {
       .then((res) => setLiveAstrologer(res.data.data));
   };
 
+
+
+  useEffect(() => {
+    postData();
+  }, []);
+
+
+
+
+
+  const parse = localStorage.getItem("vcdata");
+  
+  const parsed = JSON.parse(parse);
+  const [data, setData] = useState(parsed);
+
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prevCount) => prevCount + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+
+
+
   const postData = () => {
     const item = {
-      user_id: _id,
+      user_id: iddofuser,
     };
-    axios.
-      get("http://103.104.74.215:3012/api/user/get_astrologer_list/")
-      // .post("http://103.104.74.215:3012/api/user/astrologer_list/", item)
-      // http://103.104.74.215:3012/api/user/get_astrologer_list method - get
+    axios
+      .post("http://103.104.74.215:3012/api/user/astrologer_list/", item)
       .then((res) => {
         setList(res.data.data);
       });
   };
-  const [loader, setLoader] = useState(false);
 
-  const [walletAmnt, setWalletAmnt] = useState([]);
+  const [walletAmnt, setWalletAmnt] = useState();
+  
+  let [finltime, setfinltime] = useState()
+  useEffect(() => {
+    
+    let totalminute = walletAmnt / data.video_rate
+    let finl_time = Math.floor(totalminute)
+    
+    setfinltime(finl_time)
+  }, [walletAmnt])
+
   useEffect(() => {
     postRech();
-  }, []);
+  }, [, walletAmnt, data.video_rate]);
+
   const postRech = () => {
     const item = {
-      user_id: _id,
+      user_id: iddofuser,
     };
     axios
       .post("http://103.104.74.215:3012/api/user/get_wallet_user", item)
       .then((res) => setWalletAmnt(res.data.data.ammount));
   };
 
+
+  const tokenGen = () => {
+    
+    const userdata = {
+      user_id: iddofuser,
+      astrologer_id: data._id,
+      channel_name: "test",
+      //final_time: "2",
+      
+      final_time: finltime.toString(),
+
+    };
+    localStorage.setItem("totalminute", finltime)
+     
+    axios
+      .post('http://103.104.74.215:3012/api/user/generate_agrora_token_calling', userdata)
+      .then((res) => {
+        console.log(" dataaa", res)
+        if (res.data.result) {
+          localStorage.setItem("videoatro_token", res.data.token);
+          setTimeout(() => {
+            navigate(`/VideoCall`);
+          }, 1000);
+        }
+        else {
+          
+          setErrorMessage('Astrologer is already live');
+        }
+      })
+      .catch((error) => {
+        console.error('Error generating token:', error);
+        
+      });
+  };
+
+
+  
   return (
     <>
-      {loader === true && (
-        <div class="fullpage-loader">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      )}
+    
       {/* <!-- Order Detail Section Start --> */}
       <section class="order-detail">
         <div class="container-fluid-lg">
@@ -80,6 +144,7 @@ const OnlineAustrology = () => {
                   <h2>Online Astrologers </h2>
                   <h4> Astrologers are Online</h4>
                 </div>
+                {errorMessage && <p>{errorMessage}</p>}
                 <div class="timing-box">
                   <Link to="/AstrologersList">
                     <img 
@@ -95,13 +160,16 @@ const OnlineAustrology = () => {
                   </Link>
                 </div>
               </div>
+
+     
               <div class="row g-sm-4 g-3">
                 {" "}
-                {list?.slice(0, 4).map((i) => {
+               {list?.map((i) => {
                   return (
                     <div
-                      class="col-xl-6 col-sm-6"
-                      style={{ display: "flex", flexDirection: "row" }}
+
+                    class="col-xl-6 col-sm-6"
+                    style={{ display: "flex", flexDirection: "row" }}
                     >
                       <div class="seller-grid-box seller-grid-box-1">
                         <div class="grid-image">
@@ -112,7 +180,7 @@ const OnlineAustrology = () => {
                             }}
                               src={
                                 "http://103.104.74.215:3012/uploads/" +
-                                i?.profile_pic
+                                i.profile_pic
                               }
                               class="img-fluid"
                               alt=""
@@ -124,10 +192,7 @@ const OnlineAustrology = () => {
                             />
 
                             <button
-                              onClick={() => {
-                                localStorage.setItem("AstroData", JSON.stringify(i));
-                                navigate("/AstrologerDetail");
-                              }}
+                              onclick="location.href = 'product-4-image.html';"
                               class="nav-item"
                               style={{
                                 borderRadius: "15px",
@@ -137,10 +202,10 @@ const OnlineAustrology = () => {
                                 boxShadow: "5px",
                               }}
                             >
-                              {i.rating ? i.rating : "0"}
+                              {i.review ? i.review : "0"}
                               <li>
                                 <i
-                                  style={{ width: "13px" }}
+                                  style={{ fontWeight: "bolder" }}
                                   class="fa fa-star-o"
                                   aria-hidden="true"
                                 ></i>
@@ -148,10 +213,7 @@ const OnlineAustrology = () => {
                             </button>
                           </div>
 
-                          <div class="contain-name" onClick={() => {
-                              localStorage.setItem("AstroData", JSON.stringify(i));
-                              navigate("/AstrologerDetail");
-                            }}>
+                          <div class="contain-name">
                             <div>
                               <h4>{i.name}</h4>
 
@@ -163,7 +225,7 @@ const OnlineAustrology = () => {
                                 <h6>{i.role}</h6>
                               </div>
                             </div>
-                            {/* <!--   <label class="product-label">380 Products</label> --> */}
+
                           </div>
                         </div>
 
@@ -177,17 +239,15 @@ const OnlineAustrology = () => {
                             class="seller-contact-details"
                             style={{ width: "60%", float: "left" }}
                           >
-                            {i.experiance_year > "0" ? (
-                              <div class="saller-contact">
-                                <div class="seller-icon">
-                                  <i class="fa-solid fa-map-pin"></i>
-                                </div>
-
-                                <div class="contact-detail">
-                                  <h5>{i.experiance_year} Years</h5>
-                                </div>
+                            <div class="saller-contact">
+                              <div class="seller-icon">
+                                <i class="fa-solid fa-map-pin"></i>
                               </div>
-                            ) : null}
+
+                              <div class="contact-detail">
+                                <h5>{i.experiance_year} </h5>
+                              </div>
+                            </div>
 
                             <div class="saller-contact">
                               <div class="seller-icon">
@@ -195,11 +255,7 @@ const OnlineAustrology = () => {
                               </div>
 
                               <div class="contact-detail">
-                                <h5>
-                                  {" "}
-                                  ₹ {i.video_rate ? i.video_rate : "0"}
-                                  /Min
-                                </h5>
+                                <h5> ₹ {i.video_rate ? i.video_rate : "0"}/Min</h5>
                               </div>
                             </div>
                           </div>
@@ -209,64 +265,48 @@ const OnlineAustrology = () => {
                             style={{ width: "40%", float: "right" }}
                           >
                             <div class="saller-contact">
-                              {/*<Link to="/videoCall">*/}
-                                {i.call_status === "1" ? (
-                                  <img
-                                  onClick={() => {
-                                    {
-                                      walletAmnt > i.video_rate
-                                        ? navigate("/videoCall")
-                                        : alert(
-                                            "You have Insufficient balance"
-                                          );
-                                    }
-
-                                      localStorage.setItem(
-                                        "vcdata",
-                                        JSON.stringify(i)
-                                      );
-                                       {/*navigate("/videoCall");*/}
-                                    }}
-                                    src="../assets/images/veg-3/category/phone.png"
-                                    class="img-fluid"
-                                    alt=""
-                                    style={{ height: "25px" }}
-                                  />
-                                ) : (
-                                  <img
-                                    src="../assets/images/veg-3/category/calling.png"
-                                    class="img-fluid"
-                                    alt=""
-                                    style={{ height: "25px", background:'#d99f46', borderRadius:'50px' }}
-                                  />
-                                )}
-                              {/*</Link>*/}
-
-                              {/*<Link to="/chatform">*/}
+                              {i.call_status === "1" ? (
                                 <img
-                                  onClick={() => {
-                                    {
-                                      walletAmnt > i.chat_rate
-                                        ? navigate("/ChatForm")
-                                        : alert(
-                                            "You have Insufficient balance"
-                                          );
-                                    }
-
-                                    localStorage.setItem(
-                                      "chatdata",
-                                      JSON.stringify(i)
-                                    );
-                                    
-                                  }}
-                                  src="../assets/images/veg-3/category/chat.png"
+                                  onClick={() => { { walletAmnt > i.video_rate ? (tokenGen()) : alert("You have Insufficient balance"); } localStorage.setItem("vcdata", JSON.stringify(i)); {/*navigate("/videoCall");*/ } }}
+                                  src="../assets/images/veg-3/category/phone.png"
                                   class="img-fluid"
                                   alt=""
-                                  style={{ height: "25px", marginLeft: "10px" }}
+                                  style={{ height: "25px" }}
                                 />
+                              ) : (
+                                <img
+                                  src="../assets/images/veg-3/category/calling.png"
+                                  class="img-fluid"
+                                  alt=""
+                                  style={{ height: "25px", background: '#d99f46', borderRadius: '50px' }}
+                                />
+                              )}
+
+                              {/*<Link to="/chatform">*/}
+                              <img
+                                // onClick={() => {
+                                //   {
+                                //     walletAmnt > i.chat_rate
+                                //       ? navigate("/ChatForm")
+                                //       : alert(
+                                //         "You have Insufficient balance"
+                                //       );
+                                //   }
+
+                                //   localStorage.setItem(
+                                //     "chatdata",
+                                //     JSON.stringify(i)
+                                //   );
+
+                                // }}
+                                src="../assets/images/veg-3/category/chat.png"
+                                class="img-fluid"
+                                alt=""
+                                style={{ height: "25px", marginLeft: "10px" }}
+                              />
                               {/*</Link>*/}
                             </div>
- 
+
                             <div class="saller-contact">
                               <div class="contact-detail">
                                 {i.call_status === "1" ? (
@@ -293,6 +333,8 @@ const OnlineAustrology = () => {
                   );
                 })}
               </div>
+
+
             </div>
 
             {/* <!--   Live session end --> */}
@@ -356,7 +398,7 @@ const OnlineAustrology = () => {
                             <br />
                             <button
                               onClick={() => {
-                                setLoader(true);
+                                
 
                                 localStorage.setItem(
                                   "liveData",

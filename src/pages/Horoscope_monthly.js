@@ -40,7 +40,7 @@ const Horoscope_monthly = () => {
         })
         .then((response) => {
           setResponseData(response.data);
-          console.log("sadAPI response data:", response.data);
+          
         })
         .catch((error) => {
           console.error("Error fetching data:", error);

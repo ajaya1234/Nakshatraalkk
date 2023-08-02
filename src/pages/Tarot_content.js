@@ -42,56 +42,55 @@ const Tarot_content = () => {
 
 
   
-  useEffect(() => {
-    getData(0);
-    postData();
-  }, []);
+  // useEffect(() => {
+  //   getData(0);
+  //   postData();
+  // }, []);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const [list, setList] = useState([]);
-  let [_id, set_id] = useState(() => {
-    let result = localStorage.getItem("_id");
-    if (result != null) {
-      return JSON.parse(result);
-    } else {
-      return [];
-    }
-  });
+  // const [list, setList] = useState([]);
+  // let [_id, set_id] = useState(() => {
+  //   let result = localStorage.getItem("_id");
+  //   if (result != null) {
+  //     return JSON.parse(result);
+  //   } else {
+  //     return [];
+  //   }
+  // });
 
-  const [liveAstrologer, setLiveAstrologer] = useState([]);
-  const getData = () => {
-    axios
-      .get("http://103.104.74.215:3012/api/user/astrologer_live_list")
-      .then((res) => setLiveAstrologer(res.data.data));
-  };
+  // const [liveAstrologer, setLiveAstrologer] = useState([]);
+  // const getData = () => {
+  //   axios
+  //     .get("http://103.104.74.215:3012/api/user/astrologer_live_list")
+  //     .then((res) => setLiveAstrologer(res.data.data));
+  // };
 
-  const postData = () => {
-    const item = {
-      user_id: _id,
-    };
-    axios.
-      get("http://103.104.74.215:3012/api/user/get_astrologer_list/")
-      // .post("http://103.104.74.215:3012/api/user/astrologer_list/", item)
-      // http://103.104.74.215:3012/api/user/get_astrologer_list method - get
-      .then((res) => {
-        setList(res.data.data);
-      });
-  };
-  const [loader, setLoader] = useState(false);
+  // const postData = () => {
+  //   const item = {
+  //     user_id: _id,
+  //   };
+  //   axios.
+  //     get("http://103.104.74.215:3012/api/user/get_astrologer_list/")
+      
+  //     .then((res) => {
+  //       setList(res.data.data);
+  //     });
+  // };
+  // const [loader, setLoader] = useState(false);
 
-  const [walletAmnt, setWalletAmnt] = useState([]);
-  useEffect(() => {
-    postRech();
-  }, []);
-  const postRech = () => {
-    const item = {
-      user_id: _id,
-    };
-    axios
-      .post("http://103.104.74.215:3012/api/user/get_wallet_user", item)
-      .then((res) => setWalletAmnt(res.data.data.ammount));
-  };
+  // const [walletAmnt, setWalletAmnt] = useState([]);
+  // useEffect(() => {
+  //   postRech();
+  // }, []);
+  // const postRech = () => {
+  //   const item = {
+  //     user_id: _id,
+  //   };
+  //   axios
+  //     .post("http://103.104.74.215:3012/api/user/get_wallet_user", item)
+  //     .then((res) => setWalletAmnt(res.data.data.ammount));
+  // };
 
 
   return (
@@ -443,238 +442,11 @@ const Tarot_content = () => {
 
 
 
-      <section class="order-detail">
-        <div class="container-fluid-lg">
-          <div class="row g-sm-4 g-3">
-            {/* <!-- Live session start --> */}
-
-            <div class="col-xxl-4 col-xl-12 col-lg-6">
-              <div class="title title-flex">
-                <div>
-                  <h2>Online Astrologers </h2>
-                  <h4> Astrologers are Online</h4>
-                </div>
-                <div class="timing-box">
-                  <Link to="/AstrologersList">
-                    <img 
-                      src="../assets/images/veg-3/category/live_right_arrow.png"
-                      class="img-fluid"
-                      alt=""
-                      style={{
-                        height: "40px",
-                        width: "40px",
-                        marginRight: "20px",
-                      }}
-                    />
-                  </Link>
-                </div>
-              </div>
-              <div class="row g-sm-4 g-3">
-                {" "}
-                {list?.slice(0, 4).map((i) => {
-                  return (
-                    <div
-                      class="col-xl-4 col-sm-4"
-                      style={{ display: "flex", flexDirection: "row" }}
-                    >
-                      <div class="seller-grid-box seller-grid-box-1">
-                        <div class="grid-image">
-                          <div class="image">
-                            <img onClick={() => {
-                              localStorage.setItem("AstroData", JSON.stringify(i));
-                              navigate("/AstrologerDetail");
-                            }}
-                              src={
-                                "http://103.104.74.215:3012/uploads/" +
-                                i?.profile_pic
-                              }
-                              class="img-fluid"
-                              alt=""
-                              style={{
-                                height: "60px ",
-                                width: "60px",
-                                borderRadius: "100%",
-                              }}
-                            />
-
-                            <button
-                              onClick={() => {
-                                localStorage.setItem("AstroData", JSON.stringify(i));
-                                navigate("/AstrologerDetail");
-                              }}
-                              class="nav-item"
-                              style={{
-                                borderRadius: "15px",
-                                width: "60px",
-                                height: "30px",
-                                borderColor: "#f5b60a",
-                                boxShadow: "5px",
-                              }}
-                            >
-                              {i.rating ? i.rating : "0"}
-                              <li>
-                                <i
-                                  style={{ width: "13px" }}
-                                  class="fa fa-star-o"
-                                  aria-hidden="true"
-                                ></i>
-                              </li>
-                            </button>
-                          </div>
-
-                          <div class="contain-name" onClick={() => {
-                              localStorage.setItem("AstroData", JSON.stringify(i));
-                              navigate("/AstrologerDetail");
-                            }}>
-                            <div>
-                              <h4>{i.name}</h4>
-
-                              <div class="since-number">
-                                <h6>{i.language}</h6>
-                              </div>
-
-                              <div class="since-number">
-                                <h6>{i.role}</h6>
-                              </div>
-                            </div>
-                            {/* <!--   <label class="product-label">380 Products</label> --> */}
-                          </div>
-                        </div>
-
-                        <br />
-
-                        <div
-                          class="grid-contain"
-                          style={{ width: "100%", paddingBottom: "20px" }}
-                        >
-                          <div
-                            class="seller-contact-details"
-                            style={{ width: "60%", float: "left" }}
-                          >
-                            {i.experiance_year > "0" ? (
-                              <div class="saller-contact">
-                                <div class="seller-icon">
-                                  <i class="fa-solid fa-map-pin"></i>
-                                </div>
-
-                                <div class="contact-detail">
-                                  <h5>{i.experiance_year} Years</h5>
-                                </div>
-                              </div>
-                            ) : null}
-
-                            <div class="saller-contact">
-                              <div class="seller-icon">
-                                <i class="fa-solid fa-phone"></i>
-                              </div>
-
-                              <div class="contact-detail">
-                                <h5>
-                                  {" "}
-                                  ₹ {i.video_rate ? i.video_rate : "0"}
-                                  /Min
-                                </h5>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div
-                            class="seller-contact-details"
-                            style={{ width: "40%", float: "right" }}
-                          >
-                            <div class="saller-contact">
-                              {/*<Link to="/videoCall">*/}
-                                {i.call_status === "1" ? (
-                                  <img
-                                  onClick={() => {
-                                    {
-                                      walletAmnt > i.video_rate
-                                        ? navigate("/videoCall")
-                                        : alert(
-                                            "You have Insufficient balance"
-                                          );
-                                    }
-
-                                      localStorage.setItem(
-                                        "vcdata",
-                                        JSON.stringify(i)
-                                      );
-                                       {/*navigate("/videoCall");*/}
-                                    }}
-                                    src="../assets/images/veg-3/category/phone.png"
-                                    class="img-fluid"
-                                    alt=""
-                                    style={{ height: "25px" }}
-                                  />
-                                ) : (
-                                  <img
-                                    src="../assets/images/veg-3/category/calling.png"
-                                    class="img-fluid"
-                                    alt=""
-                                    style={{ height: "25px", background:'#d99f46', borderRadius:'50px' }}
-                                  />
-                                )}
-                              {/*</Link>*/}
-
-                              {/*<Link to="/chatform">*/}
-                                <img
-                                  onClick={() => {
-                                    {
-                                      walletAmnt > i.chat_rate
-                                        ? navigate("/ChatForm")
-                                        : alert(
-                                            "You have Insufficient balance"
-                                          );
-                                    }
-
-                                    localStorage.setItem(
-                                      "chatdata",
-                                      JSON.stringify(i)
-                                    );
-                                    
-                                  }}
-                                  src="../assets/images/veg-3/category/chat.png"
-                                  class="img-fluid"
-                                  alt=""
-                                  style={{ height: "25px", marginLeft: "10px" }}
-                                />
-                              {/*</Link>*/}
-                            </div>
- 
-                            <div class="saller-contact">
-                              <div class="contact-detail">
-                                {i.call_status === "1" ? (
-                                  <h6> Call</h6>
-                                ) : (
-                                  <h6> Off</h6>
-                                )}
-                              </div>
-
-                              <div
-                                class="contact-detail"
-                                style={{ marginLeft: "10px" }}
-                              >
-                                <h6> Chat</h6>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <br />
-                        <br />
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-      </div>
-        </div>
-      </section>
+      
 
 
 
-      {/* <OnlineAustology /> */}
+     
       {/* <!-- Category Section Start --> */}
 
       <section>

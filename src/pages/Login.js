@@ -26,15 +26,15 @@ function Login() {
       mobile_no
     );
     setBtn(true);
-    console.log(result.data.data);
+
     if (result.data.data) {
-      console.log(result.data.data[0].otp);
-      console.log(result.data.data[0]._id);
+      
       toast("otp sent successfully");
       toast(result.data.data[0].otp);
       let _id = result.data.data[0]._id;
       setVerifyOtp({ ...verifyOtp, _id });
-      localStorage.setItem("_id", JSON.stringify(_id));
+       localStorage.setItem("_id", JSON.stringify(_id));
+      localStorage.setItem("iddofuser",_id)
     }
   };
 
@@ -52,17 +52,17 @@ function Login() {
   let submitOtpHandle = (event) => {
     event.preventDefault();
 
-    console.log(verifyOtp);
+    
     axios
       .post(`http://103.104.74.215:3012/api/user/verify_otp`, verifyOtp)
       .then((res) => {
-        console.log(res);
+
         if (res.data.result) {
-          console.log(verifyOtp);
+          
           toast.success(res.data.msg);
 
           setTimeout(() => {
-            navigate("/");
+            navigate("/Signup");
           }, 2000);
         } else {
           toast.error("invalid otp");
@@ -73,7 +73,7 @@ function Login() {
     axios
       .patch(`http://103.104.74.215:3012/api/user/resend_otp/`, mobile_no)
       .then((res) => {
-        console.log(res);
+        
 
         if (res.data.result) {
           toast.success(res.data.msg);
@@ -143,7 +143,7 @@ function Login() {
               <div className="d-flex align-items-center justify-content-center h-100">
                 <div className="log-in-box">
                   <div className="log-in-title">
-                    <h3>Welcome To Nakshatra Talk</h3>
+                    <h3>Welcome To Nakshatra Talks</h3>
                     {btn === true ? (
                       <div>
                         <div className="log-in-title">
@@ -200,7 +200,7 @@ function Login() {
                       <div>
                         <p>
                           Please enter your mobile number to Login/Sign Up on
-                          Nakshatra Talk
+                          Nakshatra Talks
                         </p>
 
                         <div className="col-12">

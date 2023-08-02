@@ -4,18 +4,18 @@ import Footer from "./Footer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function AstrologerDetail() {
-  const data = localStorage.getItem("AstroData");
-  const parse = JSON.parse(data);
+  const dataa = localStorage.getItem("AstroData");
+  const parse = JSON.parse(dataa);
 
   const [details, setDetails] = useState(parse);
 
   const navigate = useNavigate();
-
+  const [errorMessage, setErrorMessage] = useState('');
   useEffect(() => {
     postData();
   }, []);
   const [list, setList] = useState([]);
-  //console.log("sadasd",list)
+
   let [_id, set_id] = useState(() => {
     let result = localStorage.getItem("_id");
 
@@ -27,66 +27,116 @@ function AstrologerDetail() {
   });
 
   const postData = () => {
+
+    
     const item = {
       _id: details?._id,
     };
     axios
-      .post("http://103.104.74.215:3012/api/user/astrologer_list_details/", item)
+      .post(
+        "http://103.104.74.215:3012/api/user/astrologer_list_details/",
+        item
+      )
       .then((res) => {
         setList(res.data.data);
       });
   };
 
-  const [walletAmnt, setWalletAmnt] = useState([]);
+  useEffect(() => {}, []);
+
+  useEffect(() => {
+    postData();
+  }, []);
+
+  const parseee = localStorage.getItem("vcdata");
+
+  const parsed = JSON.parse(parseee);
+  const [data, setData] = useState(parsed);
+
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount((prevCount) => prevCount + 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const [walletAmnt, setWalletAmnt] = useState();
+
+  let [finltime, setfinltime] = useState();
+  useEffect(() => {
+    let totalminute = walletAmnt / data?.video_rate;
+    let finl_time = Math.floor(totalminute);
+
+    setfinltime(finl_time);
+  }, [walletAmnt]);
+
   useEffect(() => {
     postRech();
-  }, []);
+  }, [, walletAmnt, data?.video_rate]);
+
   const postRech = () => {
+    const iddofuser=localStorage.getItem("iddofuser")
     const item = {
-      user_id: _id,
+      // user_id: _id,
+
+      user_id :iddofuser
     };
     axios
       .post("http://103.104.74.215:3012/api/user/get_wallet_user", item)
       .then((res) => setWalletAmnt(res.data.data.ammount));
   };
 
+  const tokenGen = () => {
+    const iddofuser=localStorage.getItem("iddofuser")
+    const userdata = {
+       user_id: _id,
+      //user_id: iddofuser,
+      astrologer_id: data._id,
+      channel_name: "test",
+      //final_time: "2",
 
+      final_time: finltime.toString(),
+    };
+    localStorage.setItem("totalminute", finltime);
 
+    axios
+      .post(
+        "http://103.104.74.215:3012/api/user/generate_agrora_token_calling",
+        userdata
+      )
+      .then((res) => {
+       
+        if (res.data.result) {
+          localStorage.setItem("videoatro_token", res.data.token);
+          setTimeout(() => {
+             navigate(`/VideoCall`);
+          }, 1000);
+        } else {
+          setErrorMessage("Astrologer is already live");
+        }
+      })
+      .catch((error) => {
+        console.error("Error generating token:", error);
+      });
+  };
 
   return (
-
     <div>
-      <Header1/>
+      <Header1 />
 
-      {/* <div class="fullpage-loader">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-</div>  */}
+      
 
       <section class="breadscrumb-section pt-0">
         <div class="container-fluid-lg">
           <div class="row">
             <div class="col-12">
               <div class="breadscrumb-contain">
-                <h2>Chat with Astrologer</h2>
-                <nav>
-                  <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item">
-                      <a href="index-2.html">
-                        <i class="fa-solid fa-house"></i>
-                      </a>
-                    </li>
-
-                    <li class="breadcrumb-item active">Chat with Astrologer</li>
-                  </ol>
-                </nav>
+                <h2>Talk with Astrologer</h2>
+                
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -143,7 +193,6 @@ function AstrologerDetail() {
 
                     <br />
 
-                   
                     <div
                       style={{
                         width: "100%",
@@ -153,22 +202,9 @@ function AstrologerDetail() {
                         flexWrap: "wrap",
                         justifyContent: "space-evenly",
                       }}
-                    > 
-                      <div onClick={() => {
-                                {
-                                  walletAmnt > list?.video_rate
-                                    ? navigate("/videoCall")
-                                    : alert(
-                                        "You have Insufficient balance"
-                                      );
-                                }
-
-                                  localStorage.setItem(
-                                    "vcdata",
-                                    JSON.stringify(list)
-                                  );
-                                   
-                                }} 
+                    >
+                      <div
+                        onClick={() => { { walletAmnt > list.video_rate ? (tokenGen()) : alert("You have Insufficient balance"); } localStorage.setItem("vcdata", JSON.stringify(list)); {/*navigate("/videoCall");*/ } }}
                         style={{
                           width: "45%",
                           border: "1px solid #ffcc00",
@@ -177,61 +213,53 @@ function AstrologerDetail() {
                           flexDirection: "row",
                           alignItems: "center",
                           borderRadius: 50,
-                          padding:5
+                          padding: 5,
                         }}
                       >
-                        
-                        <h4 style={{color:"white"}}>Calling</h4>
-                    
-                   
-                        <img  
+                        <h4 style={{ color: "white" }}>Calling</h4>
+
+                        <img
                           src="../assets/images/veg-3/category/calling.png"
                           class="img-fluid"
                           alt=""
                           style={{ height: 35 }}
                         />
                       </div>
-                     
-                      <div  onClick={() => {
-                                {
-                                  walletAmnt > list?.chat_rate
-                                    ? navigate("/ChatForm")
-                                    : alert(
-                                        "You have Insufficient balance"
-                                      );
-                                }
 
-                                localStorage.setItem(
-                                  "chatdata",
-                                  JSON.stringify(list)
-                                );
-                                
-                              }}
-                      style={{
-                        width: "45%",
-                        border: "1px solid #ffcc00",
-                        display: "flex",
-                        justifyContent: "space-between",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        borderRadius: 50,
-                        padding:5
-                      }}
+                      <div
+                        onClick={() => {
+                          {
+                            walletAmnt > list.chat_rate
+                              ? navigate("/ChatForm")
+                              : alert("You have Insufficient balance");
+                          }
+                          localStorage.setItem(
+                            "chatdata",
+                            JSON.stringify(list)
+                          );
+                          {
+                          }
+                        }}
+                        style={{
+                          width: "45%",
+                          border: "1px solid #ffcc00",
+                          display: "flex",
+                          justifyContent: "space-between",
+                          flexDirection: "row",
+                          alignItems: "center",
+                          borderRadius: 50,
+                          padding: 5,
+                        }}
                       >
-                        <h4 style={{color:"white"}}>Chat</h4>
-                        <img 
+                        <h4 style={{ color: "white" }}>Chat</h4>
+                        <img
                           src="../assets/images/veg-3/category/chat.png"
                           class="img-fluid"
                           alt=""
                           style={{ height: 35, marginLeft: 10 }}
                         />
                       </div>
-                      
                     </div>
-
-
-
-  
                   </div>
                 </div>
               </div>
@@ -693,389 +721,7 @@ function AstrologerDetail() {
         </div>
       </section>
 
-      <footer class="section-t-space footer-section-2 footer-color-3">
-        <div class="container-fluid-lg">
-          <div class="main-footer">
-            <div class="row">
-              <div class="col-lg-3 col-md-4 col-6">
-                <a href="index-2.html" class="foot-logo theme-logo">
-                  <img
-                    src="../assets/images/logo/222.png"
-                    class="img-fluid blur-up lazyload"
-                    alt=""
-                  />
-                </a>
-                <p class="information-text information-text-2">
-                  it is a long established fact that a reader will be distracted
-                  by the readable content.
-                </p>
-                <ul class="social-icon">
-                  <li class="light-bg">
-                    <a
-                      href="https://www.facebook.com/"
-                      class="footer-link-color"
-                    >
-                      <i class="fab fa-facebook-f"></i>
-                    </a>
-                  </li>
-                  <li class="light-bg">
-                    <a
-                      href="https://accounts.google.com/signin/v2/identifier?flowName=GlifWebSignIn&amp;flowEntry=ServiceLogin"
-                      class="footer-link-color"
-                    >
-                      <i class="fab fa-google"></i>
-                    </a>
-                  </li>
-                  <li class="light-bg">
-                    <a
-                      href="https://twitter.com/i/flow/login"
-                      class="footer-link-color"
-                    >
-                      <i class="fab fa-twitter"></i>
-                    </a>
-                  </li>
-                  <li class="light-bg">
-                    <a
-                      href="https://www.instagram.com/"
-                      class="footer-link-color"
-                    >
-                      <i class="fab fa-instagram"></i>
-                    </a>
-                  </li>
-                  <li class="light-bg">
-                    <a
-                      href="https://in.pinterest.com/"
-                      class="footer-link-color"
-                    >
-                      <i class="fab fa-pinterest-p"></i>
-                    </a>
-                  </li>
-                </ul>
-
-                <div class="footer-title">
-                  <h4 class="text-white">Contact Us</h4>
-                </div>
-                <ul class="footer-address footer-contact">
-                  <li>
-                    <a href="javascript:void(0)" class="light-text">
-                      <div class="inform-box flex-start-box">
-                        <i data-feather="mail"></i>
-                        <p>Email : Contact@Nakshatratalk.com</p>
-                      </div>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="javascript:void(0)" class="light-text">
-                      <div class="inform-box">
-                        <i data-feather="phone"></i>
-                        <p>Call us: </p>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-
-                <div class="footer-title" style={{ paddingTop: 20 }}>
-                  <h4 class="text-white">Corporate Policy</h4>
-                </div>
-                <ul class="footer-list footer-contact footer-list-light">
-                  <li>
-                    <a href="privacy.html" class="light-text">
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li>
-                    <a href="term_condition.html" class="light-text">
-                      Terms Of Use
-                    </a>
-                  </li>
-                  <li>
-                    <a href="term_condition.html" class="light-text">
-                      Refund & Cancellation
-                    </a>
-                  </li>
-                  <li>
-                    <a href="term_condition.html" class="light-text">
-                      Disclaimer
-                    </a>
-                  </li>
-                  <li>
-                    <a href="term_condition.html" class="light-text">
-                      Cookies Policy
-                    </a>
-                  </li>
-                </ul>
-
-                <div class="footer-title" style={{ paddingTop: 20 }}>
-                  <h4 class="text-white">Secure</h4>
-                </div>
-                <ul class="footer-list footer-list-light footer-contact">
-                  <li>
-                    <a href="#" class="light-text">
-                      Verified Best Astrologers
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="light-text">
-                      Secure Payments
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="light-text">
-                      Privacy & Confidentiality
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="col-lg-3 col-md-4 col-6">
-                <div class="footer-title">
-                  <h4 class="text-white">Auspicious Muhurat</h4>
-                </div>
-                <ul class="footer-list footer-contact footer-list-light">
-                  <li>
-                    <a href="#" class="light-text">
-                      Marriage{" "}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="muhurat.html" class="light-text">
-                      Bhoomi Pujan
-                    </a>
-                  </li>
-                  <li>
-                    <a href="muhurat.html" class="light-text">
-                      Griha Pravesh
-                    </a>
-                  </li>
-                  <li>
-                    <a href="muhurat.html" class="light-text">
-                      Gold Purchase
-                    </a>
-                  </li>
-                  <li>
-                    <a href="muhurat.html" class="light-text">
-                      Mundan
-                    </a>
-                  </li>
-                  <li>
-                    <a href="muhurat.html" class="light-text">
-                      Naamkaran
-                    </a>
-                  </li>
-                  <li>
-                    <a href="muhurat.html" class="light-text">
-                      Vehicle Purchase
-                    </a>
-                  </li>
-                </ul>
-
-                <div class="footer-title" style={{ paddingTop: 20 }}>
-                  <h4 class="text-white">Shopping</h4>
-                </div>
-                <ul class="footer-list footer-contact footer-list-light">
-                  <li>
-                    <a href="pooja.html" class="light-text">
-                      Nakshatra Pooja{" "}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="light-text">
-                      Nakshatra Mart
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="col-lg-3 col-md-4 col-6">
-                <div class="footer-title">
-                  <h4 class="text-white">Important Links</h4>
-                </div>
-                <ul class="footer-list footer-list-light footer-contact">
-                  <li>
-                    <a href="kundli.html" class="light-text">
-                      Kundli
-                    </a>
-                  </li>
-                  <li>
-                    <a href="kundli_milan.html" class="light-text">
-                      Kundli Matching
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="light-text">
-                      Doshas in Kundli
-                    </a>
-                  </li>
-                  <li>
-                    <a href="panchang.html" class="light-text">
-                      Panchang
-                    </a>
-                  </li>
-                  <li>
-                    <a href="shop-top-filter1.html" class="light-text">
-                      Call Astrologer
-                    </a>
-                  </li>
-                  <li>
-                    <a href="shop-top-filter1.html" class="light-text">
-                      Chat Astrologer
-                    </a>
-                  </li>
-                  <li>
-                    <a href="tarot.html" class="light-text">
-                      Tarot
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="light-text">
-                      Palmistry
-                    </a>
-                  </li>
-                  <li>
-                    <a href="blog-detail.html" class="light-text">
-                      Nakshatra Blog
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="light-text">
-                      Nakshatra Reviews
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="col-lg-3 col-md-4 col-6">
-                <div class="footer-title">
-                  <h4 class="text-white">Festivals</h4>
-                </div>
-                <ul class="footer-list footer-list-light footer-contact">
-                  <li>
-                    <a href="#" class="light-text">
-                      Holi
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="light-text">
-                      Chaitra Navratri
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="light-text">
-                      Raksha Bandhan
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="light-text">
-                      Sharadiya Navratri
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="light-text">
-                      Dussehra
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="light-text">
-                      Diwali
-                    </a>
-                  </li>
-                </ul>
-
-                <div class="footer-title" style={{ paddingTop: 20 }}>
-                  <h4 class="text-white">For Astrologer</h4>
-                </div>
-                <ul class="footer-list footer-list-light footer-contact">
-                  <li>
-                    <a
-                      href="C:/Users/Dell/Desktop/Nakshatratalk-astro/pages/examples/sign-in.html"
-                      class="light-text"
-                    >
-                      Astrologer Login
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="C:/Users/Dell/Desktop/Nakshatratalk-astro/pages/examples/sign-up.html"
-                      class="light-text"
-                    >
-                      Astrologer Registration
-                    </a>
-                  </li>
-                </ul>
-
-                <div class="footer-title" style={{ paddingTop: 20 }}>
-                  <h4 class="text-white">Download Our App</h4>
-                </div>
-                <ul>
-                  <li>
-                    <a href="#">
-                      <img
-                        src="../assets/images/app/android.png"
-                        style={{ height: 70, width: 200 }}
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img
-                        src="../assets/images/app/ios.png"
-                        style={{ height: 70, width: 200 }}
-                      />
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-6"></div>
-          </div>
-        </div>
-
-        <div class="sub-footer sub-footer-lite  section-t-space">
-          <div class="left-footer">
-            <p class="light-text">2022 Copyright By NakshatraTalk</p>
-          </div>
-
-          <ul class="payment-box">
-            <li>
-              <img
-                src="../assets/images/icon/paymant/visa.png"
-                class="blur-up lazyload"
-                alt=""
-              />
-            </li>
-            <li>
-              <img
-                src="../assets/images/icon/paymant/discover.png"
-                alt=""
-                class="blur-up lazyload"
-              />
-            </li>
-            <li>
-              <img
-                src="../assets/images/icon/paymant/american.png"
-                alt=""
-                class="blur-up lazyload"
-              />
-            </li>
-            <li>
-              <img
-                src="../assets/images/icon/paymant/master-card.png"
-                alt=""
-                class="blur-up lazyload"
-              />
-            </li>
-            <li>
-              <img
-                src="../assets/images/icon/paymant/giro-pay.png"
-                alt=""
-                class="blur-up lazyload"
-              />
-            </li>
-          </ul>
-        </div>
-      </footer>
+     
 
       <div
         class="modal location-modal fade theme-modal"

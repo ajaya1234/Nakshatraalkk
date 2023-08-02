@@ -376,7 +376,7 @@ function Selfkundali() {
                             <b>Ayanamsha</b>
                           </td>
                           <td>
-                            <b>{responseData?.ayanamsha.toFixed(2)}</b>
+                            <b>{responseData?.ayanamsha?.toFixed(2)}</b>
                           </td>
                         </tr>
                       </table>
@@ -440,7 +440,7 @@ function Selfkundali() {
                             <b>{responseData5[0]?.type}</b>
                           </td>
                           <td>
-                            <b>{responseData5[0]?.degree.toFixed(2)}</b>
+                            <b>{responseData5[0]?.degree?.toFixed(2)}</b>
                           </td>
                         </tr>
 
@@ -449,7 +449,7 @@ function Selfkundali() {
                             <b>{responseData5[1]?.type}</b>
                           </td>
                           <td>
-                            <b>{responseData5[1]?.degree.toFixed(2)}</b>
+                            <b>{responseData5[1]?.degree?.toFixed(2)}</b>
                           </td>
                         </tr>
 
@@ -458,7 +458,7 @@ function Selfkundali() {
                             <b>{responseData5[2]?.type}</b>
                           </td>
                           <td>
-                            <b>{responseData5[2]?.degree.toFixed(2)}</b>
+                            <b>{responseData5[2]?.degree?.toFixed(2)}</b>
                           </td>
                         </tr>
 
@@ -467,7 +467,7 @@ function Selfkundali() {
                             <b>{responseData5[3]?.type}</b>
                           </td>
                           <td>
-                            <b>{responseData5[3]?.degree.toFixed(2)}</b>
+                            <b>{responseData5[3]?.degree?.toFixed(2)}</b>
                           </td>
                         </tr>
 
@@ -476,7 +476,7 @@ function Selfkundali() {
                             <b>{responseData5[4]?.type}</b>
                           </td>
                           <td>
-                            <b>{responseData5[4]?.degree.toFixed(2)}</b>
+                            <b>{responseData5[4]?.degree?.toFixed(2)}</b>
                           </td>
                         </tr>
 
@@ -485,7 +485,7 @@ function Selfkundali() {
                             <b>{responseData5[5]?.type}</b>
                           </td>
                           <td>
-                            <b>{responseData5[5]?.degree.toFixed(2)}</b>
+                            <b>{responseData5[5]?.degree?.toFixed(2)}</b>
                           </td>
                         </tr>
 
@@ -494,7 +494,7 @@ function Selfkundali() {
                             <b>{responseData5[6]?.type}</b>
                           </td>
                           <td>
-                            <b>{responseData5[6]?.degree.toFixed(2)}</b>
+                            <b>{responseData5[6]?.degree?.toFixed(2)}</b>
                           </td>
                         </tr>
                       </table>
@@ -779,7 +779,7 @@ function Selfkundali() {
                       <b>{responseData3[0]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[0]?.normDegree.toFixed(2)}</b>
+                      <b>{responseData3[0]?.normDegree?.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[0]?.nakshatra}</b>
@@ -806,7 +806,7 @@ function Selfkundali() {
                       <b>{responseData3[1]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[1]?.normDegree.toFixed(2)}</b>
+                      <b>{responseData3[1]?.normDegree?.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[1]?.nakshatra}</b>
@@ -833,7 +833,7 @@ function Selfkundali() {
                       <b>{responseData3[2]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[2]?.normDegree.toFixed(2)}</b>
+                      <b>{responseData3[2]?.normDegree?.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[2]?.nakshatra}</b>
@@ -860,7 +860,7 @@ function Selfkundali() {
                       <b>{responseData3[3]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[3]?.normDegree.toFixed(2)}</b>
+                      <b>{responseData3[3]?.normDegree?.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[3]?.nakshatra}</b>
@@ -887,7 +887,7 @@ function Selfkundali() {
                       <b>{responseData3[4]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[4]?.normDegree.toFixed(2)}</b>
+                      <b>{responseData3[4]?.normDegree?.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[4]?.nakshatra}</b>
@@ -914,7 +914,7 @@ function Selfkundali() {
                       <b>{responseData3[5]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[5]?.normDegree.toFixed(2)}</b>
+                      <b>{responseData3[5]?.normDegree?.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[5]?.nakshatra}</b>
@@ -941,7 +941,7 @@ function Selfkundali() {
                       <b>{responseData3[6]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[6]?.normDegree.toFixed(2)}</b>
+                      <b>{responseData3[6]?.normDegree?.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[6]?.nakshatra}</b>
@@ -968,7 +968,7 @@ function Selfkundali() {
                       <b>{responseData3[7]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[7]?.normDegree.toFixed(2)}</b>
+                      <b>{responseData3[7]?.normDegree?.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[7]?.nakshatra}</b>
@@ -995,7 +995,7 @@ function Selfkundali() {
                       <b>{responseData3[8]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[8]?.normDegree.toFixed(2)}</b>
+                      <b>{responseData3[8]?.normDegree?.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[8]?.nakshatra}</b>
@@ -1022,7 +1022,7 @@ function Selfkundali() {
                       <b>{responseData3[9]?.signLord}</b>
                     </td>
                     <td>
-                      <b>{responseData3[9]?.normDegree.toFixed(2)}</b>
+                      <b>{responseData3[9]?.normDegree?.toFixed(2)}</b>
                     </td>
                     <td>
                       <b>{responseData3[9]?.nakshatra}</b>

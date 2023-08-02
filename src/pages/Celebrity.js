@@ -12,7 +12,7 @@ const Celebrity = () => {
   }, []);
 
   const [celebrity, setCelebrity] = useState([]);
-  console.log("sadasdaaararararararararararararar",celebrity)
+
   const getData = () => {
     axios.get("http://103.104.74.215:3012/api/user/celebrity_list").then((res) => {
       

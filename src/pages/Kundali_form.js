@@ -152,7 +152,7 @@ const Kundali_form = () => {
       .then((response) => {
         setResponseData(response.data);
         localStorage.setItem("responseData", JSON.stringify(response.data));
-console.log("responseesadsad",response.data)
+
 navigate("/selfkundali");
       })
       .catch((error) => {
