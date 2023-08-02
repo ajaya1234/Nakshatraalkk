@@ -22,19 +22,19 @@ function Chatastrologer() {
     }
   });
 
-  const parse = localStorage.getItem("vcdata");
+  // const parse = localStorage.getItem("vcdata");
 
-  const parsed = JSON.parse(parse);
-  const [data, setData] = useState(parsed);
+  //  const parsed = JSON.parse(parse);
+  //  const [data, setData] = useState(parsed);
 
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount((prevCount) => prevCount + 1);
-    }, 1000);
+  // const [count, setCount] = useState(0);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCount((prevCount) => prevCount + 1);
+  //   }, 1000);
 
-    return () => clearInterval(interval);
-  }, []);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   const postData = () => {
     const iddofuser=localStorage.getItem("iddofuser")
@@ -48,11 +48,11 @@ function Chatastrologer() {
       });
   };
 
-  const [walletAmnt, setWalletAmnt] = useState();
-
+   const [walletAmnt, setWalletAmnt] = useState();
+const rateofchaing= localStorage.getItem("chatrate")
   let [finltime, setfinltime] = useState();
   useEffect(() => {
-    let totalminute = walletAmnt / data?.video_rate;
+    let totalminute = walletAmnt / rateofchaing;
     let finl_time = Math.floor(totalminute);
 
     setfinltime(finl_time);
@@ -60,7 +60,7 @@ function Chatastrologer() {
 
   useEffect(() => {
     postRech();
-  }, [, walletAmnt, data?.video_rate]);
+  }, [, walletAmnt, rateofchaing]);
 
   const postRech = () => {
     const iddofuser=localStorage.getItem("iddofuser")
@@ -221,6 +221,7 @@ function Chatastrologer() {
                                     "chatdata",
                                     JSON.stringify(i)
                                   );
+                                  localStorage.setItem("chatiddd", i._id); localStorage.setItem("chatrate", i.chat_rate);
                                   {
                                   }
                                 }}

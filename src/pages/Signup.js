@@ -191,7 +191,7 @@ function Signup() {
           </div>
         </div>
         <div className="col-12">
-          <button type="submit"  class="btn btn-md bg-dark cart-button text-white w-80" className="btn btn-solid">
+          <button type="submit"  class="btn btn-md bg-dark cart-button text-white w-80">
             Submit
           </button>
         </div>

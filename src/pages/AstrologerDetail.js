@@ -88,39 +88,74 @@ function AstrologerDetail() {
       .then((res) => setWalletAmnt(res.data.data.ammount));
   };
 
+
   const tokenGen = () => {
-    const iddofuser=localStorage.getItem("iddofuser")
+    const assadas = localStorage.getItem("vcidddata")
+    
     const userdata = {
-       user_id: _id,
-      //user_id: iddofuser,
-      astrologer_id: data._id,
+      user_id: _id,
+      astrologer_id: assadas,
+      //astrologer_id: data?._id,
       channel_name: "test",
       //final_time: "2",
-
+      
       final_time: finltime.toString(),
-    };
-    localStorage.setItem("totalminute", finltime);
 
+    };
+    console.log("userdayaaaaa",userdata)
+    localStorage.setItem("totalminute", finltime)
+    // console.log("user sdasdsdasdsd", userdata)
     axios
-      .post(
-        "http://103.104.74.215:3012/api/user/generate_agrora_token_calling",
-        userdata
-      )
+      .post('http://103.104.74.215:3012/api/user/generate_agrora_token_calling', userdata)
       .then((res) => {
-       
+        console.log(" dataaa", res)
         if (res.data.result) {
-          localStorage.setItem("videoatro_token", res.data.token);
+          localStorage.setItem('videoatro_token', res.data.token);
           setTimeout(() => {
-             navigate(`/VideoCall`);
+            navigate(`/VideoCall`)
           }, 1000);
-        } else {
-          setErrorMessage("Astrologer is already live");
         }
-      })
-      .catch((error) => {
-        console.error("Error generating token:", error);
       });
-  };
+  }
+
+
+
+
+
+
+  // const tokenGen = () => {
+  //   const iddofuser=localStorage.getItem("iddofuser")
+  //   const userdata = {
+  //      user_id: _id,
+  //     //user_id: iddofuser,
+  //     astrologer_id: data._id,
+  //     channel_name: "test",
+  //     //final_time: "2",
+
+  //     final_time: finltime.toString(),
+  //   };
+  //   localStorage.setItem("totalminute", finltime);
+
+  //   axios
+  //     .post(
+  //       "http://103.104.74.215:3012/api/user/generate_agrora_token_calling",
+  //       userdata
+  //     )
+  //     .then((res) => {
+       
+  //       if (res.data.result) {
+  //         localStorage.setItem("videoatro_token", res.data.token);
+  //         setTimeout(() => {
+  //            navigate(`/VideoCall`);
+  //         }, 1000);
+  //       } else {
+  //         setErrorMessage("Astrologer is already live");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error generating token:", error);
+  //     });
+  // };
 
   return (
     <div>
@@ -204,7 +239,7 @@ function AstrologerDetail() {
                       }}
                     >
                       <div
-                        onClick={() => { { walletAmnt > list.video_rate ? (tokenGen()) : alert("You have Insufficient balance"); } localStorage.setItem("vcdata", JSON.stringify(list)); {/*navigate("/videoCall");*/ } }}
+                        onClick={() => { { walletAmnt >= list.video_rate ? (tokenGen()) : alert("You have Insufficient balance"); } localStorage.setItem("vcdata", JSON.stringify(list)); localStorage.setItem("vcidddata", list._id); localStorage.setItem("videorate", list.video_rate); {/*navigate("/videoCall");*/ } }}
                         style={{
                           width: "45%",
                           border: "1px solid #ffcc00",

@@ -1,5 +1,3 @@
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import React, { useEffect, useState } from "react";
 
 import Footer from "./Footer";
@@ -8,15 +6,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Header1 from "./Header1";
 
 function AstrologersList() {
-  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     postData();
   }, []);
 
   const [list, setList] = useState([]);
-
-const iddofuser=localStorage.getItem("iddofuser")
 
   let [_id, set_id] = useState(() => {
     let result = localStorage.getItem("_id");
@@ -27,10 +22,15 @@ const iddofuser=localStorage.getItem("iddofuser")
     }
   });
 
-  const parse = localStorage.getItem("vcdata");
-
-  const parsed = JSON.parse(parse);
-  const [data, setData] = useState(parsed);
+  let data;
+  try {
+    const parse = localStorage.getItem("vcdata");
+    data = parse ? JSON.parse(parse) : null;
+  } catch (error) {
+    // Handle the JSON parsing error here
+    console.error("Error parsing JSON data from 'vcdata':", error);
+    data = null;
+  }
 
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -41,10 +41,28 @@ const iddofuser=localStorage.getItem("iddofuser")
     return () => clearInterval(interval);
   }, []);
 
+
+
+  // const parse = localStorage.getItem("vcdata");
+  
+  // const parsed = JSON.parse(parse);
+  // const [data, setData] = useState(parsed);
+
+  // const [count, setCount] = useState(0);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCount((prevCount) => prevCount + 1);
+  //   }, 1000);
+
+  //   return () => clearInterval(interval);
+  // }, []);
+
+
+
+
   const postData = () => {
-    const iddofuser=localStorage.getItem("iddofuser")
     const item = {
-      user_id: iddofuser,
+      user_id: _id,
     };
     axios
       .post("http://103.104.74.215:3012/api/user/astrologer_list/", item)
@@ -54,65 +72,67 @@ const iddofuser=localStorage.getItem("iddofuser")
   };
 
   const [walletAmnt, setWalletAmnt] = useState();
-
-  let [finltime, setfinltime] = useState();
+  
+  let [finltime, setfinltime] = useState()
+  const rateofvideo=localStorage.getItem("videorate")
   useEffect(() => {
-    let totalminute = walletAmnt / data?.video_rate;
-    let finl_time = Math.floor(totalminute);
-
-    setfinltime(finl_time);
-  }, [walletAmnt]);
-
+    
+     let totalminute = walletAmnt / data?.video_rate
+    //let totalminute = walletAmnt / rateofvideo
+    let finl_time = Math.floor(totalminute)
+    //  console.log(finl_time)
+    setfinltime(finl_time)
+  }, [walletAmnt])
+  
   useEffect(() => {
     postRech();
-  }, [, walletAmnt, data?.video_rate]);
+  }, [, walletAmnt, rateofvideo]);
 
   const postRech = () => {
-    const iddofuser=localStorage.getItem("iddofuser")
     const item = {
-      user_id: iddofuser,
+      user_id: _id,
     };
     axios
       .post("http://103.104.74.215:3012/api/user/get_wallet_user", item)
       .then((res) => setWalletAmnt(res.data.data.ammount));
   };
 
+
   const tokenGen = () => {
-    const iddofuser=localStorage.getItem("iddofuser")
+    const assadas = localStorage.getItem("vcidddata")
+    
     const userdata = {
-      user_id: iddofuser,
-      astrologer_id: data._id,
+      user_id: _id,
+      astrologer_id: assadas,
+      //astrologer_id: data?._id,
       channel_name: "test",
       //final_time: "2",
-
+      
       final_time: finltime.toString(),
-    };
-    localStorage.setItem("totalminute", _id);
 
+    };
+    console.log("userdayaaaaa",userdata)
+    localStorage.setItem("totalminute", finltime)
+    // console.log("user sdasdsdasdsd", userdata)
     axios
-      .post(
-        "http://103.104.74.215:3012/api/user/generate_agrora_token_calling",
-        userdata
-      )
+      .post('http://103.104.74.215:3012/api/user/generate_agrora_token_calling', userdata)
       .then((res) => {
-        
+        console.log(" dataaa", res)
         if (res.data.result) {
-          localStorage.setItem("videoatro_token", res.data.token);
+          localStorage.setItem('videoatro_token', res.data.token);
           setTimeout(() => {
-            navigate(`/VideoCall`);
+            navigate(`/VideoCall`)
           }, 1000);
-        } else {
-          setErrorMessage("Astrologer is already live");
         }
-      })
-      .catch((error) => {
-        console.error("Error generating token:", error);
       });
-  };
+  }
+
+
 
   return (
     <div>
       <Header1 />
+
 
       <section class="section-b-space shop-section">
         <div class="container-fluid-lg">
@@ -125,31 +145,32 @@ const iddofuser=localStorage.getItem("iddofuser")
                     data-bs-toggle="collapse"
                     data-bs-target="#collapseExample"
                   >
-                    <Link to="#">
+                    <a href="shop-top-filter1.html">
                       <i class="fa-solid fa-house"></i> Talk With Astrologer
-                    </Link>
-                    {errorMessage && <p>{errorMessage}</p>}
+                    </a>
                   </div>
+
+
                 </div>
               </div>
               <br />
-
+              
               <div class="row g-sm-4 g-3">
                 {" "}
-                {list?.map((i) => {
+               {list?.map((i) => {
                   return (
-                    <div class="col-xl-6 col-sm-6" style={{ width: "25%" }}>
+                    <div
+
+                      class="col-xl-6 col-sm-6"
+                      style={{ width: "25%" }}
+                    >
                       <div class="seller-grid-box seller-grid-box-1">
                         <div class="grid-image">
                           <div class="image">
-                            <img
-                              onClick={() => {
-                                localStorage.setItem(
-                                  "AstroData",
-                                  JSON.stringify(i)
-                                );
-                                navigate("/AstrologerDetail");
-                              }}
+                            <img onClick={() => {
+                              localStorage.setItem("AstroData", JSON.stringify(i));
+                              navigate("/AstrologerDetail");
+                            }}
                               src={
                                 "http://103.104.74.215:3012/uploads/" +
                                 i.profile_pic
@@ -197,6 +218,7 @@ const iddofuser=localStorage.getItem("iddofuser")
                                 <h6>{i.role}</h6>
                               </div>
                             </div>
+
                           </div>
                         </div>
 
@@ -226,10 +248,7 @@ const iddofuser=localStorage.getItem("iddofuser")
                               </div>
 
                               <div class="contact-detail">
-                                <h5>
-                                  {" "}
-                                  ₹ {i.video_rate ? i.video_rate : "0"}/Min
-                                </h5>
+                                <h5> ₹ {i.video_rate ? i.video_rate : "0"}/Min</h5>
                               </div>
                             </div>
                           </div>
@@ -241,22 +260,7 @@ const iddofuser=localStorage.getItem("iddofuser")
                             <div class="saller-contact">
                               {i.call_status === "1" ? (
                                 <img
-                                  onClick={() => {
-                                    {
-                                      walletAmnt > i.video_rate
-                                        ? tokenGen()
-                                        : alert(
-                                            "You have Insufficient balance"
-                                          );
-                                    }
-                                    localStorage.setItem(
-                                      "vcdata",
-                                      JSON.stringify(i)
-                                    );
-                                    {
-                                      /*navigate("/videoCall");*/
-                                    }
-                                  }}
+                                  onClick={() => { { walletAmnt >= i.video_rate ? (tokenGen()) : alert("You have Insufficient balance"); } localStorage.setItem("vcdata", JSON.stringify(i)); localStorage.setItem("vcidddata", i._id); localStorage.setItem("videorate", i.video_rate); {/*navigate("/videoCall");*/ } }}
                                   src="../assets/images/veg-3/category/phone.png"
                                   class="img-fluid"
                                   alt=""
@@ -267,11 +271,7 @@ const iddofuser=localStorage.getItem("iddofuser")
                                   src="../assets/images/veg-3/category/calling.png"
                                   class="img-fluid"
                                   alt=""
-                                  style={{
-                                    height: "25px",
-                                    background: "#d99f46",
-                                    borderRadius: "50px",
-                                  }}
+                                  style={{ height: "25px", background: '#d99f46', borderRadius: '50px' }}
                                 />
                               )}
 

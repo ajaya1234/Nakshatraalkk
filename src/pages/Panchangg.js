@@ -18,11 +18,11 @@ function Panchangg() {
     const apiKey = "46046d17a932151518470e3a08a1665a";
 
     const data = {
-      day: data2.day,
-        month: data2.month,
-        year: data2.year,
-        hour: data2.hour,
-        min: data2.min,
+      day: data2?.day,
+        month: data2?.month,
+        year: data2?.year,
+        hour: data2?.hour,
+        min: data2?.min,
         lat: 19.132,
         lon: 72.342,
         tzone: 5.5,

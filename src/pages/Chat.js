@@ -13,8 +13,9 @@ const Chat = () => {
   let [total_time, settotal_time] = useState('')
 
   let [finltime, setfinltime] = useState();
+  const rateofchaing= localStorage.getItem("chatrate")
   useEffect(() => {
-    let totalminute = walletAmnt / data.video_rate;
+    let totalminute = walletAmnt / rateofchaing;
     let finl_time = Math.floor(totalminute);
 
     setfinltime(finl_time);
@@ -22,7 +23,7 @@ const Chat = () => {
 
   useEffect(() => {
     postRech();
-  }, [, walletAmnt, data.video_rate]);
+  }, [, walletAmnt, rateofchaing]);
 
   const postRech = () => {
     const item = {
@@ -247,7 +248,32 @@ const Chat = () => {
                   }}
                 >
 
-                  {messages.map((items) => {
+
+
+{messages.map((items) => {
+                    return (
+                      <>
+
+                        {items.sender_id == sender_id ? (
+                          <div className="direct-chat-msg">
+                            <div className="direct-chat-text"  style={{ float: "right" }}>
+                              <p style={{ float: "right" }}>{items.title}</p>
+                            </div>
+
+                          </div>) : (<div className="direct-chat-msg">
+                        <div className=" direct-chat-text" style={{width:"80%",marginLeft:"0px"}}>
+                              <p>{items.type == "receiver" && items.title}</p>
+                            </div>
+                          </div>)}
+                      </>
+                    )
+                  })}
+
+
+
+
+
+                  {/* {messages.map((items) => {
                     return (
                       <>
                         <div className="direct-chat-msg">
@@ -281,7 +307,7 @@ const Chat = () => {
                         </div>
                       </>
                     )
-                  })}
+                  })} */}
 
                 </div>
                 <div className="card-footer text-muted d-flex justify-content-start align-items-center p-3">
