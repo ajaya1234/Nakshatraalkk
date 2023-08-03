@@ -62,7 +62,7 @@ function Login() {
           toast.success(res.data.msg);
 
           setTimeout(() => {
-            navigate("/Signup");
+            navigate("/");
           }, 2000);
         } else {
           toast.error("invalid otp");

@@ -12,21 +12,43 @@ function Panchangg() {
   const dataaa=localStorage.getItem("userData")
   const dataa= JSON.parse(dataaa)
     const [data2 , setData2]=useState(dataa);
-  useEffect(() => {
-    const api = "advanced_panchang";
-    const userId = "623869";
-    const apiKey = "46046d17a932151518470e3a08a1665a";
 
-    const data = {
-      day: data2?.day,
-        month: data2?.month,
-        year: data2?.year,
-        hour: data2?.hour,
-        min: data2?.min,
-        lat: 19.132,
-        lon: 72.342,
-        tzone: 5.5,
-    };
+    const currentDate = new Date();
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1;
+    const year = currentDate.getFullYear();
+     useEffect(() => {
+       const api = 'advanced_panchang';
+       const userId = '623869'; 
+       const apiKey = '46046d17a932151518470e3a08a1665a';
+   
+  const data = {
+         day: day,
+         month:month,
+         year: year,
+         hour: 10,
+         min: 25,
+         lat: 19.132,
+         lon: 72.342,
+         tzone: 5.5,
+       };
+
+
+  // useEffect(() => {
+  //   const api = "advanced_panchang";
+  //   const userId = "623869";
+  //   const apiKey = "46046d17a932151518470e3a08a1665a";
+
+  //   const data = {
+  //     day: data2?.day,
+  //       month: data2?.month,
+  //       year: data2?.year,
+  //       hour: data2?.hour,
+  //       min: data2?.min,
+  //       lat: 19.132,
+  //       lon: 72.342,
+  //       tzone: 5.5,
+  //   };
 
     const auth = "Basic " + btoa(userId + ":" + apiKey);
 
@@ -113,7 +135,7 @@ function Panchangg() {
 
 <tr >
                                     <td><b>Date</b></td>
-                                    <td>{responseData?.day} 25 July , 2023</td>
+                                    <td>{responseData?.day} - {month} - {year}</td>
                                 </tr>
                                 <tr >
                                     <td><b>Tithi</b></td>

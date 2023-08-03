@@ -566,7 +566,7 @@ const Header1 = () => {
                                 Login
                               </button>
                               <button
-                                onClick={() => navigate("/SignUp")}
+                                onClick={() => navigate("/login")}
                                 class="btn btn-md bg-dark cart-button text-white w-80"
                                 style={{ marginLeft: "10px" }}
                               >

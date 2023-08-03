@@ -6,30 +6,42 @@ import { useEffect } from "react";
 
 
 const Panchang = () => {
-
-
   const [responseData, setResponseData] = useState(null);
 
   const dataaa=localStorage.getItem("userData")
  const dataa= JSON.parse(dataaa)
    const [data2 , setData2]=useState(dataa);
    
-  
+   const currentDate = new Date();
+   const day = currentDate.getDate();
+   const month = currentDate.getMonth() + 1;
+   const year = currentDate.getFullYear();
     useEffect(() => {
       const api = 'advanced_panchang';
       const userId = '623869'; 
       const apiKey = '46046d17a932151518470e3a08a1665a';
   
-      const data = {
-        day: data2?.day,
-        month: data2?.month,
-        year: data2?.year,
-        hour: data2?.hour,
-        min: data2?.min,
+ const data = {
+        day: day,
+        month:month,
+        year: year,
+        hour: 10,
+        min: 25,
         lat: 19.132,
         lon: 72.342,
         tzone: 5.5,
       };
+      
+      // const data = {
+      //   day: data2?.day,
+      //   month: data2?.month,
+      //   year: data2?.year,
+      //   hour: data2?.hour,
+      //   min: data2?.min,
+      //   lat: 19.132,
+      //   lon: 72.342,
+      //   tzone: 5.5,
+      // };
   
       const auth = "Basic " + btoa(userId + ":" + apiKey);
   
@@ -47,7 +59,7 @@ const Panchang = () => {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-    }, []);
+    },  [day, month, year]);
 
 
   return (
@@ -88,7 +100,7 @@ const Panchang = () => {
                   <div>
                     <Link to="/panchangg">
                       <h3 style={{ fontSize : "30px" }}>Panchang</h3>
-                      <h4>Delhi- {responseData?.day}, 05 April 2023</h4>
+                      <h4>{responseData?.day} - {day}, {month} , {year}</h4>
                     </Link>
                   </div>
                   <div style={{ position: "absolute" }}>
@@ -98,7 +110,7 @@ const Panchang = () => {
                           <tbody>
                             <tr>
                               <td scope="row">Date</td>
-                              <td>{responseData?.day}, 05 April 2023</td>
+                              <td>{responseData?.day}, {day}, {month} , {year}</td>
                               <hr />
                             </tr>
                             <tr>

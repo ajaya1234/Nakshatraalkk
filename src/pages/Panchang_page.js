@@ -11,21 +11,43 @@ import Live from "./Live";
 const Panchang_page = () => {
   const [responseData, setResponseData] = useState(null);
   console.log("sadasd",responseData)
-    useEffect(() => {
-      const api = 'advanced_panchang';
-      const userId = '623869'; 
-      const apiKey = '46046d17a932151518470e3a08a1665a';
+
+  const currentDate = new Date();
+  const day = currentDate.getDate();
+  const month = currentDate.getMonth() + 1;
+  const year = currentDate.getFullYear();
+   useEffect(() => {
+     const api = 'advanced_panchang';
+     const userId = '623869'; 
+     const apiKey = '46046d17a932151518470e3a08a1665a';
+ 
+const data = {
+       day: day,
+       month:month,
+       year: year,
+       hour: 10,
+       min: 25,
+       lat: 19.132,
+       lon: 72.342,
+       tzone: 5.5,
+     };
+
+
+    // useEffect(() => {
+    //   const api = 'advanced_panchang';
+    //   const userId = '623869'; 
+    //   const apiKey = '46046d17a932151518470e3a08a1665a';
   
-      const data = {
-        day: 6,
-        month: 1,
-        year: 2000,
-        hour: 7,
-        min: 45,
-        lat: 19.132,
-        lon: 72.342,
-        tzone: 5.5,
-      };
+    //   const data = {
+    //     day: 6,
+    //     month: 1,
+    //     year: 2000,
+    //     hour: 7,
+    //     min: 45,
+    //     lat: 19.132,
+    //     lon: 72.342,
+    //     tzone: 5.5,
+    //   };
   
       const auth = "Basic " + btoa(userId + ":" + apiKey);
   
@@ -100,8 +122,8 @@ const Panchang_page = () => {
                 >
                   <div>
                     <Link to="/panchangg">
-                      <h3>Panchang</h3>
-                      <h4>Delhi- {responseData?.day}, 05 April 2023</h4>
+                      <h3 style={{ fontSize : "30px" }}>Panchang</h3>
+                      <h4>{responseData?.day}  {day}, {month} , {year}</h4>
                     </Link>
                   </div>
                   <div style={{ position: "absolute" }}>
