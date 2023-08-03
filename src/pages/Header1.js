@@ -72,8 +72,14 @@ const Header1 = () => {
                         class="img-fluid blur-up lazyload"
                         alt=""
                       /> */}
-                      <img
+                      {/* <img
                         src="../assets/LOGONEW1.png"
+                        class="img-fluid blur-up lazyload"
+                        alt=""
+                      /> */}
+
+                      <img
+                        src="../assets/images/logo/2222.png"
                         class="img-fluid blur-up lazyload"
                         alt=""
                       />
@@ -444,7 +450,7 @@ const Header1 = () => {
                       /> */}
 
                       <img
-                        src="../assets/LOGONEW1.png"
+                        src="../assets/images/logo/2222.png"
                         class="img-fluid blur-up lazyload"
                         alt=""
                       />

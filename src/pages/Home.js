@@ -66,6 +66,10 @@ const iss=localStorage.getItem("_id")
 
 
 
+  const [showAllAstrologers, setShowAllAstrologers] = useState(false);
+  const showMoreAstrologers = () => {
+    setShowAllAstrologers(true);
+  };
 
   return (
     <div> 
@@ -113,7 +117,7 @@ const iss=localStorage.getItem("_id")
               </div>
 
      
-              <div class="row g-sm-4 g-3">
+              {/* <div class="row g-sm-4 g-3">
                 {" "}
                {list?.map((i) => {
                   return (
@@ -271,10 +275,195 @@ const iss=localStorage.getItem("_id")
                     </div>
                   );
                 })}
+              </div> */}
+
+
+
+
+
+              <div class="row g-sm-4 g-3">
+                {list.slice(0, showAllAstrologers ? list.length : 4).map((i) => {
+                  return (
+                    <div
+
+                    class="col-xl-6 col-sm-6"
+                    style={{ display: "flex", flexDirection: "row" }}
+                    >
+                      <div class="seller-grid-box seller-grid-box-1">
+                        <div class="grid-image">
+                          <div class="image">
+                            <img onClick={() => {
+                              localStorage.setItem("AstroData", JSON.stringify(i));
+                              Navigate("/AstrologerDetail");
+                            }}
+                              src={
+                                "http://103.104.74.215:3012/uploads/" +
+                                i.profile_pic
+                              }
+                              class="img-fluid"
+                              alt=""
+                              style={{
+                                height: "60px ",
+                                width: "60px",
+                                borderRadius: "100%",
+                              }}
+                            />
+
+                            <button
+                              onclick="location.href = 'product-4-image.html';"
+                              class="nav-item"
+                              style={{
+                                borderRadius: "15px",
+                                width: "60px",
+                                height: "30px",
+                                borderColor: "#f5b60a",
+                                boxShadow: "5px",
+                              }}
+                            >
+                              {i.review ? i.review : "0"}
+                              <li>
+                                <i
+                                  style={{ fontWeight: "bolder" }}
+                                  class="fa fa-star-o"
+                                  aria-hidden="true"
+                                ></i>
+                              </li>
+                            </button>
+                          </div>
+
+                          <div class="contain-name">
+                            <div>
+                              <h4>{i.name}</h4>
+
+                              <div class="since-number">
+                                <h6>{i.language}</h6>
+                              </div>
+
+                              <div class="since-number">
+                                <h6>{i.role}</h6>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <br />
+
+                        <div
+                          class="grid-contain"
+                          style={{ width: "100%", paddingBottom: "20px" }}
+                        >
+                          <div
+                            class="seller-contact-details"
+                            style={{ width: "60%", float: "left" }}
+                          >
+                            <div class="saller-contact">
+                              <div class="seller-icon">
+                                <i class="fa-solid fa-map-pin"></i>
+                              </div>
+
+                              <div class="contact-detail">
+                                <h5>{i.experiance_year} </h5>
+                              </div>
+                            </div>
+
+                            <div class="saller-contact">
+                              <div class="seller-icon">
+                                <i class="fa-solid fa-phone"></i>
+                              </div>
+
+                              <div class="contact-detail">
+                                <h5> ₹ {i.video_rate ? i.video_rate : "0"}/Min</h5>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div
+                            class="seller-contact-details"
+                            style={{ width: "40%", float: "right" }}
+                          >
+                            <Link to='/AstrologersList'>
+                            <div class="saller-contact">
+                              {i.call_status === "1" ? (
+                                <img
+                                  
+                                  src="../assets/images/veg-3/category/phone.png"
+                                  class="img-fluid"
+                                  alt=""
+                                  style={{ height: "25px" }}
+                                />
+                              ) : (
+                                <img
+                                  src="../assets/images/veg-3/category/calling.png"
+                                  class="img-fluid"
+                                  alt=""
+                                  style={{ height: "25px", background: '#d99f46', borderRadius: '50px' }}
+                                />
+                              )}
+
+                             <Link to='/chatastrologer'>
+                              <img
+                               
+                                src="../assets/images/veg-3/category/chat.png"
+                                class="img-fluid"
+                                alt=""
+                                style={{ height: "25px", marginLeft: "10px" }}
+                              />
+                              </Link>
+                            </div>
+                            </Link>
+
+                            <div class="saller-contact">
+                              <div class="contact-detail">
+                                {i.call_status === "1" ? (
+                                  <h6> Call</h6>
+                                ) : (
+                                  <h6> Off</h6>
+                                )}
+                              </div>
+
+                              <div
+                                class="contact-detail"
+                                style={{ marginLeft: "10px" }}
+                              >
+                                <h6> Chat</h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <br />
+                        <br />
+                        
+                      </div>
+                      
+                    </div>
+                    
+                  );
+                  
+                })}
+
+
               </div>
+              
+
+
+
+
+
+
+
+
+              {/* <Link to='/AstrologersList'>
+                    <button style={{width:'80px', height:'33px'}}  class="btn btn-sm bg-dark  text-white ">Show More
+                                        </button> </Link> */}
+
+
+
 
 
             </div>
+            
 
             {/* <!--   Live session end --> */}
 
@@ -428,7 +617,7 @@ const iss=localStorage.getItem("_id")
       <LatestBlog />
       <Reviews />
       <Astrology />
-      <Celebrity/>
+      {/* <Celebrity/> */}
       <New />
       <Footer />
       <Setting />

@@ -736,7 +736,7 @@ function Selfkundali() {
           <div className="row">
             <div className="col-12">
               <div className="col-lg-12">
-                <h1>Poistion of Planets</h1>
+                <h1>Position of Planets</h1>
 
                 <table class="table table-bordered">
                   <tr style={{ background: "#dee2e6" }}>

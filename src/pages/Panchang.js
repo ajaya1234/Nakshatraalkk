@@ -60,7 +60,7 @@ const Panchang = () => {
                 <div class="slider-3 arrow-slider"  style={{display:"flex",flexWrap:"wrap",justifyContent:"space-evenly"}}>
                   <div   style={{width:"30%",}}>
                     <div class="blog-box ratio_50">
-                      <div class="blog-box-image" style={{ height: "300px" }}>
+                      <div class="blog-box-image" >
                         <Link to="/panchangg">
                           {/* <img
                             src="../assets/images/blog/pp.jpg"
@@ -68,7 +68,7 @@ const Panchang = () => {
                             alt=""
                           /> */}
 
-<img
+<img style={{ height: "200px" ,width:'100%'  }}
                             src="../assets/images/blog/todaypan4.jpg"
                             class="img-fluid bg-img"
                             alt=""
@@ -173,10 +173,10 @@ const Panchang = () => {
 
                   <div style={{width:"30%"}}>
                     <div class="blog-box ratio_50">
-                      <div class="blog-box-image" style={{ height: "300px" }}>
+                      <div class="blog-box-image" >
                         <Link to="/Numerology">
-                          <img
-                            src="../assets/images/blog/Numerology.png"
+                          <img style={{ height: "200px" ,width:'100%'  }}
+                            src="../assets/images/inner-page/numo11.png"
                             class="img-fluid bg-img"
                             alt=""
                           />
@@ -210,15 +210,15 @@ const Panchang = () => {
                               <li>
                                 <Link to="#">Gems Stone</Link>{" "}
                               </li>
-                              <hr />
+                               <hr />
                               <li>
                                 <Link to="#">Rudraskha</Link>{" "}
                               </li>
                               <hr />
-                              <li>
+                             <li>
                                 <Link to="#">Yantra</Link>{" "}
                               </li>
-                              <hr />
+                             {/*  <hr />
                               <li>
                                 <Link to="#">Mantras & Chants</Link>{" "}
                               </li>
@@ -229,7 +229,7 @@ const Panchang = () => {
                               <hr />
                               <li>
                                 <Link to="#">Spiritual Retreats</Link>{" "}
-                              </li>
+                              </li> */}
                               <hr />
                             </ul>
                           </Link>
@@ -242,10 +242,10 @@ const Panchang = () => {
 
                   <div style={{width:"30%"}}>
                     <div class="blog-box ratio_50">
-                      <div class="blog-box-image" style={{ height: "300px" }}>
+                      <div class="blog-box-image" >
                         <Link to="/BlogDetail">
-                          <img
-                            src="../assets/images/blog/Festivals.png"
+                          <img style={{ height: "200px" ,width:'100%'  }}
+                            src="../assets/images/inner-page/fest11.png"
                             class="img-fluid bg-img"
                             alt=""
                           />
