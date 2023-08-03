@@ -216,7 +216,7 @@ const Header1 = () => {
                                   </div>
                                 </div>
                               </Link>
-                              &nbsp;&nbsp;
+
                               <Link
                                 to="/"
                                 style={{ display: "flex", height: "28px" }}
@@ -252,7 +252,7 @@ const Header1 = () => {
                           Home
                         </Link>
                       </li>
-                      &nbsp;&nbsp;
+                      
                       <li class="nav-item">
                         <Link
                           style={{ color: "black" }}
@@ -262,7 +262,7 @@ const Header1 = () => {
                           Speak to Astrologer
                         </Link>
                       </li>
-                      &nbsp;&nbsp;
+                     
                       <li class="nav-item dropdown">
                         <a
                           style={{ color: "black" }}
@@ -282,7 +282,7 @@ const Header1 = () => {
                               Today's Horoscope
                             </Link>
                           </li>
-                          &nbsp;&nbsp;
+                          
                           <li>
                             <Link
                               style={{ color: "black" }}
@@ -292,7 +292,7 @@ const Header1 = () => {
                               Monthly Horoscope
                             </Link>
                           </li>
-                          &nbsp;&nbsp;
+                          
                           <li>
                             <Link
                               style={{ color: "black" }}
@@ -302,10 +302,10 @@ const Header1 = () => {
                               Yearly Horoscope
                             </Link>
                           </li>
-                          &nbsp;&nbsp;
+                         
                         </ul>
                       </li>
-                      &nbsp;&nbsp;
+                      
                       <li class="nav-item">
                         <Link
                           style={{ color: "black" }}
@@ -315,7 +315,7 @@ const Header1 = () => {
                           Spiritual Guide
                         </Link>
                       </li>
-                      &nbsp;&nbsp;
+                     
                       <li class="nav-item">
                         <Link
                           style={{ color: "black" }}
@@ -325,7 +325,7 @@ const Header1 = () => {
                           Panchang
                         </Link>
                       </li>
-                      &nbsp;&nbsp;
+                     
                       <li class="nav-item">
                         <Link
                           style={{ color: "black" }}
@@ -589,7 +589,7 @@ const Header1 = () => {
                           Home
                         </Link>
                       </li>
-                      &nbsp;&nbsp;
+
                       <li class="nav-item">
                         <Link
                           style={{ color: "black" }}
@@ -599,7 +599,7 @@ const Header1 = () => {
                           Speak to Astrologer
                         </Link>
                       </li>
-                      &nbsp;&nbsp;
+                     
                       <li class="nav-item dropdown">
                         <a
                           style={{ color: "black" }}
@@ -619,7 +619,7 @@ const Header1 = () => {
                               Today's Horoscope
                             </Link>
                           </li>
-                          &nbsp;&nbsp;
+                          
                           <li>
                             <Link
                               style={{ color: "black" }}
@@ -629,7 +629,7 @@ const Header1 = () => {
                               Monthly Horoscope
                             </Link>
                           </li>
-                          &nbsp;&nbsp;
+                          
                           <li>
                             <Link
                               style={{ color: "black" }}
@@ -639,7 +639,7 @@ const Header1 = () => {
                               Yearly Horoscope
                             </Link>
                           </li>
-                          &nbsp;&nbsp;
+                          
                         </ul>
                       </li>
                       <li class="nav-item">
@@ -651,7 +651,7 @@ const Header1 = () => {
                           Spiritual Guide
                         </Link>
                       </li>
-                      &nbsp;&nbsp;
+                      
                       <li class="nav-item">
                         <Link
                           style={{ color: "black" }}
@@ -661,7 +661,7 @@ const Header1 = () => {
                           Panchang
                         </Link>
                       </li>
-                      &nbsp;&nbsp;
+                     
                       <li class="nav-item">
                         <Link
                           style={{ color: "black" }}
