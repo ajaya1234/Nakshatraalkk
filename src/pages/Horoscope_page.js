@@ -11,11 +11,16 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import Horoscopes from "./Horoscopes";
+import Live from "./Live";
 
 const Horoscope_page = () => {
   const [responseData, setResponseData] = useState(null);
   const [zodiac, setZodiac] = useState("Aries");
 
+  const currentDate = new Date();
+  const day = currentDate.getDate();
+  const month = currentDate.getMonth() + 1;
+  const year = currentDate.getFullYear();
   useEffect(() => {
     fetchData(zodiac);
   }, [zodiac]);
@@ -126,7 +131,7 @@ const Horoscope_page = () => {
                     </Link>
                     <div className="category-name">
                       <h6>Aries</h6>
-                      <h6 style={{ fontSize: "10px" }}>21/3-19/4</h6>
+                      <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                     </div>
                   </div>
                   <div>
@@ -144,7 +149,7 @@ const Horoscope_page = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Taurus</h6>
-                        <h6 style={{ fontSize: "10px" }}>20/4-20/5</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -166,7 +171,7 @@ const Horoscope_page = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Gemini</h6>
-                        <h6 style={{ fontSize: "10px" }}>21/5-20/6</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -184,7 +189,7 @@ const Horoscope_page = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Cancer</h6>
-                        <h6 style={{ fontSize: "10px" }}>21/6-22/7</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -203,7 +208,7 @@ const Horoscope_page = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Leo</h6>
-                        <h6 style={{ fontSize: "10px" }}>23/7-22/8</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -222,7 +227,7 @@ const Horoscope_page = () => {
                     </Link>
                     <div className="category-name">
                       <h6>Virgo</h6>
-                      <h6 style={{ fontSize: "10px" }}>23/8-22/9</h6>
+                      <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                     </div>
                   </div>
                   <div
@@ -242,7 +247,7 @@ const Horoscope_page = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Libra</h6>
-                        <h6 style={{ fontSize: "10px" }}>23/9-22/10</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -261,7 +266,7 @@ const Horoscope_page = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Scorpio</h6>
-                        <h6 style={{ fontSize: "10px" }}>23/10-21/11</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -283,7 +288,7 @@ const Horoscope_page = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Sagittarius</h6>
-                        <h6 style={{ fontSize: "10px" }}>22/11-21/12</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -302,7 +307,7 @@ const Horoscope_page = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Capricorn</h6>
-                        <h6 style={{ fontSize: "10px" }}>22/12-19/1</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -321,7 +326,7 @@ const Horoscope_page = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Aquarius</h6>
-                        <h6 style={{ fontSize: "10px" }}>20/1-18/2</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -342,7 +347,7 @@ const Horoscope_page = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Pisces </h6>
-                        <h6 style={{ fontSize: "10px" }}>19/2-20/3</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -376,7 +381,7 @@ const Horoscope_page = () => {
             </div>
 
             <div class="col-xxl-4 col-md-6">
-              <a href="aries.html" class="seller-grid-box">
+              <Link to='#' class="seller-grid-box">
                 <div class="grid-contain">
                   <div class="title" style={{ padding: "5px" }}>
                     <h3>Profession</h3>
@@ -391,11 +396,11 @@ const Horoscope_page = () => {
                     <p>{responseData?.prediction.profession}</p>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
 
             <div class="col-xxl-4 col-md-6">
-              <a href="aries.html" class="seller-grid-box">
+              <Link to='#' class="seller-grid-box">
                 <div class="grid-contain">
                   <div class="title" style={{ padding: "5px" }}>
                     <h3>Health</h3>
@@ -410,11 +415,11 @@ const Horoscope_page = () => {
                     <p>{responseData?.prediction.health}</p>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
 
             <div class="col-xxl-4 col-md-6">
-              <a href="aries.html" class="seller-grid-box">
+              <Link to='#' class="seller-grid-box">
                 <div class="grid-contain">
                   <div class="title" style={{ padding: "5px" }}>
                     <h3>Travel</h3>
@@ -429,11 +434,11 @@ const Horoscope_page = () => {
                     <p>{responseData?.prediction.travel}</p>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
 
             <div class="col-xxl-4 col-md-6">
-              <a href="aries.html" class="seller-grid-box">
+              <Link to='#' class="seller-grid-box">
                 <div class="grid-contain">
                   <div class="title" style={{ padding: "5px" }}>
                     <h3>Luck</h3>
@@ -448,11 +453,11 @@ const Horoscope_page = () => {
                     <p>{responseData?.prediction.luck}</p>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
 
             <div class="col-xxl-4 col-md-6">
-              <a href="aries.html" class="seller-grid-box">
+              <Link to='#' class="seller-grid-box">
                 <div class="grid-contain">
                   <div class="title" style={{ padding: "5px" }}>
                     <h3>Emotions</h3>
@@ -467,7 +472,7 @@ const Horoscope_page = () => {
                     <p>{responseData?.prediction.emotions}</p>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -639,123 +644,9 @@ const Horoscope_page = () => {
       </section>
 
       {/* <!-- Offer Section Start --> */}
-      <section>
-        <div className="container-fluid-lg">
-          <div className="row">
-            <div className="col-12">
-              <div
-                className="tab-content"
-                id="myTabContent"
-                style={{ marginTop: "-30px" }}
-              >
-                <div
-                  className="tab-pane fade show active"
-                  id="all"
-                  role="tabpanel"
-                  aria-labelledby="all-tab"
-                >
-                  <div className="row g-8">
-                    <div className="col-xxl-2 col-lg-3 col-md-6 col-6 wow fadeInUp">
-                      <div className="product-box-4">
-                        <div className="product-image">
-                          <Link to="/Chatastrologer">
-                            <img
-                              src="../assets/images/veg-3/cate1/chat.png"
-                              className="img-fluid"
-                              alt=""
-                              style={{ height: "60px" }}
-                            />
-                          </Link>
-                        </div>
+      
+<Live/>
 
-                        <div className="product-detail">
-                          <Link to="/Chatastrologer">
-                            <h5 className="name">Chat with Astrologer</h5>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div
-                      className="col-xxl-2 col-lg-3 col-md-6 col-6 wow fadeInUp"
-                      data-wow-delay="0.05s"
-                    >
-                      <div className="product-box-4">
-                        <div className="product-image">
-                          <Link to="/AstrologersList">
-                            <img
-                              src="../assets/images/veg-3/cate1/phone.png"
-                              className="img-fluid"
-                              alt=""
-                              style={{ height: "60px" }}
-                            />
-                          </Link>
-                        </div>
-
-                        <div className="product-detail">
-                          <Link to="/AstrologersList">
-                            <h5 className="name">Talk to Astrologer</h5>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div
-                      className="col-xxl-2 col-lg-3 col-md-6 col-6 wow fadeInUp"
-                      data-wow-delay="0.5s"
-                    >
-                      <div className="product-box-4">
-                        <div className="product-image">
-                          <Link to="/Astrolive">
-                            <img
-                              src="../assets/images/veg-3/cate1/livechat.png"
-                              className="img-fluid"
-                              alt=""
-                              style={{ height: "60px" }}
-                            />
-                          </Link>
-                        </div>
-
-                        <div className="product-detail">
-                          <Link to="/Astrolive">
-                            <h5 className="name">Live Astrologers</h5>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div
-                      className="col-xxl-2 col-lg-3 col-md-6 col-6 wow fadeInUp"
-                      data-wow-delay="0.55s"
-                    >
-                      <div className="product-box-4">
-                        <div className="product-image">
-                          <Link to="/AstrologersList">
-                            <img
-                              src="../assets/images/veg-3/cate1/videocamera.png"
-                              className="img-fluid"
-                              alt=""
-                              style={{ height: "60px" }}
-                            />
-                          </Link>
-                        </div>
-
-                        <div className="product-detail">
-                          <Link to="/AstrologersList">
-                            <h5 className="name">
-                              Video Call With Astrologers
-                            </h5>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       <section></section>
       <section></section>
       <Footer />

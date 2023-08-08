@@ -55,19 +55,19 @@ const NakshatraMart = () => {
                     data-wow-delay="0.05s"
                   >
                     <div class="product-image product-image-2">
-                      <a href="product-left-thumbnail.html">
+                      <Link to="#">
                         <img
                           src="../assets/images/vegetable/5MukhiRudraksh.png"
                           class="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div class="product-detail">
-                      <a href="product-left-thumbnail.html">
+                      <Link to="#">
                         <h5 class="name text-title">5 Mukhi Rudraksh</h5>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -75,19 +75,19 @@ const NakshatraMart = () => {
                 <div style={{ width: "20%" }}>
                   <div class="product-box-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="product-image product-image-2">
-                      <a href="product-left-thumbnail.html">
+                      <Link to="#">
                         <img
                           src="../assets/images/vegetable/greenstone.png"
                           class="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div class="product-detail">
-                      <a href="product-left-thumbnail.html">
+                      <Link to="#">
                         <h5 class="name text-title">5.25 ratti Emerald</h5>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -98,19 +98,19 @@ const NakshatraMart = () => {
                     data-wow-delay="0.15s"
                   >
                     <div class="product-image product-image-2">
-                      <a href="product-left-thumbnail.html">
+                      <Link to="#">
                         <img
                           src="../assets/images/vegetable/redstone.png"
                           class="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div class="product-detail">
-                      <a href="product-left-thumbnail.html">
+                      <Link to="#">
                         <h5 class="name text-title">Onion</h5>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -118,19 +118,19 @@ const NakshatraMart = () => {
                 <div style={{ width: "20%" }}>
                   <div class="product-box-4 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="product-image product-image-2">
-                      <a href="product-left-thumbnail.html">
+                      <Link to='#'>
                         <img
                           src="../assets/images/vegetable/redstone.png"
                           class="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div class="product-detail">
-                      <a href="product-left-thumbnail.html">
+                      <Link to='#'>
                         <h5 class="name text-title">Baby Chili</h5>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -141,19 +141,19 @@ const NakshatraMart = () => {
                     data-wow-delay="0.25s"
                   >
                     <div class="product-image product-image-2">
-                      <a href="product-left-thumbnail.html">
+                      <Link to='#'>
                         <img
                           src="../assets/images/vegetable/redstone.png"
                           class="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div class="product-detail">
-                      <a href="product-left-thumbnail.html">
+                      <Link to='#'>
                         <h5 class="name text-title">Broccoli</h5>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -161,19 +161,19 @@ const NakshatraMart = () => {
                 <div style={{ width: "20%" }}>
                   <div class="product-box-4 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="product-image product-image-2">
-                      <a href="product-left-thumbnail.html">
+                      <Link to='#'>
                         <img
                           src="../assets/images/vegetable/redstone.png"
                           class="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div class="product-detail">
-                      <a href="product-left-thumbnail.html">
+                      <Link to='#'>
                         <h5 class="name text-title">Apple</h5>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -184,19 +184,19 @@ const NakshatraMart = () => {
                     data-wow-delay="0.35s"
                   >
                     <div class="product-image product-image-2">
-                      <a href="product-left-thumbnail.html">
+                      <Link to='#'>
                         <img
                           src="../assets/images/vegetable/redstone.png"
                           class="img-fluid blur-up lazyload"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div class="product-detail">
-                      <a href="product-left-thumbnail.html">
+                      <Link to='#'>
                         <h5 class="name text-title">Strawberry</h5>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

@@ -44,20 +44,23 @@
 import Live from './Live'
     import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom'
 
 const Mahurat_Content = () => {
     const [responseData, setResponseData] = useState(null);
-  
+    const currentDate = new Date();
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1;
+    const year = currentDate.getFullYear();
     useEffect(() => {
       const api = 'advanced_panchang';
       const userId = '623869'; 
       const apiKey = '46046d17a932151518470e3a08a1665a';
   
       const data = {
-        day: 6,
-        month: 1,
-        year: 2000,
+        day: day,
+        month:month,
+        year: year,
         hour: 7,
         min: 45,
         lat: 19.132,
@@ -109,7 +112,7 @@ const Mahurat_Content = () => {
     <section>
         <div class="container-fluid-lg">
             <div class="title" style={{padding: "20px"}}>
-                <h2 style={{textAlign: "center"}}>Shubh Muhurat 2023</h2>
+                <h2 style={{textAlign: "center"}}>Shubh Muhurat {year}</h2>
                 
                 <p>It is highly important to perform any auspicious work during Shubh Muhurta. Hindus regard certain dates to be auspicious for starting any worthwhile endeavours. When undertaking an optimistic task during Shubh Muhurta, good outcomes are usually obtained. As a result, the custom of determining the auspicious moment and beginning fresh work has existed for millennia. Shubh Muhurta, according to Vedic astrology, is the exact moment when the solar system's location of the planets and onstellations is favourable for carrying out a certain activity. People, therefore, have the view that keeping this fortunate hour assists to obtain more beneficial and effective achievements without encountering any obstacles or issues.</p>
                 <p>The importance of Shubh Muhurta (auspicious muhurat) is vast, following Sanatan Dharma. It claims that if labour begins at a fortunate moment, the individual can greatly profit from it. Additionally, completing a task at a fortunate moment enhances our achievement moving forward in life. Hence, the majority of Hindus still wait for an auspicious moment to act, even in today's generation.</p>
@@ -122,10 +125,10 @@ const Mahurat_Content = () => {
     <section>
         <div class="container-fluid-lg">
              <div class="title" style={{padding:"5px"}}>
-                <h2>Importance Of Shubh Muhurta 2023</h2>
+                <h2>Importance Of Shubh Muhurta {year}</h2>
      
                 <p>Why is picking an opportune moment to begin any new task seen so important? Everybody wants to succeed in their endeavours, whether it be a profession, starting a business, getting married, or house events like naming ceremonies or annaprashan. As a result, the individual gave the assurance that doing the aforementioned activity at the fortunate moment would bring them success and riches. Therefore, we preferred to complete any tasks during Shubh Muhurta, which was determined based on the positions of the planets and constellations. Consequently, choosing an auspicious period is important. Since the beginning of time, people have observed fortunate periods. It holds that starting a project at a fortunate moment increases the likelihood of success and ensures that it will be completed smoothly and without incident. A "Shubh Muhurat" is a moment when it is considered auspicious to begin any endeavour when all of the planets and nakshatras are in favourable positions.</p>
-                <p>To Chat With Astrologer: <a href="shop-top-filter1.html" target="_blank">Visit Here</a></p>
+                <p>To Chat With Astrologer: <Link to="#" target="">Visit Here</Link></p>
             </div>
             <div class="title" style={{padding:"5px"}}>
                 <h2>Different Muhurat and its Characteristics</h2>
@@ -274,10 +277,10 @@ const Mahurat_Content = () => {
                 <p>{responseData?.tithi.details.tithi_name} - {responseData?.tithi.details.special} - {responseData?.tithi.details.summary}.</p>
             </div>
             <div class="title" style={{padding:"5px"}}>
-                <h2>Shubh Muhurt 2023 must-know factors</h2>
+                <h2>Shubh Muhurt {year} must-know factors</h2>
                
                 <p>As we mentioned earlier, some factors should be considered while calculating auspicious times, i.e., Tithi, Vaar, Nakshatra, Yoga, and Karana. Let's understand some crucial aspects related to them.</p>
-                <p>To speak to an Astrologer: <a href="shop-top-filter1.html" target="_blank">Visit here</a></p>
+                <p>To speak to an Astrologer: <Link to="#" target="">Visit here</Link></p>
             </div>
 
 
@@ -334,45 +337,45 @@ const Mahurat_Content = () => {
               
             </div>
             <div class="title" style={{padding:"5px"}}>
-                <h2>Important things to do at Shubh Muhurat 2023</h2>
+                <h2>Important things to do at Shubh Muhurat {year}</h2>
                
-                <p>What steps can you take to get good luck in the year 2023? Sanatan Dharma has an ancient history and an old tradition of working in auspicious times. It believes that starting a project during Shubh Muhurat 2023 will bring success, complete smoothly, and the person will get favourable results from that project for their whole life.</p>
+                <p>What steps can you take to get good luck in the year {year}? Sanatan Dharma has an ancient history and an old tradition of working in auspicious times. It believes that starting a project during Shubh Muhurat {year} will bring success, complete smoothly, and the person will get favourable results from that project for their whole life.</p>
             </div>
 
  
 
-             <div class="col-12"><p style={{paddingTop:"10px"}}> <b>we will know in detail about Vivah Muhurat 2023, Naamkaran Muhurta 2023, Mundan Muhurat 2023, Shubh Muhurta to buy a car and bike in 2023, and an auspicious time to buy gold in 2023 etc.</b></p>
+             <div class="col-12"><p style={{paddingTop:"10px"}}> <b>we will know in detail about Vivah Muhurat {year}, Naamkaran Muhurta {year}, Mundan Muhurat {year}, Shubh Muhurta to buy a car and bike in {year}, and an auspicious time to buy gold in {year} etc.</b></p>
                 <div style={{paddingTop:"10px"}}>
-                <h4>Annanprashan Muhurat 2023</h4>
-                <p style={{paddingTop:"5px"}}><a href="/annanprashan-muhurat-2023">Click here to get details about all Annanprashan Muhurat 2023</a></p>
+                <h4>Annanprashan Muhurat {year}</h4>
+                <p style={{paddingTop:"5px"}}><Link to='#'>Click here to get details about all Annanprashan Muhurat {year}</Link></p>
              </div>
              <div style={{paddingTop:"10px"}}>
-                <h4>NaamKaran Muhurat 2023</h4>
-                <p style={{paddingTop:"5px"}}><a href="/naamKaran-muhurat-2023">Click here to get details about all NaamKaran Muhurat 2023</a></p>
+                <h4>NaamKaran Muhurat {year}</h4>
+                <p style={{paddingTop:"5px"}}><Link to='#'>Click here to get details about all NaamKaran Muhurat {year}</Link></p>
              </div>
              <div style={{paddingTop:"10px"}}>
-                <h4>Mudan Muhurat 2023</h4>
-                <p style={{paddingTop:"5px"}}><a href="/mudan-muhurat-2023">Click here to get details about all Mudan Muhurat 2023</a></p>
+                <h4>Mudan Muhurat {year}</h4>
+                <p style={{paddingTop:"5px"}}><Link to='#'>Click here to get details about all Mudan Muhurat {year}</Link></p>
              </div>
               <div style={{paddingTop:"10px"}}>
-                <h4>Car/Bike Muhurat 2023</h4>
-                <p style={{paddingTop:"5px"}}><a href="/car-bike-muhurat-2023">Click here to get details about all Car/Bike Muhurat 2023</a></p>
+                <h4>Car/Bike Muhurat {year}</h4>
+                <p style={{paddingTop:"5px"}}><Link to='#'>Click here to get details about all Car/Bike Muhurat {year}</Link></p>
              </div>
              <div style={{paddingTop:"10px"}}>
-                <h4>Marriage Muhurat 2023</h4>
-                <p style={{paddingTop:"5px"}}><a href="/marriage-muhurat-2023">Click here to get details about all Marriage Muhurat 2023</a></p>
+                <h4>Marriage Muhurat {year}</h4>
+                <p style={{paddingTop:"5px"}}><Link to='#'>Click here to get details about all Marriage Muhurat {year}</Link></p>
              </div>
              <div style={{paddingTop:"10px"}}>
-                <h4>Gold Buying Muhurat 2023</h4>
-                <p style={{paddingTop:"5px"}}><a href="/gold-buying-muhurat-2023">Click here to get details about all Gold Buying Muhurat 2023</a></p>
+                <h4>Gold Buying Muhurat {year}</h4>
+                <p style={{paddingTop:"5px"}}><Link to='#'>Click here to get details about all Gold Buying Muhurat {year}</Link></p>
              </div>
              <div style={{paddingTop:"10px"}}>
-                <h4>Bhoomi Pujan Muhurat 2023</h4>
-                <p style={{paddingTop:"5px"}}><a href="/bhoomi-pujan-muhurat-2023">Click here to get details about all Bhoomi Pujan Muhurat 2023</a></p>
+                <h4>Bhoomi Pujan Muhurat {year}</h4>
+                <p style={{paddingTop:"5px"}}><Link to='#'>Click here to get details about all Bhoomi Pujan Muhurat {year}</Link></p>
              </div>
              <div style={{paddingTop:"10px"}}>
-                <h4>Griha Pravesh Muhurat 2023</h4>
-                <p style={{paddingTop:"5px"}}><a href="/griha-pravesh-muhurat-2023">Click here to get details about all Griha Pravesh Muhurat 2023</a></p>
+                <h4>Griha Pravesh Muhurat {year}</h4>
+                <p style={{paddingTop:"5px"}}><Link to='#'>Click here to get details about all Griha Pravesh Muhurat {year}</Link></p>
              </div>
                         
                 </div>

@@ -8,6 +8,37 @@ const Kundali_form = () => {
  
 
   const [responseData, setResponseData] = useState();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [allPlaces, setAllPlaces] = useState([]);
+
+  useEffect(() => {
+    // Function to fetch birth places from the API
+    const fetchBirthPlaces = async () => {
+      try {
+        const response = await axios.get('https://api.example.com/birth-places');
+        setAllPlaces(response.data); // Assuming the API response contains an array of birth places
+      } catch (error) {
+        console.error('Error fetching birth places:', error);
+      }
+    };
+
+    fetchBirthPlaces();
+  }, []);
+
+  // Function to handle input change
+  const handleInputChange1 = (event) => {
+    const value = event.target.value;
+    setSearchTerm(value);
+
+    // Filter the places based on the search term
+    const filteredPlaces = allPlaces.filter((place) =>
+      place.toLowerCase().includes(value.toLowerCase())
+    );
+
+    setSearchResults(filteredPlaces);
+  };
+
   let navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -367,7 +398,20 @@ navigate("/selfkundali");
                       </div>
                     </div>
                     </div>
-                    
+          {/*          <div>
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleInputChange}
+        placeholder="Type H to search..."
+      />
+      <ul>
+        {searchResults.map((place, index) => (
+          <li key={index}>{place}</li>
+        ))}
+      </ul>
+        </div>*/}
+    
                   </div>
                 </form>
               </div>

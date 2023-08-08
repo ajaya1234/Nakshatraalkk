@@ -47,6 +47,9 @@ import Numerology from "./pages/Numerology";
 import Ruling from "./pages/Ruling";
 import Payment from "./pages/Payment";
 import Rating from "./pages/Rating";
+import Videocallwithastro from "./pages/Videocallwithastro";
+import Audiocall from "./pages/Audiocall";
+import Reviews from "./pages/Reviews";
 
 function App() {
 
@@ -102,6 +105,9 @@ function App() {
         <Route path='/Ruling' element={<Ruling/>}></Route>
         <Route path="/payment" element={<Payment/>}></Route>
         <Route path='/Rating' element={<Rating/>}></Route>
+        <Route path="/Videocallwithastro" element={<Videocallwithastro/>}></Route>
+        <Route path="/Audiocall" element={<Audiocall/>}></Route>
+        <Route path="/Reviews" element={<Reviews/>}></Route>
       </Routes>
     </div>
   );

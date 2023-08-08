@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <>
@@ -106,29 +107,29 @@ const Footer = () => {
                   </div>
                   <ul class="footer-list footer-contact footer-list-light">
                     <li>
-                      <a href="PrivacyPolicy" class="light-text">
+                      <Link to="/PrivacyPolicy" class="light-text">
                         Privacy Policy
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="term_condition.html" class="light-text">
+                      <Link to='/PrivacyPolicy' class="light-text">
                         Terms Of Use
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="term_condition.html" class="light-text">
+                      <Link to='#' class="light-text">
                         Refund & Cancellation
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="term_condition.html" class="light-text">
+                    <Link to='#' class="light-text">
                         Disclaimer
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="term_condition.html" class="light-text">
+                    <Link to='#' class="light-text">
                         Cookies Policy
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                   <div class="footer-title" style={{ paddingTop: "20px" }}>
@@ -136,19 +137,19 @@ const Footer = () => {
                   </div>
                   <ul class="footer-list footer-list-light footer-contact">
                     <li>
-                      <a href="#" class="light-text">
+                    <Link to='/AstrologersList' class="light-text">
                         Verified Best Astrologers
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#" class="light-text">
+                    <Link to='#' class="light-text">
                         Secure Payments
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#" class="light-text">
+                    <Link to='/PrivacyPolicy' class="light-text">
                         Privacy & Confidentiality
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -163,39 +164,39 @@ const Footer = () => {
                   </div>
                   <ul class="footer-list footer-contact footer-list-light">
                     <li>
-                      <a href="#" class="light-text">
+                      <Link to="#" class="light-text">
                         Marriage{" "}
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="muhurat.html" class="light-text">
+                      <Link to='/muhurat' class="light-text">
                         Bhoomi Pujan
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="muhurat.html" class="light-text">
+                    <Link to='/muhurat' class="light-text">
                         Griha Pravesh
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="muhurat.html" class="light-text">
+                    <Link to='/muhurat' class="light-text">
                         Gold Purchase
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="muhurat.html" class="light-text">
+                    <Link to='/muhurat' class="light-text">
                         Mundan
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="muhurat.html" class="light-text">
+                    <Link to='/muhurat' class="light-text">
                         Naamkaran
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="muhurat.html" class="light-text">
+                    <Link to='/muhurat' class="light-text">
                         Vehicle Purchase
-                      </a>
+                      </Link>
                     </li>
                   </ul>
 
@@ -204,14 +205,14 @@ const Footer = () => {
                   </div>
                   <ul class="footer-list footer-contact footer-list-light">
                     <li>
-                      <a href="pooja.html" class="light-text">
+                    <Link to='/pooja' class="light-text">
                         Nakshatra Pooja{" "}
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#" class="light-text">
+                    <Link to='#' class="light-text">
                         Nakshatra Mart
-                      </a>
+                      </Link>
                     </li>
                   </ul>
 
@@ -227,54 +228,54 @@ const Footer = () => {
                   </div>
                   <ul class="footer-list footer-list-light footer-contact">
                     <li>
-                      <a href="kundli.html" class="light-text">
+                    <Link to='/kundali' class="light-text">
                         Kundli
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="kundli_milan.html" class="light-text">
+                    <Link to='/kundali_milan' class="light-text">
                         Kundli Matching
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#" class="light-text">
+                    <Link to='/kundali_milan' class="light-text">
                         Doshas in Kundli
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="panchang.html" class="light-text">
+                    <Link to='/panchang' class="light-text">
                         Panchang
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="shop-top-filter1.html" class="light-text">
+                      <Link to='/AstrologersList' class="light-text">
                         Call Astrologer
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="shop-top-filter1.html" class="light-text">
+                      <Link to='/chatastrologer' class="light-text">
                         Chat Astrologer
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="tarot.html" class="light-text">
+                      <Link to='/tarot' class="light-text">
                         Tarot
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#" class="light-text">
+                      <Link to="#" class="light-text">
                         Palmistry
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="blog-detail.html" class="light-text">
+                      <Link to='/blog' class="light-text">
                         Nakshatra Blog
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#" class="light-text">
+                      <Link to="/Reviews" class="light-text">
                         Nakshatra Reviews
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -285,34 +286,34 @@ const Footer = () => {
                   </div>
                   <ul class="footer-list footer-list-light footer-contact">
                     <li>
-                      <a href="#" class="light-text">
+                      <Link to="#" class="light-text">
                         Holi
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#" class="light-text">
+                      <Link to="#" class="light-text">
                         Chaitra Navratri
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#" class="light-text">
+                    <Link to="#" class="light-text">
                         Raksha Bandhan
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#" class="light-text">
+                    <Link to="#" class="light-text">
                         Sharadiya Navratri
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#" class="light-text">
+                    <Link to="#" class="light-text">
                         Dussehra
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#" class="light-text">
+                    <Link to="#" class="light-text">
                         Diwali
-                      </a>
+                      </Link>
                     </li>
                   </ul>
 

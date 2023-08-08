@@ -204,16 +204,17 @@ const rateofchaing= localStorage.getItem("chatrate")
                               </div>
                             </div>
                           </div>
-
+ {i.chat_status === "1" ? (
                           <div
                             class="seller-contact-details"
                             style={{ width: "40%", float: "right" }}
                           >
+                            
                             <div class="saller-contact">
                               <img
                                 onClick={() => {
                                   {
-                                    walletAmnt > i.chat_rate
+                                    walletAmnt >= i.chat_rate
                                       ? navigate("/ChatForm")
                                       : alert("You have Insufficient balance");
                                   }
@@ -231,6 +232,10 @@ const rateofchaing= localStorage.getItem("chatrate")
                                 style={{ height: "25px", marginLeft: "10px" }}
                               />
                             </div>
+                      
+                      
+                   
+                      
 
                             <div class="saller-contact">
                               <div
@@ -241,6 +246,26 @@ const rateofchaing= localStorage.getItem("chatrate")
                               </div>
                             </div>
                           </div>
+                          ) : (
+                            <div className="seller-contact-details" style={{ width: "40%", float: "right" }}>
+                            <div className="seller-contact">
+                             
+                              <img
+                                src="../assets/images/veg-3/category/chat.png"
+                                className="img-fluid"
+                                alt=""
+                                style={{ height: "25px", marginLeft: "10px" }}
+                              />
+                            </div>
+                            <div className="saller-contact">
+                           
+                              <div className="contact-detail" style={{ marginLeft: '10px' }}>
+                                <h6>Off</h6>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          )}
                         </div>
 
                         <br />

@@ -96,7 +96,7 @@ const Live = () => {
                     >
                       <div className="product-box-4">
                         <div className="product-image">
-                          <Link to="/AstrologersList">
+                          <Link to="/Videocallwithastro">
                             <img
                               src="../assets/images/veg-3/cate1/videocamera.png"
                               className="img-fluid"
@@ -107,7 +107,7 @@ const Live = () => {
                         </div>
 
                         <div className="product-detail">
-                          <Link to="/AstrologersList">
+                          <Link to="/Videocallwithastro">
                             <h5 className="name">
                               Video Call With Astrologers
                             </h5>

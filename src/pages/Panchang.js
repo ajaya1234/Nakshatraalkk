@@ -53,7 +53,7 @@ const Panchang = () => {
       })
       .then((response) => {
         setResponseData(response.data); 
-        console.log("panchannaaaaaaaaasdresponseeessad",response.data)
+        
       })
 
       .catch((error) => {
@@ -100,7 +100,7 @@ const Panchang = () => {
                   <div>
                     <Link to="/panchangg">
                       <h3 style={{ fontSize : "30px" }}>Panchang</h3>
-                      <h4>{responseData?.day} - {day}, {month} , {year}</h4>
+                      <h4>{responseData?.day}  {day}, {month} , {year}</h4>
                     </Link>
                   </div>
                   <div style={{ position: "absolute" }}>
@@ -280,39 +280,39 @@ const Panchang = () => {
                           <Link to="/BlogDetail">
                             <ul>
                               <li>
-                                <Link to="#">Holi 2023</Link>{" "}
+                                <Link to="#">Holi {year}</Link>{" "}
                               </li>
                               <hr />
                               <li>
-                                <Link to="#">Bhai Dooj 2023</Link>{" "}
+                                <Link to="#">Bhai Dooj {year}</Link>{" "}
                               </li>
                               <hr />
                               <li>
-                                <Link to="#">Chaitra Navratri 2023</Link>{" "}
+                                <Link to="#">Chaitra Navratri {year}</Link>{" "}
                               </li>
                               <hr />
                               <li>
-                                <Link to="#">Gudi Padwa 2023</Link>{" "}
+                                <Link to="#">Gudi Padwa {year}</Link>{" "}
                               </li>
                               <hr />
                               <li>
-                                <Link to="#">Ugadi 2023</Link>{" "}
+                                <Link to="#">Ugadi {year}</Link>{" "}
                               </li>
                               <hr />
                               <li>
-                                <Link to="#">Rama Navami 2023</Link>{" "}
+                                <Link to="#">Rama Navami {year}</Link>{" "}
                               </li>
                               <hr />
                               <li>
-                                <Link to="#">Hanuman Jyanti 2023</Link>{" "}
+                                <Link to="#">Hanuman Jyanti {year}</Link>{" "}
                               </li>
                               <hr />
                               <li>
-                                <Link to="#">Baisakhi 2023</Link>{" "}
+                                <Link to="#">Baisakhi {year}</Link>{" "}
                               </li>
                               <hr />
                               <li>
-                                <Link to="#">Diwali 2023</Link>{" "}
+                                <Link to="#">Diwali {year}</Link>{" "}
                               </li>
                               <hr />
                             </ul>

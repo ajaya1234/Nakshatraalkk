@@ -8,7 +8,7 @@ function Streaming() {
   useEffect(() => {
     postData();
   }, []);
-  const [allMsg, setAllMsg] = useState([]);
+  const [allMsg, setAllMsg] = useState();
   const parse = localStorage.getItem("liveData");
   const parsed = JSON.parse(parse);
   const [dta] = useState(parsed);
@@ -50,15 +50,15 @@ function Streaming() {
   };
 
   function joinChannel(role) {
-    // Create a client
+   
     rtc.client = AgoraRTC.createClient({ mode: "live", codec: "h264" });
-    // Initialize the client
+   
     rtc.client.init(
       option.appID,
       function () {
         console.log("init success");
 
-        // Join a channel
+        
         rtc.client.join(
           option.token ? option.token : null,
           option.channel,
@@ -119,11 +119,11 @@ function Streaming() {
     rtc.client.leave(
       function () {
         console.log("client leaves channel");
-        //……
+        
       },
       function (err) {
         console.log("client leave failed ", err);
-        //error handling
+        
       }
     );
   }
@@ -164,15 +164,55 @@ function Streaming() {
   };
 
   
+  useEffect(() => {
+    getAllMsg();
+  }, []);
 
   const getAllMsg = () => {
+    const item = {
+      
+      astrologer_id: dta._id,
+      
+    };
+  
     axios
-      .get("http://103.104.74.215:3012/api/user/get_live_comment")
+      .post("http://103.104.74.215:3012/api/astrologer/get_live_comment_list", item)
       .then((res) => {
         setAllMsg(res.data.data);
-       
+      console.log("commmenenenenee",res.data.data)
       });
   };
+
+
+
+  const removeuserlive = () => {
+    const item = {
+      
+      user_id: _id,
+      token: dta.token,
+      
+    };
+    console.log("itemeemem",item)
+  
+    axios
+      .post("http://103.104.74.215:3012/api/user/remove_live_user", item)
+      .then((res) => {
+       navigate("/")
+console.log("sadasdasdadadasdad",res)
+      });
+  };
+
+
+  // const getAllMsg = () => {
+  //   axios
+  //     .get("http://103.104.74.215:3012/api/user/get_live_comment")
+  //     .then((res) => {
+  //       setAllMsg(res.data.data);
+       
+  //     });
+  // };
+
+
   const showTime = (x) => {
     const d = new Date(x);
     const dd = d.getDate();
@@ -223,7 +263,18 @@ function Streaming() {
           }}
         >
           
-          <i class="fa fa-eye" aria-hidden="true"></i>1
+          <i class="fa fa-eye" aria-hidden="true"></i>
+          &nbsp; <i
+        onClick={removeuserlive}
+        style={{
+          marginTop: "",
+          fontSize: 25,
+          color: "white",
+          cursor: "pointer",
+        }}
+        class="fa fa-times"
+        aria-hidden="true"
+      ></i>
         </button>
         <div
           id="remote_video_"
@@ -291,7 +342,7 @@ function Streaming() {
                   }}
                 >
                   {i.msg} 
-                  h3
+                  
                 </label>
               </>
             ))} 
@@ -323,8 +374,8 @@ function Streaming() {
         </div>
       </div>
 
-      <i
-        onClick={() => navigate("/")}
+      {/* <i
+        onClick={removeuserlive}
         style={{
           marginTop: "-58%",
           fontSize: 32,
@@ -333,7 +384,7 @@ function Streaming() {
         }}
         class="fa fa-times"
         aria-hidden="true"
-      ></i>
+      ></i> */}
     </div>
   );
 }

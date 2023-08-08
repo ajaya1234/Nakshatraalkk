@@ -12,6 +12,11 @@ import "slick-carousel/slick/slick-theme.css";
 
 
 const Zodiac = () => {
+  const currentDate = new Date();
+  const day = currentDate.getDate();
+  const month = currentDate.getMonth() + 1;
+  const year = currentDate.getFullYear();
+
     const settings = {
         dots: false,
         infinite: true,
@@ -93,7 +98,7 @@ const Zodiac = () => {
               <div className="category-slider arrow-slider">
                 <Slider {...settings}>
                   <div className="shop-category-box border-0 wow fadeIn">
-                    <Link to="#" className="circle-1">
+                    <Link to="/Horoscope_page" className="circle-1">
                       <img
                         src="../assets/images/veg-3/category/1.png"
                         className="img-fluid blur-up lazyload"
@@ -102,7 +107,7 @@ const Zodiac = () => {
                     </Link>
                     <div className="category-name">
                       <h6>Aries</h6>
-                      <h6 style={{ fontSize: "10px" }}>21/3-19/4</h6>
+                      <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                     </div>
                   </div>
                   <div>
@@ -110,7 +115,7 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.05s"
                     >
-                      <Link to="#" className="circle-2">
+                      <Link to="/Horoscope_page" className="circle-2">
                         <img
                           src="../assets/images/veg-3/category/2.png"
                           className="img-fluid blur-up lazyload"
@@ -119,7 +124,7 @@ const Zodiac = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Taurus</h6>
-                        <h6 style={{ fontSize: "10px" }}>20/4-20/5</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -129,7 +134,7 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.1s"
                     >
-                      <Link to="#" className="circle-3">
+                      <Link to="/Horoscope_page" className="circle-3">
                         <img
                           src="../assets/images/veg-3/category/3.png"
                           className="img-fluid blur-up lazyload"
@@ -138,7 +143,7 @@ const Zodiac = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Gemini</h6>
-                        <h6 style={{ fontSize: "10px" }}>21/5-20/6</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -147,7 +152,7 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.15s"
                     >
-                      <Link to="#" className="circle-4">
+                      <Link to="/Horoscope_page" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/4.png"
                           className="img-fluid blur-up lazyload"
@@ -156,7 +161,7 @@ const Zodiac = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Cancer</h6>
-                        <h6 style={{ fontSize: "10px" }}>21/6-22/7</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -166,7 +171,7 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.2s"
                     >
-                      <Link to="#" className="circle-4">
+                      <Link to="/Horoscope_page" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/5.png"
                           className="img-fluid blur-up lazyload"
@@ -175,7 +180,7 @@ const Zodiac = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Leo</h6>
-                        <h6 style={{ fontSize: "10px" }}>23/7-22/8</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -184,7 +189,7 @@ const Zodiac = () => {
                     className="shop-category-box border-0 wow fadeIn"
                     data-wow-delay="0.25s"
                   >
-                    <Link to="#" className="circle-1">
+                    <Link to="/Horoscope_page" className="circle-1">
                       <img
                         src="../assets/images/veg-3/category/6.png"
                         className="img-fluid blur-up lazyload"
@@ -193,7 +198,7 @@ const Zodiac = () => {
                     </Link>
                     <div className="category-name">
                       <h6>Virgo</h6>
-                      <h6 style={{ fontSize: "10px" }}>23/8-22/9</h6>
+                      <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                     </div>
                   </div>
                   <div style={{ alignSelf: "center" }}>
@@ -201,7 +206,7 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.3s"
                     >
-                      <Link to="#" className="circle-2">
+                      <Link to="/Horoscope_page" className="circle-2">
                         <img
                           src="../assets/images/veg-3/category/7.png"
                           className="img-fluid blur-up lazyload"
@@ -210,7 +215,7 @@ const Zodiac = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Libra</h6>
-                        <h6 style={{ fontSize: "10px" }}>23/9-22/10</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -220,7 +225,7 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.35s"
                     >
-                      <Link to="#" className="circle-3">
+                      <Link to="/Horoscope_page" className="circle-3">
                         <img
                           src="../assets/images/veg-3/category/8.png"
                           className="img-fluid blur-up lazyload"
@@ -229,7 +234,7 @@ const Zodiac = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Scorpio</h6>
-                        <h6 style={{ fontSize: "10px" }}>23/10-21/11</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -239,7 +244,7 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.4s"
                     >
-                      <Link to="#" className="circle-4">
+                      <Link to="/Horoscope_page" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/9.png"
                           className="img-fluid blur-up lazyload"
@@ -248,7 +253,7 @@ const Zodiac = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Sagittarius</h6>
-                        <h6 style={{ fontSize: "10px" }}>22/11-21/12</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -258,7 +263,7 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.45s"
                     >
-                      <Link to="#" className="circle-4">
+                      <Link to="/Horoscope_page" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/10.png"
                           className="img-fluid blur-up lazyload"
@@ -267,7 +272,7 @@ const Zodiac = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Capricorn</h6>
-                        <h6 style={{ fontSize: "10px" }}>22/12-19/1</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -277,7 +282,7 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.5s"
                     >
-                      <Link to="#" className="circle-4">
+                      <Link to="/Horoscope_page" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/11.png"
                           className="img-fluid blur-up lazyload"
@@ -286,7 +291,7 @@ const Zodiac = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Aquarius</h6>
-                        <h6 style={{ fontSize: "10px" }}>20/1-18/2</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -295,7 +300,7 @@ const Zodiac = () => {
                       className="shop-category-box border-0 wow fadeIn"
                       data-wow-delay="0.55s"
                     >
-                      <Link to="#" className="circle-4">
+                      <Link to="/Horoscope_page" className="circle-4">
                         <img
                           src="../assets/images/veg-3/category/12.png"
                           className="img-fluid blur-up lazyload"
@@ -304,7 +309,7 @@ const Zodiac = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Pisces </h6>
-                        <h6 style={{ fontSize: "10px" }}>19/2-20/3</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>

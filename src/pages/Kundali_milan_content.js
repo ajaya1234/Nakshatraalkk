@@ -52,7 +52,7 @@ const Kundali_milan_content = () => {
 
                     <p><strong>How to avail kundli matching service online?</strong></p>
 
-                    <p>To avail kundli matching service online, you can simply log in to the <a href="index-2.html">NakshatraTalk</a> &nbsp;app and find the horoscope matching online option on the same. Once you click on it, all you need to enter are details about both the girl and the boy, and once you have entered all the details correctly, we would match the kundlis for you. Moreover, you can <a href="shop-top-filter1.html">chat with astrologers online</a> Or <a href="shop-top-filter1.html">talk to astrologers</a> for kundali matching.</p>
+                    <p>To avail kundli matching service online, you can simply log in to the <Link to="#">NakshatraTalk</Link> &nbsp;app and find the horoscope matching online option on the same. Once you click on it, all you need to enter are details about both the girl and the boy, and once you have entered all the details correctly, we would match the kundlis for you. Moreover, you can <Link to="/chatastrologer">chat with astrologers online</Link> Or <Link to="/AstrologersList">talk to astrologers</Link> for kundali matching.</p>
 
                    
 

@@ -187,7 +187,7 @@ return (
         </div>
       </div>
 
-      <button type="submit" class="account__login--btn primary__btn mb-10">
+      <button type="submit" class="btn btn-md bg-dark cart-button text-white w-80">
         Submit Review
       </button>
     </form>

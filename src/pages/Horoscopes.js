@@ -10,7 +10,14 @@ import { useEffect } from "react";
 
 const Horoscopes = () => {
 
+  
   const [responseData, setResponseData] = useState(null);
+  
+
+  const currentDate = new Date();
+  const day = currentDate.getDate();
+  const month = currentDate.getMonth() + 1;
+  const year = currentDate.getFullYear();
 
   useEffect(() => {
     const api = "horo_chart_image/:chartId";
@@ -18,9 +25,9 @@ const Horoscopes = () => {
     const apiKey = "46046d17a932151518470e3a08a1665a";
 
     const data = {
-      day: 6,
-      month: 1,
-      year: 2000,
+      day: day,
+      month:month,
+      year: year,
       hour: 7,
       min: 45,
       lat: 19.132,
@@ -77,7 +84,7 @@ const Horoscopes = () => {
                     </Link>
                     <div className="category-name">
                       <h6>Aries</h6>
-                      <h6 style={{ fontSize: "10px" }}>21/3-19/4</h6>
+                      <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                     </div>
                   </div>
                   <div>
@@ -94,7 +101,7 @@ const Horoscopes = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Taurus</h6>
-                        <h6 style={{ fontSize: "10px" }}>20/4-20/5</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -113,7 +120,7 @@ const Horoscopes = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Gemini</h6>
-                        <h6 style={{ fontSize: "10px" }}>21/5-20/6</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -131,7 +138,7 @@ const Horoscopes = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Cancer</h6>
-                        <h6 style={{ fontSize: "10px" }}>21/6-22/7</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -150,7 +157,7 @@ const Horoscopes = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Leo</h6>
-                        <h6 style={{ fontSize: "10px" }}>23/7-22/8</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -168,7 +175,7 @@ const Horoscopes = () => {
                     </Link>
                     <div className="category-name">
                       <h6>Virgo</h6>
-                      <h6 style={{ fontSize: "10px" }}>23/8-22/9</h6>
+                      <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                     </div>
                   </div>
                   <div style={{ alignSelf: "center" }}>
@@ -185,7 +192,7 @@ const Horoscopes = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Libra</h6>
-                        <h6 style={{ fontSize: "10px" }}>23/9-22/10</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -204,7 +211,7 @@ const Horoscopes = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Scorpio</h6>
-                        <h6 style={{ fontSize: "10px" }}>23/10-21/11</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -222,8 +229,8 @@ const Horoscopes = () => {
                         />
                       </Link>
                       <div className="category-name">
-                        <h6>Sagittarius</h6>
-                        <h6 style={{ fontSize: "10px" }}>22/11-21/12</h6>
+                         <h6>Sagittarius</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -242,7 +249,7 @@ const Horoscopes = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Capricorn</h6>
-                        <h6 style={{ fontSize: "10px" }}>22/12-19/1</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -261,7 +268,7 @@ const Horoscopes = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Aquarius</h6>
-                        <h6 style={{ fontSize: "10px" }}>20/1-18/2</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>
@@ -279,7 +286,7 @@ const Horoscopes = () => {
                       </Link>
                       <div className="category-name">
                         <h6>Pisces </h6>
-                        <h6 style={{ fontSize: "10px" }}>19/2-20/3</h6>
+                        <h6 style={{ fontSize: "10px" }}>{day}-{month}-{year}</h6>
                       </div>
                     </div>
                   </div>

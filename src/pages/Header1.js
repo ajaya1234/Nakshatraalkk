@@ -41,7 +41,7 @@ const Header1 = () => {
     localStorage.removeItem("userData");
     localStorage.removeItem("chatdata");
     localStorage.removeItem("videoatro_token");
-    localStorage.removeItem("videoatro_token");
+    localStorage.removeItem("tarotid");
     localStorage.removeItem("vcidddata");
     localStorage.removeItem("data");
     localStorage.removeItem("videoatro_token");

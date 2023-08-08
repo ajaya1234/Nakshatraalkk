@@ -10,7 +10,7 @@ import Live from "./Live";
 
 const Panchang_page = () => {
   const [responseData, setResponseData] = useState(null);
-  console.log("sadasd",responseData)
+  
 
   const currentDate = new Date();
   const day = currentDate.getDate();
@@ -133,7 +133,7 @@ const data = {
                           <tbody>
                             <tr>
                               <td scope="row">Date</td>
-                              <td>{responseData?.day}, 05 April 2023</td>
+                              <td>{responseData?.day}  {day}, {month} , {year}</td>
                               <hr />
                             </tr>
                             <tr>
@@ -211,13 +211,13 @@ const data = {
             <div>
               <div class="blog-box ratio_50">
                 <div class="blog-box-image">
-                  <a href="blog-detail.html">
+                  <Link to="#">
                     <img style={{width:'100%' , height:'180px'}}
                       src="../assets/images/blog/panchang.jpg"
                       class="img-fluid bg-img"
                       alt=""
                     />
-                  </a>
+                  </Link>
                 </div>
 
                 <div
@@ -229,12 +229,12 @@ const data = {
                   }}
                 >
                   <div>
-                    <a href="blog-detail.html">
+                  <Link to="#">
                       <h3>Explore More</h3>
-                    </a>
+                    </Link>
                   </div>
                   <div style={{ position: "absolute" }}>
-                    <a href="blog-detail.html">
+                    <Link to="#">
                       <ul>
                         <li>
                           <a href="#">Today's Tithi</a>{" "}
@@ -273,7 +273,7 @@ const data = {
                         </li>
                         <hr />
                       </ul>
-                    </a>
+                    </Link>
                   </div>
                   {/* <!-- <button onclick="location.href = 'blog-detail.html';" class="blog-button">Read More
                                         <i class="fa-solid fa-right-long"></i></button> --> */}
@@ -284,13 +284,13 @@ const data = {
             <div>
               <div class="blog-box ratio_50">
                 <div class="blog-box-image">
-                  <a href="blog-detail.html">
+                  <Link to="#">
                     <img style={{width:'100%' , height:'180px'}}
                       src="../assets/images/blog/festival.jpg"
                       class="img-fluid bg-img"
                       alt=""
                     />
-                  </a>
+                  </Link>
                 </div>
                 <div
                   class="blog-contain"
@@ -301,51 +301,51 @@ const data = {
                   }}
                 >
                   <div>
-                    <a href="blog-detail.html">
-                      <h3>Feast and Festival 2023</h3>
-                    </a>
+                  <Link to="#">
+                      <h3>Feast and Festival {year}</h3>
+                    </Link>
                   </div>
                   <div style={{ position: "absolute" }}>
-                    <a href="blog-detail.html">
+                  <Link to="#">
                       <ul>
                         <li>
-                          <a href="#">Holi 2023</a>{" "}
+                          <a href="#">Holi {year}</a>{" "}
                         </li>
                         <hr />
                         <li>
-                          <a href="#">Bhai Dooj 2023</a>{" "}
+                          <a href="#">Bhai Dooj {year}</a>{" "}
                         </li>
                         <hr />
                         <li>
-                          <a href="#">Chaitra Navratri 2023</a>{" "}
+                          <a href="#">Chaitra Navratri {year}</a>{" "}
                         </li>
                         <hr />
                         <li>
-                          <a href="#">Gudi Padwa 2023</a>{" "}
+                          <a href="#">Gudi Padwa {year}</a>{" "}
                         </li>
                         <hr />
                         <li>
-                          <a href="#">Ugadi 2023</a>{" "}
+                          <a href="#">Ugadi {year}</a>{" "}
                         </li>
                         <hr />
                         <li>
-                          <a href="#">Rama Navami 2023</a>{" "}
+                          <a href="#">Rama Navami {year}</a>{" "}
                         </li>
                         <hr />
                         <li>
-                          <a href="#">Hanuman Jyanti 2023</a>{" "}
+                          <a href="#">Hanuman Jyanti {year}</a>{" "}
                         </li>
                         <hr />
                         <li>
-                          <a href="#">Baisakhi 2023</a>{" "}
+                          <a href="#">Baisakhi {year}</a>{" "}
                         </li>
                         <hr />
                         <li>
-                          <a href="#">Diwali 2023</a>{" "}
+                          <a href="#">Diwali {year}</a>{" "}
                         </li>
                         <hr />
                       </ul>
-                    </a>
+                    </Link>
                   </div>
                   {/* <!-- <button onclick="location.href = 'blog-detail.html';" class="blog-button">Read More
                                         <i class="fa-solid fa-right-long"></i></button> --> */}
@@ -382,28 +382,29 @@ const data = {
               <div class="col-xxl-4 col-sm-3">
                   <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
                     <div class="blog-image" >
-                      <a href="blog-detail.html">
+                      <Link to='/AstrologersList'>
                       <img style={{width:'100%'}}
                           src="../assets/images/blog/festival.jpg"
                           class="bg-img img-fluid"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div class="blog-contain">
                       <div>
-                        <a href="todays-horoscope.html">
+                      <Link to='/AstrologersList'>
                           <h3>Talk's Best Astrologer</h3>
-                        </a>
+                        </Link>
                       </div>
 
-                      <a href="todays-horoscope.html">
+                      <Link to='/AstrologersList'>
                         <p>
                           A horoscope is an astrology chart that is well
                           prepared in order to examine the future....
                         </p>
-                      </a>
+                      </Link>
+                      <Link to='/AstrologersList'>
                       <button
                         onclick="location.href = 'todays-horoscope.html';"
                         class="blog-button"
@@ -411,6 +412,7 @@ const data = {
                         Read More
                         <i class="fa-solid fa-right-long"></i>
                       </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -418,28 +420,28 @@ const data = {
                 <div class="col-xxl-4 col-sm-3">
                   <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
                     <div class="blog-image" >
-                      <a href="blog-detail.html">
+                      <Link to="/Horoscope_page">
                       <img style={{width:'100%'}}
                           src="../assets/images/blog/festival.jpg"
                           class="bg-img img-fluid"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div class="blog-contain">
                       <div>
-                        <a href="todays-horoscope.html">
+                        <Link to="/Horoscope_page">
                           <h3>Today's Horoscope</h3>
-                        </a>
+                        </Link>
                       </div>
 
-                      <a href="todays-horoscope.html">
+                      <Link to="/Horoscope_page">
                         <p>
                           A horoscope is an astrology chart that is well
                           prepared in order to examine the future....
                         </p>
-                      </a>
+                      </Link><Link to="/Horoscope_page">
                       <button
                         onclick="location.href = 'todays-horoscope.html';"
                         class="blog-button"
@@ -447,6 +449,7 @@ const data = {
                         Read More
                         <i class="fa-solid fa-right-long"></i>
                       </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -454,28 +457,29 @@ const data = {
                 <div class="col-xxl-4 col-sm-3">
                   <div class="blog-box wow fadeInUp" data-wow-delay="0.05s">
                     <div class="blog-image" >
-                      <a href="blog-detail.html">
+                      <Link to="/blog">
                         <img style={{width:'100%'}}
                           src="../assets/images/blog/festival.jpg"
                           class="bg-img img-fluid"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div class="blog-contain">
                       <div>
-                        <a href="blog-detail.html">
+                      <Link to="/blog">
                           <h3>Festival</h3>
-                        </a>
+                        </Link>
                       </div>
 
-                      <a href="blog-detail.html">
+                      <Link to="/blog">
                         <p>
                           Festivals are an important part of our lives; they
                           represent the beauty of our culture.....
                         </p>
-                      </a>
+                      </Link>
+                      <Link to="/blog">
                       <button
                         onclick="location.href = 'blog-detail.html';"
                         class="blog-button"
@@ -483,6 +487,7 @@ const data = {
                         Read More
                         <i class="fa-solid fa-right-long"></i>
                       </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -490,29 +495,30 @@ const data = {
                 <div class="col-xxl-4 col-sm-3">
                   <div class="blog-box wow fadeInUp" data-wow-delay="0.15s">
                     <div class="blog-image" >
-                      <a href="blog-detail.html">
+                      <Link to="/zodiac">
                       <img style={{width:'100%'}}
                           src="../assets/images/blog/festival.jpg"
                           class="bg-img img-fluid"
                           alt=""
                         />
-                      </a>
+                      </Link>
                     </div>
 
                     <div class="blog-contain">
                       <div>
-                        <a href="zodiac_signs.html">
+                      <Link to="/zodiac">
                           <h3>Zodiac Signs</h3>
-                        </a>
+                        </Link>
                       </div>
 
-                      <a href="zodiac_signs.html">
+                      <Link to="/zodiac">
                         <p>
                           Astrology, focuses on a person’s astrological or
                           zodiac sign, to a large extent. There are 12
                           Zodiac....
                         </p>
-                      </a>
+                      </Link>
+                      <Link to="/zodiac">
                       <button
                         onclick="location.href = 'zodiac_signs.html';"
                         class="blog-button"
@@ -520,6 +526,7 @@ const data = {
                         Read More
                         <i class="fa-solid fa-right-long"></i>
                       </button>
+                      </Link>
                     </div>
                   </div>
                 </div>

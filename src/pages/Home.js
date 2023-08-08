@@ -373,7 +373,7 @@ const iss=localStorage.getItem("_id")
                               </div>
 
                               <div class="contact-detail">
-                                <h5> ₹ {i.video_rate ? i.video_rate : "0"}/Min</h5>
+                                <h5> ₹ {i.audio_rate ? i.audio_rate : "0"}/Min</h5>
                               </div>
                             </div>
                           </div>
@@ -489,7 +489,15 @@ const iss=localStorage.getItem("_id")
               <div class="row g-sm-4 g-3">
                 {liveAstrologer?.slice(0, 4).map((i) => (
                   <div class="col-xl-6 col-sm-6" style={{}}>
-                    <div
+                    <div onClick={() => {
+                                
+
+                                localStorage.setItem(
+                                  "liveData",
+                                  JSON.stringify(i)
+                                );
+                                Navigate("/Streaming");
+                              }}
                       class="product-box-4"
                       style={{
                         background: "linear-gradient(45deg, #8b6704, #493939)",

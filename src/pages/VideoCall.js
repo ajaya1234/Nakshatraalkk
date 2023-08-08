@@ -10,8 +10,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const VideoCall = () => {
+  const [minutessss, setMinutess] = useState(0);
   let [total_time, settotal_time] = useState("");
-  const parse = localStorage.getItem("vcidddata");
+
+
+
+
   //const parsed = JSON.parse(parse);
   //const [data, setData] = useState(parsed);
   let [_id] = useState(() => {
@@ -51,6 +55,9 @@ const VideoCall = () => {
 
   const [walletAmnt, setWalletAmnt] = useState([]);
 
+
+
+  
   useEffect(() => {
     postRech();
   }, []);
@@ -64,11 +71,11 @@ const VideoCall = () => {
       .then((res) => setWalletAmnt(res.data.data))
       .then((res) => {
         setWalletAmnt(res.data.data);
-        console.log("dasasfg", walletAmnt);
+        
       });
   };
 
-  let totalminute = localStorage.getItem("totalminute");
+
 
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -78,7 +85,7 @@ const VideoCall = () => {
     return () => clearInterval(interval);
   }, [count]);
 
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState("");
 
@@ -153,31 +160,100 @@ const VideoCall = () => {
     });
   }, [tkn]);
 
+  // const deletelive = () => {
+  //   settotal_time(minutes);
+  //   const total_time = client.current ? minutes : 0;
+  //   const tkn = localStorage.getItem("videoatro_token");
+    
+  //   const removetoken = {
+  //     token: tkn,
+  //     final_time: total_time.toString(),
+  //      //final_time: minutes.toString(),
+  //   };
+
+  //   console.log(removetoken, "adsfghgdasfgfhgsaftgfyh");
+
+  //   axios
+  //     .post(
+  //       `http://103.104.74.215:3012/api/user/remove_calling_user`,
+  //       removetoken
+  //     )
+  //     .then(() => navigate("/Rating"));
+  // };
+
+
+ 
+  // const deletelive = () => {
+  //   const total_time = client.current ? minutes : 0;
+
+  //   if (!client.current) {
+  //     // Handle the case when the user is not joined
+  //     const tkn = localStorage.getItem("videoatro_token");
+  //     const removetoken = {
+  //       token: tkn,
+  //       final_time: total_time.toString(),
+  //     };
+
+  //     axios
+  //       .post(
+  //         "http://103.104.74.215:3012/api/user/remove_calling_user",
+  //         removetoken
+  //       )
+  //       .then(() => navigate("/Rating"));
+  //   } else {
+  //     if (client.current) {
+  //       const tkn = localStorage.getItem("videoatro_token");
+  //       const removetoken = {
+  //         token: tkn,
+  //         final_time: "0",
+  //       };
+  
+  //       axios
+  //         .post(
+  //           "http://103.104.74.215:3012/api/user/remove_calling_user",
+  //           removetoken
+  //         )
+  //     }
+  //     navigate("/Rating");
+  //   }
+  // };
+
+
+
+
+
   const deletelive = () => {
     settotal_time(minutes);
-
     const tkn = localStorage.getItem("videoatro_token");
-    console.log(tkn);
+    let total_time = 0;
+  
+    if (client.current) {
+      // If the user is joined, calculate the total_time in seconds
+      const timeeofvideocall = localStorage.getItem("totalminute");
+      total_time = timeeofvideocall ? minutes.toString()  : 0;
+    }
+  
     const removetoken = {
       token: tkn,
-
-      final_time: minutes.toString(),
+      final_time: total_time.toString(),
     };
-
-    console.log(removetoken, "adsfghgdasfgfhgsaftgfyh");
-
+  
+    console.log("sadasdasdsadada", removetoken);
+  
     axios
-      .post(
-        `http://103.104.74.215:3012/api/user/remove_calling_user`,
-        removetoken
-      )
-      .then((response) => {
-        Navigate("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      .post("http://103.104.74.215:3012/api/user/remove_calling_user", removetoken)
+      .then(() => navigate("/Rating"));
   };
+  
+
+
+
+
+
+
+
+
+
 
   const [elapsedTime, setElapsedTime] = useState(0);
 
@@ -220,6 +296,32 @@ const VideoCall = () => {
     settotal_time(minutes);
   }, [total_time, minutes]);
 
+
+
+
+
+
+
+  useEffect(() => {
+    const updateElapsedTime = () => {
+
+      setMinutess((prevMinutes) => prevMinutes + 1);
+    };
+
+    const timer = setInterval(updateElapsedTime, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const timeeofvideocall=localStorage.getItem("totalminute")
+ 
+  let timeeee = timeeofvideocall * 60;
+  useEffect(() => {
+    if (minutessss >= timeeee) {
+      deletelive();
+    }
+  }, [minutessss]);
+
   return (
     <>
       <>
@@ -229,17 +331,9 @@ const VideoCall = () => {
         </div>
       </>
 
-      {/* {amount < 0 && disconnectCall()} */}
-      {/* <ReverseTimer
-          minutes={remainingTime}
-          seconds={60}
-          style={{ fontSize: 10 }}
-          onTimerEnd={disconnectCall}
-        /> */}
-      {/*<button onClick={deletelive} class=" btn-md bg-dark  text-white w-80">Disconnect</button>*/}
-      {/* <a href='/AstrologersList'><button onClick={deletelive} class=" btn-md bg-dark  text-white w-80">Disconnect</button></a> */}
+      
 
-      <button onClick={deletelive} class=" btn-md bg-dark  text-white w-80">
+      <button onClick={deletelive}  class=" btn-md bg-dark  text-white w-80">
         Disconnect
       </button>
       <div className="row">
